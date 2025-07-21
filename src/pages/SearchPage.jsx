@@ -4,14 +4,25 @@ import SelectField from "../components/common/SelectField";
 import PropertyCard from "../components/property/PropertyCard";
 import { MapPin, DollarSign, Calendar, Percent, Home, Tag } from "lucide-react";
 import { properties } from "../propertiesData";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const SearchPage = ({ onDesireToBuy, onClick }) => {
   const [location, setLocation] = useState("");
+  const locationObj = useLocation();
   const [priceRange, setPriceRange] = useState("");
   const [type, setType] = useState("");
   const [availability, setAvailability] = useState("");
   const [status, setStatus] = useState("");
   const [minOwnershipPercentage, setMinOwnershipPercentage] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(locationObj.search);
+    const locationFromQuery = params.get("location");
+    if (locationFromQuery) {
+      setLocation(locationFromQuery);
+    }
+  }, [locationObj]);
 
   const filteredProperties = properties.filter((prop) => {
     return (

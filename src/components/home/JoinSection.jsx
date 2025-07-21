@@ -1,7 +1,14 @@
+import { useState } from "react";
 import Button from "../common/Button";
 import { User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const JoinSection = () => {
+  const [isLoggedIn, SetIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const handleSignUpButton = () => {
+    navigate("/signup");
+  };
   return (
     <section className="py-12 px-4 bg-blue-700 text-white text-center">
       <div className="max-w-4xl mx-auto">
@@ -12,13 +19,15 @@ const JoinSection = () => {
           Join thousands of smart investors leveraging fractional ownership.
         </p>
         <div className="flex justify-center">
-          <Button
-            onClick={() => console.log("Sign Up Clicked")}
-            className="px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg rounded-full shadow-lg w-full max-w-xs"
-            icon={User}
-          >
-            Sign Up Now
-          </Button>
+          {!isLoggedIn && (
+            <Button
+              onClick={handleSignUpButton}
+              className="px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg rounded-full shadow-lg w-full max-w-xs"
+              icon={User}
+            >
+              Sign Up Now
+            </Button>
+          )}
         </div>
       </div>
     </section>

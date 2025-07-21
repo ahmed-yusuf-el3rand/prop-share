@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
-import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
+import { useRef, useEffect } from "react";
 import { formatCurrency } from "../../utils/formatCurrency";
-import Button from "../common/Button.jsx";
 import ProgressBar from "../common/ProgressBar.jsx";
+import Button from "../common/Button.jsx";
+import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
 import { Percent, Home } from "lucide-react";
 
 const PropertyCard = ({ property, onClick }) => {
@@ -12,10 +12,10 @@ const PropertyCard = ({ property, onClick }) => {
     const interval = setInterval(() => {
       if (scrollRef.current) {
         const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
-        const newScrollLeft = scrollLeft + clientWidth; // Scroll by one image width
+        const newScrollLeft = scrollLeft + clientWidth;
 
         if (newScrollLeft >= scrollWidth) {
-          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" }); // Loop back to start
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
           scrollRef.current.scrollTo({
             left: newScrollLeft,
@@ -23,7 +23,7 @@ const PropertyCard = ({ property, onClick }) => {
           });
         }
       }
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,7 +33,6 @@ const PropertyCard = ({ property, onClick }) => {
       className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 cursor-pointer"
       onClick={onClick}
     >
-      {/* Scrollable Image Carousel */}
       <div
         ref={scrollRef}
         className="w-full h-48 overflow-x-auto whitespace-nowrap scrollbar-hide"
@@ -70,7 +69,7 @@ const PropertyCard = ({ property, onClick }) => {
         <div className="mb-4">
           <ProgressBar progress={property.ownershipProgress} />
         </div>
-        {/* Conditional button text based on availability */}
+
         {property.availability === "fractional" ? (
           <Button
             onClick={(e) => {
@@ -82,7 +81,7 @@ const PropertyCard = ({ property, onClick }) => {
           >
             Buy Fraction Now
           </Button>
-        ) : property.availability === "rent" ? ( // New condition for rent
+        ) : property.availability === "rent" ? (
           <Button
             onClick={(e) => {
               e.stopPropagation();

@@ -1,4 +1,3 @@
-// this file reviewed
 const SelectField = ({
   label,
   value,

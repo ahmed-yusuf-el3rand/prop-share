@@ -148,7 +148,7 @@ export const propertySellingProfits = [
 ];
 
 // 🏠 Owned properties by the user
-export const ownedPropertiesData = [
+export const ownedProperties = [
   {
     id: "prop1",
     name: "Luxury Beachfront Villa",
