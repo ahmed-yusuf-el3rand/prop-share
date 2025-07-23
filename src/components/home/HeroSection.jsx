@@ -80,7 +80,7 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl mx-auto animate-fadeInUp animation-delay-400">
-          <div className="flex-1 w-full md:mt-4">
+          <div className="flex-1 w-full sm:mt-4">
             <InputField
               type="text"
               value={SearchLocation}

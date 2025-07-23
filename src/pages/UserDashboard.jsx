@@ -2,7 +2,7 @@ import { useState } from "react";
 import OwnedTab from "../components/userDashboard/OwnedTab.jsx";
 import PendingTab from "../components/userDashboard/PendingTab.jsx";
 import RentedTab from "../components/userDashboard/RentedTab.jsx";
-import ProfitsTab from "../components/userDashboard/ProfitsTab.jsx";
+import MoneyTab from "../components/userDashboard/MoneyTab.jsx";
 import SettingsTab from "../components/userDashboard/SettingsTab.jsx";
 import NotificationsTab from "../components/userDashboard/NotificationsTab.jsx";
 import TabButton from "../components/common/TabButton.jsx";
@@ -17,8 +17,8 @@ const UserDashboard = () => {
         return <OwnedTab />;
       case "pending":
         return <PendingTab />;
-      case "profits":
-        return <ProfitsTab />;
+      case "money":
+        return <MoneyTab />;
       case "rented":
         return <RentedTab />;
       case "settings":
@@ -36,7 +36,7 @@ const UserDashboard = () => {
       </h1>
 
       <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
-        <div className="flex flex-wrap gap-2 sm:gap-4 border-b border-gray-200 mb-4 sm:mb-6">
+        <div className="grid grid-cols-2 sm:flex flex-wrap gap-2 sm:gap-4 border-b border-gray-200 mb-4 sm:mb-6">
           <TabButton
             active={activeTab === "owned"}
             onClick={() => setActiveTab("owned")}
@@ -59,11 +59,11 @@ const UserDashboard = () => {
             Rented
           </TabButton>
           <TabButton
-            active={activeTab === "profits"}
-            onClick={() => setActiveTab("profits")}
+            active={activeTab === "money"}
+            onClick={() => setActiveTab("money")}
             icon={DollarSign}
           >
-            Profits
+            Money
           </TabButton>
           <TabButton
             active={activeTab === "settings"}
