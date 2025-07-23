@@ -9,7 +9,7 @@ import TabButton from "../components/common/TabButton.jsx";
 import { Home, Hourglass, DollarSign, Settings, Bell } from "lucide-react";
 
 const UserDashboard = () => {
-  const [activeTab, setActiveTab] = useState("owned");
+  const [activeTab, setActiveTab] = useState("settings");
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -31,7 +31,7 @@ const UserDashboard = () => {
   };
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
+      <h1 className="hidden sm:block text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
         Your Dashboard
       </h1>
 

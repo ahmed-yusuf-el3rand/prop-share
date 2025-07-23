@@ -44,7 +44,7 @@ const NotificationsTab = () => {
               <div className="flex justify-between items-center p-3">
                 <span
                   className={`text-sm text-gray-700 ${
-                    !notif.expanded && "truncate"
+                    notif.expanded?"overflow-x-hidden break-words":"truncate"
                   }`}
                 >
                   {notif.text}
