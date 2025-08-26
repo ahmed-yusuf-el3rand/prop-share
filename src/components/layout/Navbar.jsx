@@ -3,17 +3,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import DesktopMenu from "../navbar/DesktopMenu";
 import MobileMenu from "../navbar/MobileMenu";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = ({
-  isLoggedIn,
-  currentUser,
-  handleLogout,
   setDashboardActiveTab,
   setAdminDashboardActiveTab,
   setCurrentPage,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+    logout();
+  };
 
   return (
     <>
@@ -28,7 +32,7 @@ const Navbar = ({
         <div className="hidden md:flex space-x-6 items-center">
           <DesktopMenu
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
+            currentUser={user}
             handleLogout={handleLogout}
             navigate={navigate}
             setDashboardActiveTab={setDashboardActiveTab}
@@ -48,7 +52,7 @@ const Navbar = ({
       {isMobileMenuOpen && (
         <MobileMenu
           isLoggedIn={isLoggedIn}
-          currentUser={currentUser}
+          currentUser={user}
           handleLogout={handleLogout}
           setDashboardActiveTab={setDashboardActiveTab}
           setAdminDashboardActiveTab={setAdminDashboardActiveTab}

@@ -136,7 +136,7 @@ const MobileMenu = ({
         <Button
           variant="ghost"
           onClick={() => {
-            setCurrentPage("login");
+            navigate("/login");
             closeMenu();
           }}
           className="w-full text-center py-3 text-lg hover:bg-gray-100"

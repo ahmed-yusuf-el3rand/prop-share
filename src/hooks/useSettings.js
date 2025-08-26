@@ -20,11 +20,10 @@ export const useSettings = (initialUser) => {
   const [cvv, setCvv] = useState("");
   const [accountName, setAccountName] = useState("");
   const [accountId, setAccountId] = useState("");
-
+  const [paymentMessage, setPaymentMessage] = useState("");
   const [paymentMethods, setPaymentMethods] = useState(
     currentUser.paymentMethods || []
   );
-  const [paymentMessage, setPaymentMessage] = useState("");
 
   useEffect(() => {
     setFullName(currentUser.fullName || "");
@@ -36,7 +35,6 @@ export const useSettings = (initialUser) => {
   const handlePersonalInfoSubmit = (e) => {
     e.preventDefault();
     setPersonalInfoMessage("");
-
     setPersonalInfoMessage("Information updated successfully!");
     setTimeout(() => setPersonalInfoMessage(""), 3000);
   };

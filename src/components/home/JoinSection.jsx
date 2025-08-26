@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import Button from "../common/Button";
-import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 
 const JoinSection = () => {
-  const [isLoggedIn, SetIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
   const handleSignUpButton = () => {
     navigate("/signup");
   };
+
   return (
     <section className="py-12 px-4 bg-blue-700 text-white text-center">
       <div className="max-w-4xl mx-auto">
