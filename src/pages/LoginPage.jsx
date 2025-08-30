@@ -4,6 +4,8 @@ import { Mail, Lock, LogIn } from "lucide-react";
 import InputField from "../components/common/InputField";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -52,20 +54,54 @@ const LoginPage = () => {
     navigate("/");
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Login with Google clicked!");
-  };
-
   const handleSignUpLink = () => {
     navigate("/signup");
   };
   const handleForgotPasswordLink = () => {
     navigate("/reset-password");
   };
+/////////////////////////////////////////////////////////////////not reviewed
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+
+        const userInfo = res.data;
+        console.log("Google User Info:", userInfo);
+
+        const googleUserData = {
+          uid: userInfo.sub,
+          email: userInfo.email,
+          fullName: userInfo.name,
+          userType: "Client",
+        };
+
+        login(googleUserData);
+        navigate("/");
+        alert("Google login successful!");
+      } catch (err) {
+        console.error("Google login failed:", err);
+        setError("Google login failed");
+      }
+    },
+    onError: () => {
+      console.error("Google login failed");
+      setError("Google login failed");
+    },
+    flow: "implicit",
+    prompt: "select_account", 
+  });
 
   return (
     <div className="mx-auto px-4 py-6 flex justify-center items-center min-h-[70vh]">
-      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full sm:max-w-md">
+      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full max-w-3xl my-32">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Login
         </h1>

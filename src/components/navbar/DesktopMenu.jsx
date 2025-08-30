@@ -31,7 +31,7 @@ const DesktopMenu = ({
               className="ml-1 group-hover:rotate-180 transition-transform"
             />
           </Button>
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block z-50">
+          <div className="absolute right-0 pt-4 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block z-50">
             <button
               onClick={() => navigate("/user-dashboard")}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
