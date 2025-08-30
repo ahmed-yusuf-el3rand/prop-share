@@ -7,8 +7,8 @@ import PropertyDetailPage from "./pages/PropertyDetailPage";
 import SearchPage from "./pages/SearchPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-import UserDashboard from "./pages/UserDashboard";
-import AdminDashboardPage from "./pages/AdminDashboard";
+import ClientDashboard from "./pages/ClientDashboard";
+import DeveloperDashboard from "./pages/DeveloperDashboard";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PasswordReset from "./pages/PasswordReset";
@@ -24,12 +24,15 @@ const App = () => {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/user-dashboard" element={<UserDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+        <Route path="/client-dashboard" element={<ClientDashboard />} />
+        <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
         <Route path="/terms" element={<Terms />} />;
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />;
         <Route path="/reset-password" element={<PasswordReset />} />
-        <Route path="*" element={<h1 className="text-center mt-20">404 Not Found</h1>} />
+        <Route
+          path="*"
+          element={<h1 className="text-center mt-20">404 Not Found</h1>}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

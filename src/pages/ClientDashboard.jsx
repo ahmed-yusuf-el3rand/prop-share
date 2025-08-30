@@ -1,15 +1,23 @@
-import { useState } from "react";
-import OwnedTab from "../components/userDashboard/OwnedTab.jsx";
-import PendingTab from "../components/userDashboard/PendingTab.jsx";
-import RentedTab from "../components/userDashboard/RentedTab.jsx";
-import MoneyTab from "../components/userDashboard/MoneyTab.jsx";
-import SettingsTab from "../components/userDashboard/SettingsTab.jsx";
-import NotificationsTab from "../components/userDashboard/NotificationsTab.jsx";
+import { useState ,useEffect} from "react";
+import { useLocation } from "react-router-dom";
+import OwnedTab from "../components/clientDashboard/OwnedTab.jsx";
+import PendingTab from "../components/clientDashboard/PendingTab.jsx";
+import RentedTab from "../components/clientDashboard/RentedTab.jsx";
+import MoneyTab from "../components/clientDashboard/MoneyTab.jsx";
+import SettingsTab from "../components/clientDashboard/SettingsTab.jsx";
+import NotificationsTab from "../components/clientDashboard/NotificationsTab.jsx";
 import TabButton from "../components/common/TabButton.jsx";
 import { Home, Hourglass, DollarSign, Settings, Bell } from "lucide-react";
 
 const UserDashboard = () => {
-  const [activeTab, setActiveTab] = useState("settings");
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState("owned");
+
+   useEffect(() => {
+    if (location.state?.tab) {
+      setActiveTab(location.state.tab);
+    }
+  }, [location.state]);
 
   const renderTabContent = () => {
     switch (activeTab) {

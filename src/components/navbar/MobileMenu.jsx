@@ -1,150 +1,110 @@
 import Button from "../common/Button";
-import {
-  Home,
-  Compass,
-  User,
-  LogOut,
-  LogIn,
-  Settings,
-  PlusCircle,
-  BarChart2,
-  DollarSign,
-} from "lucide-react";
+import { Home, Compass, User, LogOut, LogIn, Settings } from "lucide-react";
 
 const MobileMenu = ({
   isLoggedIn,
   currentUser,
   handleLogout,
-  setDashboardActiveTab,
-  setAdminDashboardActiveTab,
-  setCurrentPage,
   navigate,
+  handleSettingsClick,
+  handleDashboardClick,
   closeMenu,
+  isOpen,
 }) => {
   return (
-    <div className="md:hidden fixed inset-0 bg-white z-30 flex flex-col items-center pt-20 px-4">
-      <Button
-        variant="ghost"
-        onClick={() => {
-          navigate("/");
-          closeMenu();
-        }}
-        className="w-full text-center py-3 text-lg hover:bg-gray-100"
-        icon={Home}
+    <div
+      className={`fixed inset-0 z-30 transition-opacity duration-300 ${
+        isOpen ? "bg-black/45 opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+      onClick={closeMenu}
+    >
+      <div
+        className={`fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
       >
-        Home
-      </Button>
-      <Button
-        variant="ghost"
-        onClick={() => {
-          navigate("/search");
-          closeMenu();
-        }}
-        className="w-full text-center py-3 text-lg hover:bg-gray-100"
-        icon={Compass}
-      >
-        Explore
-      </Button>
-      {isLoggedIn ? (
-        <>
+        <div className="flex flex-col pt-20 px-4">
+          <div className="flex flex-row items-center justify-center mb-6 text-lg font-medium text-blue-700">
+            <div className="mr-2 ">{currentUser && <User size={20} />}</div>
+            <span>{currentUser?.fullName}</span>
+          </div>
           <Button
-            variant="ghost"
+            icon={Home}
+            variant="ghost2"
+            className="w-full text-center py-3 text-lg hover:bg-gray-100 block items-start"
             onClick={() => {
-              setCurrentPage("userDashboard");
+              navigate("/");
               closeMenu();
             }}
-            className="w-full text-center py-3 text-lg hover:bg-gray-100"
-            icon={User}
           >
-            Dashboard
+            Home
           </Button>
           <Button
-            variant="ghost"
+            variant="ghost2"
+            className="w-full text-center py-3 text-lg hover:bg-gray-100"
+            icon={Compass}
             onClick={() => {
-              const tab =
-                currentUser?.role === "admin"
-                  ? setAdminDashboardActiveTab
-                  : setDashboardActiveTab;
-              tab("settings");
-              setCurrentPage("userDashboard");
+              navigate("/search");
               closeMenu();
             }}
-            className="w-full text-center py-3 text-lg hover:bg-gray-100"
-            icon={Settings}
           >
-            Settings
+            Explore
           </Button>
 
-          {currentUser?.role === "admin" && (
+          {isLoggedIn ? (
             <>
+              <Button
+                variant="ghost2"
+                icon={User}
+                className="w-full text-center py-3 text-lg hover:bg-gray-100"
+                onClick={() => {
+                  handleDashboardClick();
+                  closeMenu();
+                }}
+              >
+                Dashboard
+              </Button>
+              <Button
+                variant="ghost2"
+                icon={Settings}
+                className="w-full text-center py-3 text-lg hover:bg-gray-100"
+                onClick={() => {
+                  handleSettingsClick();
+                  closeMenu();
+                }}
+              >
+                Settings
+              </Button>
+
               <div className="w-full border-t border-gray-100 my-2"></div>
-              <span className="text-xs text-gray-500 uppercase font-semibold mb-2">
-                Admin Tools
-              </span>
               <Button
-                variant="ghost"
+                variant="ghost2"
+                icon={LogOut}
+                className="w-full text-center py-3 text-lg text-red-600 hover:bg-red-50"
                 onClick={() => {
-                  setAdminDashboardActiveTab("submission");
-                  setCurrentPage("userDashboard");
+                  handleLogout();
                   closeMenu();
                 }}
-                className="w-full text-center py-3 text-lg hover:bg-gray-100"
-                icon={PlusCircle}
               >
-                Property Submission
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  setAdminDashboardActiveTab("tracking");
-                  setCurrentPage("userDashboard");
-                  closeMenu();
-                }}
-                className="w-full text-center py-3 text-lg hover:bg-gray-100"
-                icon={BarChart2}
-              >
-                Fraction Tracking
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  setAdminDashboardActiveTab("financial");
-                  setCurrentPage("userDashboard");
-                  closeMenu();
-                }}
-                className="w-full text-center py-3 text-lg hover:bg-gray-100"
-                icon={DollarSign}
-              >
-                Financial Overview
+                Logout
               </Button>
             </>
+          ) : (
+            <Button
+              variant="ghost2"
+              icon={LogIn}
+              className="w-full text-center py-3 text-lg hover:bg-gray-100"
+              onClick={() => {
+                navigate("/login");
+                closeMenu();
+              }}
+            >
+              Login
+            </Button>
           )}
-          <div className="w-full border-t border-gray-100 my-2"></div>
-          <Button
-            variant="ghost"
-            onClick={() => {
-              handleLogout();
-              closeMenu();
-            }}
-            className="w-full text-center py-3 text-lg text-red-600 hover:bg-red-50"
-            icon={LogOut}
-          >
-            Logout
-          </Button>
-        </>
-      ) : (
-        <Button
-          variant="ghost"
-          onClick={() => {
-            navigate("/login");
-            closeMenu();
-          }}
-          className="w-full text-center py-3 text-lg hover:bg-gray-100"
-          icon={LogIn}
-        >
-          Login
-        </Button>
-      )}
+        </div>
+      </div>
     </div>
   );
 };

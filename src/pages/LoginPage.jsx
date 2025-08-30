@@ -31,18 +31,18 @@ const LoginPage = () => {
       userData = {
         uid: "user123",
         email: trimmedEmail,
-        fullName: "Client User",
+        fullName: "Client",
         userType: "Client",
       };
     } else if (
-      trimmedEmail === "admin@example.com" &&
+      trimmedEmail === "developer@example.com" &&
       trimmedPassword === "password"
     ) {
       userData = {
-        uid: "admin456",
+        uid: "developer456",
         email: trimmedEmail,
-        fullName: "Developer Admin",
-        userType: "Developer",
+        fullName: "Developer",
+        userType: "developer",
         taxesNumber: "12-3456789",
       };
     } else {

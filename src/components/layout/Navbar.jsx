@@ -5,18 +5,30 @@ import DesktopMenu from "../navbar/DesktopMenu";
 import MobileMenu from "../navbar/MobileMenu";
 import { useAuth } from "../../context/AuthContext";
 
-const Navbar = ({
-  setDashboardActiveTab,
-  setAdminDashboardActiveTab,
-  setCurrentPage,
-}) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     navigate("/");
     logout();
+  };
+
+  const handleSettingsClick = () => {
+    if (user?.role === "developer") {
+      navigate("/developer-dashboard", { state: { tab: "settings" } });
+    } else {
+      navigate("/client-dashboard", { state: { tab: "settings" } });
+    }
+  };
+
+  const handleDashboardClick = () => {
+    if (user?.role === "developer") {
+      navigate("/developer-dashboard", { state: { tab: "owned" } });
+    } else {
+      navigate("/client-dashboard", { state: { tab: "owned" } });
+    }
   };
 
   return (
@@ -35,30 +47,29 @@ const Navbar = ({
             currentUser={user}
             handleLogout={handleLogout}
             navigate={navigate}
-            setDashboardActiveTab={setDashboardActiveTab}
-            setAdminDashboardActiveTab={setAdminDashboardActiveTab}
-            setCurrentPage={setCurrentPage}
+            handleSettingsClick={handleSettingsClick}
+            handleDashboardClick={handleDashboardClick}
           />
         </div>
 
         <button
           className="md:hidden text-gray-600"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
-      {isMobileMenuOpen && (
+      {isMenuOpen && (
         <MobileMenu
           isLoggedIn={isLoggedIn}
           currentUser={user}
           handleLogout={handleLogout}
-          setDashboardActiveTab={setDashboardActiveTab}
-          setAdminDashboardActiveTab={setAdminDashboardActiveTab}
-          setCurrentPage={setCurrentPage}
           navigate={navigate}
-          closeMenu={() => setIsMobileMenuOpen(false)}
+          isOpen={isMenuOpen}
+          closeMenu={() => setIsMenuOpen(false)}
+          handleSettingsClick={handleSettingsClick}
+          handleDashboardClick={handleDashboardClick}
         />
       )}
     </>

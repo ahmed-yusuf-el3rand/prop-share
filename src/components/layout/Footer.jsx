@@ -80,12 +80,12 @@ const Footer = () => {
               </p>
               <p className="flex items-center gap-2 hover:text-blue-400 hover:underline transition-colors duration-200">
                 <Phone size={18} />
-                <a href="tel:(123) 456-7890">Call us: (123) 456-7890</a>
+                <a href="tel:(123) 456-7890">Call Us: (123) 456-7890</a>
               </p>
               <p className="flex items-center gap-2 hover:text-blue-400 hover:underline transition-colors duration-200">
                 <Mail size={18} />
                 <a href="mailto:info@PropShare.com">
-                  Email us: info@PropShare.com
+                  Email Us: info@PropShare.com
                 </a>
               </p>
             </address>

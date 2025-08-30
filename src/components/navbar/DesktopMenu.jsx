@@ -6,9 +6,8 @@ const DesktopMenu = ({
   currentUser,
   handleLogout,
   navigate,
-  setDashboardActiveTab,
-  setAdminDashboardActiveTab,
-  setCurrentPage,
+  handleDashboardClick,
+  handleSettingsClick,
 }) => {
   return (
     <>
@@ -27,53 +26,23 @@ const DesktopMenu = ({
           <Button variant="ghost" icon={User}>
             {currentUser?.fullName}
             <ChevronDown
-              size={16}
               className="ml-1 group-hover:rotate-180 transition-transform"
+              size={16}
             />
           </Button>
           <div className="absolute right-0 pt-4 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block z-50">
             <button
-              onClick={() => navigate("/user-dashboard")}
+              onClick={handleDashboardClick}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Dashboard
             </button>
             <button
-              onClick={() => {
-                const tab =
-                  currentUser?.role === "admin"
-                    ? setAdminDashboardActiveTab
-                    : setDashboardActiveTab;
-                tab("settings");
-                setCurrentPage("userDashboard");
-              }}
+              onClick={handleSettingsClick}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Settings
             </button>
-
-            {currentUser?.role === "admin" && (
-              <>
-                <div className="border-t border-gray-100 my-1"></div>
-                <span className="block px-4 py-2 text-xs text-gray-500 uppercase font-semibold">
-                  Admin Tools
-                </span>
-                {["submission", "tracking", "financial"].map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => {
-                      setAdminDashboardActiveTab(tab);
-                      setCurrentPage("userDashboard");
-                    }}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    {tab === "submission" && "Property Submission"}
-                    {tab === "tracking" && "Fraction Tracking"}
-                    {tab === "financial" && "Financial Overview"}
-                  </button>
-                ))}
-              </>
-            )}
             <div className="border-t border-gray-100 my-1"></div>
             <button
               onClick={handleLogout}

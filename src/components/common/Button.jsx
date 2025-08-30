@@ -1,4 +1,3 @@
-// reviewed
 const Button = ({
   children,
   onClick,
@@ -21,6 +20,9 @@ const Button = ({
     baseStyle += " text-gray-700 hover:bg-gray-100";
   } else if (variant === "success") {
     baseStyle += " bg-green-600 text-white cursor-not-allowed";
+  } else if (variant === "ghost2") {
+    baseStyle =
+      " px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center justify-start gap-2 text-gray-700 hover:bg-gray-100";
   }
 
   return (
