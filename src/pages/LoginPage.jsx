@@ -60,7 +60,7 @@ const LoginPage = () => {
   const handleForgotPasswordLink = () => {
     navigate("/reset-password");
   };
-/////////////////////////////////////////////////////////////////not reviewed
+  /////////////////////////////////////////////////////////////////not reviewed
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -96,12 +96,12 @@ const LoginPage = () => {
       setError("Google login failed");
     },
     flow: "implicit",
-    prompt: "select_account", 
+    prompt: "select_account",
   });
 
   return (
-    <div className="mx-auto px-4 py-6 flex justify-center items-center min-h-[70vh]">
-      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full max-w-3xl my-32">
+    <div className="px-4 py-6 flex justify-center items-center ">
+      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full max-w-3xl mt-28 mb-60">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Login
         </h1>
