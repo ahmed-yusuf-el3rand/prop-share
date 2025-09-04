@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import toast from "react-hot-toast";
+import {
+  validateFullName,
+  validateCompanyName,
+  validateEmail,
+  validatePassword,
+} from "../utils/validation";
 
-export const useSignUp = () => {
+export const useSignup = () => {
   const [userType, setUserType] = useState("");
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -13,7 +19,7 @@ export const useSignUp = () => {
   const [error, setError] = useState("");
   const [googleUser, setGoogleUser] = useState(null);
   const [isSignedUp, setIsSignedUp] = useState(false);
-  const [resendMessage, setResendMessage] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -24,11 +30,6 @@ export const useSignUp = () => {
     const trimmedCompanyName = companyName.trim();
     const trimmedEmail = email.trim();
     const trimmedPassword = password.trim();
-
-    const FULL_NAME_PATTERN = /^[a-zA-Z\s]+$/;
-    const COMPANY_NAME_PATTERN = /^[\w\s&.\-]+$/;
-    const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if (!userType) {
       setError("Please fill in all required fields.");
@@ -45,27 +46,24 @@ export const useSignUp = () => {
       return;
     }
 
-    if (userType === "Investor" && !FULL_NAME_PATTERN.test(trimmedFullName)) {
+    if (userType === "Investor" && !validateFullName(trimmedFullName)) {
       setError("Full name can only contain letters and spaces.");
       return;
     }
 
-    if (
-      userType === "Developer" &&
-      !COMPANY_NAME_PATTERN.test(trimmedCompanyName)
-    ) {
+    if (userType === "Developer" && !validateCompanyName(trimmedCompanyName)) {
       setError("Company name can only contain letters and spaces.");
       return;
     }
 
-    if (!EMAIL_PATTERN.test(trimmedEmail)) {
+    if (!validateEmail(trimmedEmail)) {
       setError("Please enter a valid email address.");
       return;
     }
 
-    if (!googleUser && !PASSWORD_PATTERN.test(trimmedPassword)) {
+    if (!googleUser && !validatePassword(trimmedPassword)) {
       setError(
-        "Password must be at least 8 characters, include uppercase, lowercase, and a number."
+        "Password must be at least 8 characters long and contain letters, numbers and special characters."
       );
       return;
     }
@@ -78,7 +76,7 @@ export const useSignUp = () => {
   };
 
   const handleResendVerification = () => {
-    setResendMessage("Verification email resent.");
+    setMessage("Verification email resent.");
   };
 
   //the code inside it will replaced with the backend call later
@@ -134,6 +132,6 @@ export const useSignUp = () => {
     error,
     googleUser,
     isSignedUp,
-    resendMessage,
+    message,
   };
 };

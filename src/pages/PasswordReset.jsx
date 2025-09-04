@@ -2,37 +2,67 @@ import { useState } from "react";
 import Button from "../components/common/Button";
 import InputField from "../components/common/InputField";
 import { Mail } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { validateEmail } from "../utils/validation";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const navigation = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
+
     const trimmedEmail = email.trim();
 
     if (!trimmedEmail) {
       setError("Please enter your email address.");
       return;
     }
-    setEmail("");
-  };
+    const isValidEmail = validateEmail(trimmedEmail);
 
-  const BackToLoginLink = () => {
-    navigation("/login");
+    if (!isValidEmail) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // TODO: Call backend API here
+      await new Promise((res) => setTimeout(res, 1500)); // fake delay
+      setMessage(
+        "If this email is registered, a reset link has been sent. Please check your inbox."
+      );
+
+      setCooldown(30);
+      const timer = setInterval(() => {
+        setCooldown((c) => {
+          if (c <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return c - 1;
+        });
+      }, 1000);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="flex justify-center items-center min-h-[70vh] px-4">
-      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 w-full max-w-3xl h-auto md:h-[400px]">
+      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 w-full max-w-3xl">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Reset Password
         </h1>
+
         <p className="text-gray-600 text-sm sm:text-base mb-6 text-center">
           Enter your email address below and we'll send you a link to reset your
           password.
@@ -46,7 +76,7 @@ const PasswordReset = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@example.com"
             icon={Mail}
-            required
+            autoFocus
           />
           {message && (
             <p className="text-green-600 text-sm sm:text-base text-center">
@@ -59,20 +89,25 @@ const PasswordReset = () => {
             </p>
           )}
 
-          <Button type="submit" className="w-full mt-2" icon={Mail}>
-            Send Reset Link
+          <Button
+            type="submit"
+            className="w-full mt-2"
+            icon={Mail}
+            disabled={loading || cooldown > 0}
+          >
+            {loading
+              ? "Sending..."
+              : cooldown > 0
+              ? `Resend in ${cooldown}s`
+              : "Send Reset Link"}
           </Button>
         </form>
 
         <p className="text-center text-gray-600 text-sm sm:text-base mt-6">
           Remember your password?{" "}
-          <button
-            type="button"
-            onClick={BackToLoginLink}
-            className="text-blue-600 hover:underline"
-          >
+          <Link to={"/login"} className="text-blue-600 hover:underline">
             Back to Login
-          </button>
+          </Link>
         </p>
       </div>
     </div>

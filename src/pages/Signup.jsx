@@ -2,10 +2,10 @@ import SelectField from "../components/common/SelectField";
 import InputField from "../components/common/InputField";
 import { User, Lock, Briefcase, Mail, UserPlus } from "lucide-react";
 import Button from "../components/common/Button";
-import { useSignUp } from "../hooks/useSignUp";
+import { useSignup } from "../hooks/useSignup";
 import { Link } from "react-router-dom";
 
-export const SignUpPage = () => {
+const Signup = () => {
   const {
     userType,
     setUserType,
@@ -20,11 +20,11 @@ export const SignUpPage = () => {
     error,
     googleUser,
     isSignedUp,
-    resendMessage,
+    message,
     handleSubmit,
     handleResendVerification,
     handleGoogleSignUp,
-  } = useSignUp();
+  } = useSignup();
 
   return (
     <div className="p-6 flex justify-center items-center">
@@ -36,10 +36,10 @@ export const SignUpPage = () => {
           </h2>
           <p
             className={`${
-              resendMessage ? "text-green-700" : "text-gray-700"
+              message ? "text-green-700" : "text-gray-700"
             } mb-4 font-medium`}
           >
-            {resendMessage && resendMessage} Please check your inbox.
+            {message && message} Please check your inbox.
           </p>
           <Button
             onClick={handleResendVerification}
@@ -176,4 +176,4 @@ export const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default Signup;
