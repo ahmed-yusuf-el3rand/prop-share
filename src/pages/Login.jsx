@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
-const LoginPage = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -101,7 +101,7 @@ const LoginPage = () => {
 
   return (
     <div className="px-4 py-6 flex justify-center items-center ">
-      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full max-w-3xl mt-28 mb-60">
+      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full max-w-4xl mt-28 mb-60">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Login
         </h1>
@@ -198,4 +198,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

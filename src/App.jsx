@@ -2,12 +2,12 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import HomePage from "./pages/HomePage";
-import PropertyDetailPage from "./pages/PropertyDetailPage";
-import SearchPage from "./pages/SearchPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import ClientDashboard from "./pages/ClientDashboard";
+import Home from "./pages/Home";
+import PropertyDetails from "./pages/PropertyDetails";
+import Explore from "./pages/Explore";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import InvestorDashboard from "./pages/InvestorDashboard";
 import DeveloperDashboard from "./pages/DeveloperDashboard";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -18,13 +18,13 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/properties/:id" element={<PropertyDetailPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/client-dashboard" element={<ClientDashboard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/properties/:id" element={<PropertyDetails />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/investor-dashboard" element={<InvestorDashboard />} />
         <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
         <Route path="/terms" element={<Terms />} />;
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />;

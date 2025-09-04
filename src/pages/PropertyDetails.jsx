@@ -7,7 +7,7 @@ import FractionalPurchaseModal from "../modals/FractionalPurchaseModal";
 import DesireToBuyFullModal from "../modals/DesireToBuyModal";
 import { useNavigate } from "react-router-dom";
 
-const PropertyDetailPage = ({
+const PropertyDetails = ({
   currentUser,
   onShowPaymentSettings,
   onLoginPrompt,
@@ -369,4 +369,4 @@ const PropertyDetailPage = ({
   );
 };
 
-export default PropertyDetailPage;
+export default PropertyDetails;

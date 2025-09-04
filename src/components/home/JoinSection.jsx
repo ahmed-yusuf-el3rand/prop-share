@@ -11,7 +11,7 @@ const JoinSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 bg-blue-700 text-white text-center">
+    <section className="py-12 px-4 text-gray-800  text-center bg-gray-100">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
           Ready to Start Your Investment Journey?

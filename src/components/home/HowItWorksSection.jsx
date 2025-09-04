@@ -13,7 +13,7 @@ const HowItWorksSection = () => {
             </h3>
             <p className="text-gray-600">
               Browse a curated selection of premium properties available for
-              fractional ownership.
+              fractional or full ownership.
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">

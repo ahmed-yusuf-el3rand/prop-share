@@ -4,7 +4,7 @@ import WhyPropShareSection from "../components/home/WhyPropShareSection.jsx";
 import FeaturedPropertiesSection from "../components/home/FeaturedPropertiesSection.jsx";
 import JoinSection from "../components/home/JoinSection.jsx";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <div className="mx-auto p-0">
       <HeroSection />
@@ -16,4 +16,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

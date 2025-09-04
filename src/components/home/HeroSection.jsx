@@ -5,8 +5,8 @@ import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
-  const [SearchLocation, SetSearchLocation] = useState("");
-  const [searchError, setSearchError] = useState("");
+  const [searchLocation, SetSearchLocation] = useState("");
+  const [error, setError] = useState("");
   const [counters, setCounters] = useState({
     properties: 0,
     investors: 0,
@@ -17,9 +17,9 @@ const HeroSection = () => {
 
   useEffect(() => {
     const target = {
-      properties: 100,
+      properties: 8000,
       investors: 500,
-      roi: 15,
+      roi: 25,
     };
     const duration = 1500;
     const steps = 60;
@@ -44,20 +44,22 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSearchButton = () => {
-    const trimmed = SearchLocation.trim();
+  const validateSearchInput = (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "Location is required.";
+    if (trimmed.length < 2) return "Please enter at least 4 characters.";
+    return "";
+  };
 
-    if (!trimmed) {
-      setSearchError("Location is required.");
+  const handleSearch = () => {
+    const errorValue = validateSearchInput(searchLocation);
+    if (errorValue) {
+      setError(errorValue);
       return;
     }
 
-    if (trimmed.length < 2) {
-      setSearchError("Please enter at least 2 characters.");
-      return;
-    }
-    setSearchError("");
-    navigate(`/Search?location=${encodeURIComponent(trimmed)}`);
+    setError("");
+    navigate(`/explore?location=${encodeURIComponent(searchLocation.trim())}`);
   };
 
   return (
@@ -83,18 +85,26 @@ const HeroSection = () => {
           <div className="flex-1 w-full sm:mt-4">
             <InputField
               type="text"
-              value={SearchLocation}
-              onChange={(e) => SetSearchLocation(e.target.value)}
-              placeholder="Search by location, e.g., Cairo"
-              className={`bg-white text-black text-base rounded-lg py-2 px-4 shadow-sm focus:ring-2 focus:ring-blue-400 ${
-                searchError && "border-red-700"
-              }`}
               icon={MapPin}
+              value={searchLocation}
+              placeholder="Search by location, e.g., Cairo"
+              className={`bg-white text-black text-base rounded-lg py-2 px-4 shadow-sm focus:ring-2 ${
+                error
+                  ? "border-red-600 focus:ring-red-500"
+                  : "focus:ring-blue-400"
+              }`}
+              onChange={(e) => {
+                SetSearchLocation(e.target.value);
+                setError(validateSearchInput(e.target.value));
+              }}
+              onKeyDown={(e) => {
+                e.key === "Enter" && handleSearch();
+              }}
             />
           </div>
           <div className="flex-1 w-full">
             <Button
-              onClick={handleSearchButton}
+              onClick={handleSearch}
               className="bg-yellow-400 hover:bg-yellow-300 text-black font-medium rounded-lg py-2 px-4 w-full transition-all duration-200"
               icon={Search}
             >
@@ -102,7 +112,9 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
-
+        {error && (
+          <p className="text-red-600 text-lg font-medium mt-1">{error}</p>
+        )}
         <div className="mt-4 md:mt-12  grid grid-cols-1 md:grid-cols-3 gap-4 text-lg font-semibold animate-fadeInUp animation-delay-600">
           <div className="flex flex-col items-center">
             <span className="text-3xl font-bold text-yellow-300">

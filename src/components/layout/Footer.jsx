@@ -12,10 +12,12 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-300 py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full px-4  ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">PropShare</h3>
+            <h3 className="text-xl font-semibold text-white mb-4  text-center md:text-start">
+              PropShare
+            </h3>
             <p className="text-sm leading-relaxed">
               Your trusted partner in fractional real estate ownership. We make
               high-value property investment accessible to everyone.
@@ -23,10 +25,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-xl font-semibold text-white mb-4  text-center md:text-start">
               Quick Links
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 flex flex-col items-center md:items-start">
               <li>
                 <Link
                   to={"/"}
@@ -64,11 +66,11 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-xl font-semibold text-white mb-4 text-center md:text-start">
               Contact Us
             </h3>
-            <address className="not-italic space-y-3 text-sm">
-              <p className="flex items-center gap-2 hover:text-blue-400 hover:underline transition-colors duration-200">
+            <address className="not-italic space-y-3 text-sm flex flex-col items-center md:items-start">
+              <p className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-200">
                 <MapPinIcon size={18} />
                 <a
                   href="https://www.google.com/maps/place/Maxim+Mall/@30.0292207,31.4955147,359m/data=!3m1!1e3!4m10!1m2!2m1!1s90+St+North,+Second+New+Cairo,+Cairo+Gov,+Egypt!3m6!1s0x14582260dce33277:0xcee8c262752427a3!8m2!3d30.0295773!4d31.496699!15sCi85MCBTdCBOb3J0aCwgU2Vjb25kIE5ldyBDYWlybywgQ2Fpcm8gR292LCBFZ3lwdFouIiw5MCBzdCBub3J0aCBzZWNvbmQgbmV3IGNhaXJvIGNhaXJvIGdvdiBlZ3lwdJIBD3Nob3BwaW5nX2NlbnRlcpoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNW9abGd5T1dsWGFscDBXVEpvYmxSWVNtbE1WbXhxVWpKV2NtSldSUkFCqgGHARABKjAiLDkwIHN0IG5vcnRoIHNlY29uZCBuZXcgY2Fpcm8gY2Fpcm8gZ292IGVneXB0KAAyHxABIhvHGHGhFHlc2sVzylkIF4MwoYfmUciwBnOq21MyMBACIiw5MCBzdCBub3J0aCBzZWNvbmQgbmV3IGNhaXJvIGNhaXJvIGdvdiBlZ3lwdOABAPoBBAgAEDw!16s%2Fg%2F11c1rfndcj?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
@@ -78,54 +80,65 @@ const Footer = () => {
                   90 St North, Second New Cairo, Cairo Gov, Egypt
                 </a>
               </p>
-              <p className="flex items-center gap-2 hover:text-blue-400 hover:underline transition-colors duration-200">
+              <p className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-200">
                 <Phone size={18} />
                 <a href="tel:(123) 456-7890">Call Us: (123) 456-7890</a>
               </p>
-              <p className="flex items-center gap-2 hover:text-blue-400 hover:underline transition-colors duration-200">
+              <p className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-200">
                 <Mail size={18} />
                 <a href="mailto:info@PropShare.com">
                   Email Us: info@PropShare.com
                 </a>
               </p>
             </address>
-            <div className="flex space-x-4 mt-6">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors duration-200"
-                aria-label="Facebook"
-              >
-                <Facebook size={24} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors duration-200"
-                aria-label="Twitter"
-              >
-                <Twitter size={24} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors duration-200"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram size={24} />
-              </a>
+            <h3 className="text-xl font-semibold text-center md:text-start text-white mt-5 mb-4">
+              Follow Us
+            </h3>
+            <div className="flex justify-center md:justify-start items-center gap-6">
+              <div>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={24} />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors duration-200"
+                  aria-label="Twitter"
+                >
+                  <Twitter size={24} />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors duration-200"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={24} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

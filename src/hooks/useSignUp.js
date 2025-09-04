@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const SignUpPage = () => {
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
+export const useSignUp = () => {
   const [userType, setUserType] = useState("");
+  const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [googleUser, setGoogleUser] = useState(null);
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -31,7 +31,7 @@ const SignUpPage = () => {
     const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if (!userType) {
-      setError("Please choose a role.");
+      setError("Please fill in all required fields.");
       return;
     }
 
@@ -70,15 +70,6 @@ const SignUpPage = () => {
       return;
     }
 
-    // const userData = {
-    //   uid: googleUser?.uid || undefined,
-    //   userType,
-    //   fullName: trimmedFullName,
-    //   companyName: userType === "Developer" ? trimmedCompanyName : undefined,
-    //   email: trimmedEmail,
-    //   password: googleUser ? undefined : trimmedPassword,
-    // };
-
     if (googleUser) {
       navigate("/login");
     } else {
@@ -87,11 +78,10 @@ const SignUpPage = () => {
   };
 
   const handleResendVerification = () => {
-    // Simulate resend email logic
     setResendMessage("Verification email resent.");
-    toast.success("Verification email resent!");
   };
 
+  //the code inside it will replaced with the backend call later
   const handleGoogleSignUp = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -103,7 +93,6 @@ const SignUpPage = () => {
         );
 
         const userInfo = res.data;
-        console.log("Google User Info:", userInfo);
 
         setGoogleUser({
           uid: userInfo.sub,
@@ -115,7 +104,6 @@ const SignUpPage = () => {
         setFullName(userInfo.name);
 
         toast.success("Google sign-up successful! Please choose a role.");
-        setGoogleUser(true);
       } catch (err) {
         console.error("Google sign up failed:", err);
         setError("Google sign up failed");
@@ -129,3 +117,23 @@ const SignUpPage = () => {
     prompt: "select_account",
   });
 
+  return {
+    handleSubmit,
+    handleResendVerification,
+    handleGoogleSignUp,
+    userType,
+    setUserType,
+    fullName,
+    setFullName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    companyName,
+    setCompanyName,
+    error,
+    googleUser,
+    isSignedUp,
+    resendMessage,
+  };
+};

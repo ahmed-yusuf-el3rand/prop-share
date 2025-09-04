@@ -1,5 +1,5 @@
 import Button from '../common/Button';
-import ProgressBar from 
+// import ProgressBar from 
 const FinancialOverviewPage = ({ projects, withdrawableBalance, currentUser, onShowPaymentSettings }) => {
     const totalClaimedAcrossProjects = projects.reduce((sum, project) => sum + (project.price * project.ownershipProgress / 100), 0);
     const hasBankingAccount = currentUser?.bankingAccounts && currentUser.bankingAccounts.length > 0;

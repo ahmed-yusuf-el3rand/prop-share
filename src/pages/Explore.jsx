@@ -7,7 +7,7 @@ import { properties } from "../propertiesData";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const SearchPage = ({ onDesireToBuy, onClick }) => {
+const Explore = ({ onDesireToBuy, onClick }) => {
   const [location, setLocation] = useState("");
   const locationObj = useLocation();
   const [priceRange, setPriceRange] = useState("");
@@ -141,4 +141,4 @@ const SearchPage = ({ onDesireToBuy, onClick }) => {
   );
 };
 
-export default SearchPage;
+export default Explore;
