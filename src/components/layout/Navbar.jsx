@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import DesktopMenu from "../navbar/DesktopMenu";
-import MobileMenu from "../navbar/MobileMenu";
+import DesktopMenu from "../../features/navbar/DesktopMenu";
+import MobileMenu from "../../features/navbar/MobileMenu";
 import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {

@@ -2,7 +2,7 @@ import { properties } from "../../propertiesData";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../property/PropertyCard";
 import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
-import Button from "../common/Button";
+import Button from "../../components/common/Button";
 import { LayoutGrid } from "lucide-react";
 
 const FeaturedPropertiesSection = () => {
@@ -17,7 +17,7 @@ const FeaturedPropertiesSection = () => {
         </h2>
 
         {featuredProperties.length > 0 ? (
-          <div className="grid  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {featuredProperties.map((property) => (
               <PropertyCard
                 key={property.id}
@@ -35,9 +35,10 @@ const FeaturedPropertiesSection = () => {
 
         <div className="flex justify-center mt-12">
           <Button
-            className="px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg bg-blue-600 text-white rounded-lg shadow"
+            variant="primary"
             icon={LayoutGrid}
-            onClick={() => navigate("/search")}
+            onClick={() => navigate("/explore")}
+            className="px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg rounded-lg shadow"
           >
             View All Properties
           </Button>

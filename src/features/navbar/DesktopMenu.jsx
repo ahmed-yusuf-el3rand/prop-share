@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import Button from "../../components/common/Button";
 import { Home, Compass, User, LogIn, ChevronDown } from "lucide-react";
 
 const DesktopMenu = ({
@@ -16,7 +16,7 @@ const DesktopMenu = ({
       </Button>
       <Button
         variant="ghost"
-        onClick={() => navigate("/search")}
+        onClick={() => navigate("/explore")}
         icon={Compass}
       >
         Explore

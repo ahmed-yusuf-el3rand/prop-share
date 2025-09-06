@@ -1,6 +1,6 @@
-import Button from "../common/Button";
-import InputField from "../common/InputField";
-import SelectField from "../common/SelectField";
+import Button from "../../components/common/Button";
+import InputField from "../../components/common/InputField";
+import SelectField from "../../components/common/SelectField";
 import { useSettings } from "../../hooks/useSettings";
 
 import {

@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
-import { formatCurrency } from "../../utils/formatCurrency";
-import ProgressBar from "../common/ProgressBar.jsx";
-import Button from "../common/Button.jsx";
-import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
+import { formatCurrency } from "../../utils/formatCurrency.js";
+import ProgressBar from "../../components/common/ProgressBar.jsx";
+import Button from "../../components/common/Button.jsx";
+import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions.js";
 import { Percent, Home } from "lucide-react";
 
 const PropertyCard = ({ property, onClick }) => {

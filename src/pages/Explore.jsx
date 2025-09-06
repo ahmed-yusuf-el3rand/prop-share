@@ -1,7 +1,7 @@
 import { useState } from "react";
 import InputField from "../components/common/InputField";
 import SelectField from "../components/common/SelectField";
-import PropertyCard from "../components/property/PropertyCard";
+import PropertyCard from "../features/property/PropertyCard";
 import { MapPin, DollarSign, Calendar, Percent, Home, Tag } from "lucide-react";
 import { properties } from "../propertiesData";
 import { useLocation } from "react-router-dom";

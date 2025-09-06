@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../components/common/Button";
 import InputField from "../components/common/InputField";
 import { Mail } from "lucide-react";
@@ -11,6 +11,7 @@ const PasswordReset = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [cooldown, setCooldown] = useState(0);
+  const timerRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,13 +41,14 @@ const PasswordReset = () => {
       );
 
       setCooldown(30);
-      const timer = setInterval(() => {
-        setCooldown((c) => {
-          if (c <= 1) {
-            clearInterval(timer);
+
+      timerRef.current = setInterval(() => {
+        setCooldown((prevCooldown) => {
+          if (prevCooldown <= 1) {
+            clearInterval(timerRef.current);
             return 0;
           }
-          return c - 1;
+          return prevCooldown - 1;
         });
       }, 1000);
     } catch (err) {

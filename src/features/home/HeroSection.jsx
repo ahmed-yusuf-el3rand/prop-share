@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import InputField from "../common/InputField";
+import InputField from "../../components/common/InputField";
 import { MapPin, Search } from "lucide-react";
-import Button from "../common/Button";
+import Button from "../../components/common/Button";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {

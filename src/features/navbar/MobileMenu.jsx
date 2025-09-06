@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import Button from "../../components/common/Button";
 import { Home, Compass, User, LogOut, LogIn, Settings } from "lucide-react";
 
 const MobileMenu = ({
@@ -45,7 +45,7 @@ const MobileMenu = ({
             className="w-full text-center py-3 text-lg hover:bg-gray-100"
             icon={Compass}
             onClick={() => {
-              navigate("/search");
+              navigate("/explore");
               closeMenu();
             }}
           >

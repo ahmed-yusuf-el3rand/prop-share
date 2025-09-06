@@ -1,8 +1,8 @@
-import HeroSection from "../components/home/HeroSection.jsx";
-import HowItWorksSection from "../components/home/HowItWorksSection.jsx";
-import WhyPropShareSection from "../components/home/WhyPropShareSection.jsx";
-import FeaturedPropertiesSection from "../components/home/FeaturedPropertiesSection.jsx";
-import JoinSection from "../components/home/JoinSection.jsx";
+import HeroSection from "../features/home/HeroSection.jsx";
+import HowItWorksSection from "../features/home/HowItWorksSection.jsx";
+import WhyPropShareSection from "../features/home/WhyPropShareSection.jsx";
+import FeaturedPropertiesSection from "../features/home/FeaturedPropertiesSection.jsx";
+import JoinSection from "../features/home/JoinSection.jsx";
 
 const Home = () => {
   return (

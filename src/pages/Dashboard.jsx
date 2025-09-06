@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import OwnedTab from "../components/investorDashboard/OwnedTab.jsx";
-import PendingTab from "../components/investorDashboard/PendingTab.jsx";
-import RentedTab from "../components/investorDashboard/RentedTab.jsx";
-import MoneyTab from "../components/investorDashboard/MoneyTab.jsx";
-import SettingsTab from "../components/investorDashboard/SettingsTab.jsx";
-import NotificationsTab from "../components/investorDashboard/NotificationsTab.jsx";
+import OwnedTab from "../features/dashboard/OwnedTab.jsx";
+import PendingTab from "../features/dashboard/PendingTab.jsx";
+import MoneyTab from "../features/dashboard/MoneyTab.jsx";
+import RentedTab from "../features/dashboard/RentedTab.jsx";
+import SettingsTab from "../features/dashboard/SettingsTab.jsx";
+import NotificationsTab from "../features/dashboard/NotificationsTab.jsx";
 import TabButton from "../components/common/TabButton.jsx";
 import { Home, Hourglass, DollarSign, Settings, Bell } from "lucide-react";
 
@@ -40,7 +40,7 @@ const InvestorDashboard = () => {
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <h1 className="hidden sm:block text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
-        Your Dashboard
+        Dashboard
       </h1>
 
       <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">

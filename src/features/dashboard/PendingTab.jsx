@@ -1,4 +1,4 @@
-import ProgressBar from "../common/ProgressBar";
+import ProgressBar from "../../components/common/ProgressBar";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { pendingProperties } from "../../propertiesData";
 
