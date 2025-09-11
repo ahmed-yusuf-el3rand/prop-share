@@ -8,6 +8,7 @@ const PropertyDetails = ({
   handleBuyShare,
   handleOfferToSell,
   handleCancelOffer,
+  message,
 }) => {
   const scrollRef = useRef(null);
   useEffect(() => {
@@ -57,8 +58,8 @@ const PropertyDetails = ({
         <p className="text-blue-600 text-3xl font-bold ">
           {formatCurrency(property.price)}
         </p>
-        <p className="font-semibold text-gray-700">
-          SHARES VALUE:{" "}
+        <p className="font-bold text-gray-700">
+          SHARES Value:{" "}
           <span className="text-blue-600">
             {formatCurrency(property.sharesValue)}
           </span>
@@ -80,9 +81,15 @@ const PropertyDetails = ({
         <p className="text-gray-700 text-base ">{property.description}</p>
       </div>
 
+      {message && (
+        <p className="text-base font-medium mb-6 text-center">{message}</p>
+      )}
+
       <div className="flex space-x-4 mb-6">
         <Button
-          onClick={handleBuyShare}
+          onClick={() => {
+            handleBuyShare(true);
+          }}
           variant="primary"
           className="flex-1"
           icon={DollarSign}

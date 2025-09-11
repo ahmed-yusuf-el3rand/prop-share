@@ -1,7 +1,7 @@
 // src/data/properties.js
 
 // 📦 All property listings (main catalog)
-export const properties= [
+export const propertiesData= [
   {
     id: "prop1",
     name: "Luxury Beachfront Villa",

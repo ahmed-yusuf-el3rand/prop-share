@@ -1,4 +1,4 @@
-export const property = {
+export const propertyData = {
     id: "prop1",
     name: "Luxury Beachfront Villa",
     location: "Miami, FL",

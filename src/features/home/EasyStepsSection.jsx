@@ -1,10 +1,10 @@
 import { Zap, ShieldCheck, TrendingUpIcon } from "lucide-react";
 
-const HowItWorksSection = () => {
+const EasyStepsSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-12">How It Works</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-12">Easy Steps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
             <Zap size={48} className="text-blue-600 mb-4" />
@@ -38,4 +38,4 @@ const HowItWorksSection = () => {
   );
 };
 
-export default HowItWorksSection;
+export default EasyStepsSection;

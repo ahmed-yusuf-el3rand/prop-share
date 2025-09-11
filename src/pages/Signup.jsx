@@ -53,7 +53,7 @@ const Signup = () => {
           </Link>
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-20 mb-40">
+        <div className="bg-white p-8 w-full max-w-4xl mt-20 mb-40">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
             Sign Up
           </h1>

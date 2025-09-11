@@ -63,7 +63,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-lg shadow-xl bg-gradient-to-br from-blue-700 to-purple-800">
+    <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-lg shadow-xl bg-gradient-to-br to-blue-800 from-purple-700">
       <div
         className="absolute inset-0 z-0 opacity-20"
         style={{

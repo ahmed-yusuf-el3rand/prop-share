@@ -1,4 +1,4 @@
-const OwnerPercentagesGraph = ({ ownersData }) => {
+const PercentagesGraph = ({ ownersData }) => {
   const radius = 80;
   const circumference = 2 * Math.PI * radius;
   let currentOffset = 0;
@@ -71,4 +71,4 @@ const OwnerPercentagesGraph = ({ ownersData }) => {
     </div>
   );
 };
-export default OwnerPercentagesGraph;
+export default PercentagesGraph;

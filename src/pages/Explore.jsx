@@ -3,7 +3,7 @@ import InputField from "../components/common/InputField";
 import SelectField from "../components/common/SelectField";
 import PropertyCard from "../features/property/PropertyCard";
 import { MapPin, DollarSign, Calendar, Percent, Home, Tag } from "lucide-react";
-import { properties } from "../propertiesData";
+import { propertiesData } from "../propertiesData";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -24,7 +24,7 @@ const Explore = ({ onDesireToBuy, onClick }) => {
     }
   }, [locationObj]);
 
-  const filteredProperties = properties.filter((prop) => {
+  const filteredProperties = propertiesData.filter((prop) => {
     return (
       (location === "" ||
         prop.location.toLowerCase().includes(location.toLowerCase())) &&

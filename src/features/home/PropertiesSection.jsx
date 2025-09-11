@@ -1,24 +1,22 @@
-import { properties } from "../../propertiesData";
+import { propertiesData } from "../../propertiesData";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../property/PropertyCard";
 import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
-import Button from "../../components/common/Button";
-import { LayoutGrid } from "lucide-react";
 
-const FeaturedPropertiesSection = () => {
-  const featuredProperties = properties.slice(0, 4);
+const PropertiesSection = () => {
+  const properties = propertiesData.slice(0, 4);
   const navigate = useNavigate();
 
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
-          Featured Properties
+          Properties
         </h2>
 
-        {featuredProperties.length > 0 ? (
+        {properties.length > 0 ? (
           <div className="grid  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {featuredProperties.map((property) => (
+            {properties.map((property) => (
               <PropertyCard
                 key={property.id}
                 property={property}
@@ -29,23 +27,12 @@ const FeaturedPropertiesSection = () => {
           </div>
         ) : (
           <p className="text-center text-gray-600 text-lg">
-            No featured properties available at the moment.
+            No properties available at the moment.
           </p>
         )}
-
-        <div className="flex justify-center mt-12">
-          <Button
-            variant="primary"
-            icon={LayoutGrid}
-            onClick={() => navigate("/explore")}
-            className="px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg rounded-lg shadow"
-          >
-            View All Properties
-          </Button>
-        </div>
       </div>
     </section>
   );
 };
 
-export default FeaturedPropertiesSection;
+export default PropertiesSection;

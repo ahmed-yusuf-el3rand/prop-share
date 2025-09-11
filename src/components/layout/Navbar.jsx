@@ -35,7 +35,7 @@ const Navbar = () => {
     <>
       <nav className="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-40">
         <div
-          className="text-2xl font-bold text-blue-700 cursor-pointer"
+          className="text-2xl font-bold text-cyan-600 cursor-pointer"
           onClick={() => navigate("/")}
         >
           PropShare
