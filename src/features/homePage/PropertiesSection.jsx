@@ -1,6 +1,6 @@
 import { propertiesData } from "../../propertiesData";
 import { useNavigate } from "react-router-dom";
-import PropertyCard from "../property/PropertyCard";
+import PropertyCard from "../propertyPage/PropertyCard";
 import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
 
 const PropertiesSection = () => {

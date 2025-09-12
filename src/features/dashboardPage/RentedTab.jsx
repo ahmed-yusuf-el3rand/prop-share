@@ -1,4 +1,4 @@
-import { formatCurrency } from "../../utils/formatCurrency";
+import formatCurrency from "../../utils/formatCurrency";
 import { pendingProperties } from "../../propertiesData";
 
 const RentedTab = () => {

@@ -1,4 +1,4 @@
-const PrivacyPolicy = () => (
+const PrivacyPolicyPage = () => (
   <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
     <h1 className="text-3xl font-bold emb-6">Privacy Policy</h1>
     <p className="text-sm text-gray-500 mb-10">Effective Date: July 7, 2025</p>
@@ -76,4 +76,4 @@ const PrivacyPolicy = () => (
   </div>
 );
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

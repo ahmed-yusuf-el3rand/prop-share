@@ -1,6 +1,6 @@
 import Button from "../../components/common/Button";
 import { DollarSign, XCircle, Tag } from "lucide-react";
-import { formatCurrency } from "../../utils/formatCurrency";
+import formatCurrency from "../../utils/formatCurrency";
 import { useRef, useEffect } from "react";
 
 const PropertyDetails = ({
@@ -54,15 +54,17 @@ const PropertyDetails = ({
 
       <div className="space-y-4 mb-6">
         <h1 className="text-4xl font-bold text-gray-800">{property.name}</h1>
-        <p className="text-gray-600 text-l">{property.location}</p>
-        <p className="text-blue-600 text-3xl font-bold ">
-          {formatCurrency(property.price)}
-        </p>
-        <p className="font-bold text-gray-700">
-          SHARES Value:{" "}
-          <span className="text-blue-600">
-            {formatCurrency(property.sharesValue)}
-          </span>
+        <p className=" text-lg font-semibold underline text-blue-600">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              property.location
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" "}
+            {property.location}
+          </a>
         </p>
         <p>
           <span
@@ -74,10 +76,26 @@ const PropertyDetails = ({
           >
             {property.availability}
           </span>{" "}
-          <span className="font-semibold bg-yellow-100 text-yellow-800 rounded-full p-2">
+          <span
+            className={`font-semibold ${
+              property.status === "owned"
+                ? "bg-green-100 text-green-800 "
+                : "bg-gray-100 text-gray-800"
+            } rounded-full p-2`}
+          >
             {property.status}
           </span>
         </p>
+        <p className="text-gray-600 text-3xl font-bold ">
+          {formatCurrency(property.price)}
+        </p>
+        <p className="font-bold text-gray-600">
+          SHARES Value:{" "}
+          <span className="text-gray-600 text-xl">
+            {formatCurrency(property.sharesValue)}
+          </span>
+        </p>
+
         <p className="text-gray-700 text-base ">{property.description}</p>
       </div>
 

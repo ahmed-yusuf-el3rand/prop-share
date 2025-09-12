@@ -1,13 +1,13 @@
 import { useState } from "react";
 import InputField from "../components/common/InputField";
 import SelectField from "../components/common/SelectField";
-import PropertyCard from "../features/property/PropertyCard";
+import PropertyCard from "../features/propertyPage/PropertyCard";
 import { MapPin, DollarSign, Calendar, Percent, Home, Tag } from "lucide-react";
 import { propertiesData } from "../propertiesData";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const Explore = ({ onDesireToBuy, onClick }) => {
+const ExplorePage = ({ onDesireToBuy, onClick }) => {
   const [location, setLocation] = useState("");
   const locationObj = useLocation();
   const [priceRange, setPriceRange] = useState("");
@@ -141,4 +141,4 @@ const Explore = ({ onDesireToBuy, onClick }) => {
   );
 };
 
-export default Explore;
+export default ExplorePage;

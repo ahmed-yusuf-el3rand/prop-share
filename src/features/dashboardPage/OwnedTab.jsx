@@ -1,8 +1,10 @@
 import { ownedProperties } from "../../propertiesData";
-import { formatCurrency } from "../../utils/formatCurrency";
+import formatCurrency from "../../utils/formatCurrency";
 import ProgressBar from "../../components/common/ProgressBar";
+import { useNavigate } from "react-router-dom";
 
 const OwnedTab = () => {
+  const navigate = useNavigate();
   return (
     <div className="space-y-4">
       {ownedProperties.length > 0 ? (
@@ -10,7 +12,7 @@ const OwnedTab = () => {
           <div
             key={prop.id}
             className="border border-gray-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-            onClick={() => onOwnedPropertyClick(prop.id)}
+            onClick={() => navigate(`/properties/${prop.id}`)}
           >
             <img
               src={prop.image}

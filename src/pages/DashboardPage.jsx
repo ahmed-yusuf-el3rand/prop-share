@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import OwnedTab from "../features/dashboard/OwnedTab.jsx";
-import PendingTab from "../features/dashboard/PendingTab.jsx";
-import MoneyTab from "../features/dashboard/MoneyTab.jsx";
-import RentedTab from "../features/dashboard/RentedTab.jsx";
-import SettingsTab from "../features/dashboard/SettingsTab.jsx";
-import NotificationsTab from "../features/dashboard/NotificationsTab.jsx";
+import OwnedTab from "../features/dashboardPage/OwnedTab.jsx";
+
+import PendingTab from "../features/dashboardPage/PendingTab.jsx";
+import MoneyTab from "../features/dashboardPage/MoneyTab.jsx";
+import RentedTab from "../features/dashboardPage/RentedTab.jsx";
+import SettingsTab from "../features/dashboardPage/SettingsTab.jsx";
+import NotificationsTab from "../features/dashboardPage/NotificationsTab.jsx";
 import TabButton from "../components/common/TabButton.jsx";
 import { Home, Hourglass, DollarSign, Settings, Bell } from "lucide-react";
 
-const InvestorDashboard = () => {
+const DashboardPage = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("owned");
 
@@ -94,4 +95,4 @@ const InvestorDashboard = () => {
   );
 };
 
-export default InvestorDashboard;
+export default DashboardPage;

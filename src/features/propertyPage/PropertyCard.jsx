@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { formatCurrency } from "../../utils/formatCurrency.js";
+import formatCurrency from "../../utils/formatCurrency.js";
 import ProgressBar from "../../components/common/ProgressBar.jsx";
 import Button from "../../components/common/Button.jsx";
 import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions.js";

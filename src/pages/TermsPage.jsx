@@ -1,4 +1,4 @@
-const Terms = () => (
+const TermsPage = () => (
   <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
     <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
     <p className="text-sm text-gray-500 mb-10">Last updated: July 7, 2025</p>
@@ -91,4 +91,4 @@ const Terms = () => (
   </div>
 );
 
-export default Terms;
+export default TermsPage;

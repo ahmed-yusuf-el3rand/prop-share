@@ -5,7 +5,7 @@ import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../utils/validation";
 
-const PasswordReset = () => {
+const PasswordResetPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -116,4 +116,4 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+export default PasswordResetPage;

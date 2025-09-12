@@ -1,12 +1,12 @@
 import { useState } from "react";
-import PurchaseModal from "../modals/Purchase";
-import SellModal from "../modals/Sell";
-import PercentagesGraph from "../features/property/PercentagesGraph";
-import PropertyDetails from "../features/property/PropertyDetails";
+import PurchaseModal from "../modals/PurchaseModal";
+import SellModal from "../modals/SellModal";
+import PercentagesGraph from "../features/propertyPage/PercentagesGraph";
+import PropertyDetails from "../features/propertyPage/PropertyDetails";
 import { ownersData } from "../ownersData";
 import { propertyData } from "../propertyData";
 
-const Property = () => {
+const PropertyPage = () => {
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isSellModalOpen, setIsSellModalOpen] = useState(false);
   const [message, setMessage] = useState("");
@@ -55,4 +55,4 @@ const Property = () => {
   );
 };
 
-export default Property;
+export default PropertyPage;

@@ -5,7 +5,7 @@ import Button from "../components/common/Button";
 import { useSignup } from "../hooks/useSignup";
 import { Link } from "react-router-dom";
 
-const Signup = () => {
+const SignUpPage = () => {
   const {
     userType,
     setUserType,
@@ -176,4 +176,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUpPage;
