@@ -25,34 +25,13 @@ const OwnedTab = () => {
             />
 
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-800 text-lg sm:text-base">
+              <h3 className="font-semibold text-gray-800 sm:text-xl text-lg">
                 {prop.name}
               </h3>
-
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-1 gap-1">
-                <span className="text-sm text-gray-700">
-                  Total Price: {formatCurrency(prop.value)}
-                </span>
-                <span
-                  className={`text-xs px-2 py-1 rounded-full font-medium w-fit ${
-                    prop.status === "Active"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-yellow-100 text-yellow-800"
-                  }`}
-                >
-                  status
-                </span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 text-cyan-600 font-medium text-base sm:text-lg">
+                <span>{prop.percentageHeld}% Held</span>
+                <span>Share: {formatCurrency(prop.value)}</span>
               </div>
-
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-1">
-                <span className="text-sm text-gray-600">
-                  {prop.percentageHeld}% Held
-                </span>
-                <span className="text-blue-600 font-bold text-base sm:text-lg">
-                  Your Share: {formatCurrency(prop.value)}
-                </span>
-              </div>
-
               <ProgressBar progress={prop.percentageHeld} className="mt-3" />
             </div>
           </div>

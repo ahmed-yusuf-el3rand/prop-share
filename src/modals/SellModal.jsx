@@ -79,12 +79,12 @@ const SellModal = ({ isOpen, onClose, property, onConfirm }) => {
       return;
     }
 
-    onConfirm(
-      <span className="text-green-600 font-medium text-sm mt-2">
-        You offered {percentage}% of this property to sell for{" "}
-        {formatCurrency(price)}.
-      </span>
-    );
+    onConfirm({
+      type: "success",
+      text: `You offered ${percentage}% of this property to sell for ${formatCurrency(
+        price
+      )}.`,
+    });
     onClose();
   };
 

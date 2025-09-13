@@ -1,7 +1,11 @@
+import ProgressBar from "../../components/common/ProgressBar";
 import formatCurrency from "../../utils/formatCurrency";
 import { pendingProperties } from "../../propertiesData";
+import { useNavigate } from "react-router-dom";
 
-const RentedTab = () => {
+const PendingTab = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-4">
       {pendingProperties.length > 0 ? (
@@ -13,11 +17,11 @@ const RentedTab = () => {
             <div
               key={prop.id}
               className="border border-gray-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-              onClick={() => onPendingPropertyClick(prop.id)}
+              onClick={() => navigate(`/properties/${prop.id}`)}
             >
               <img
-                src={prop.propertyImage}
-                alt={prop.propertyName}
+                src={prop.image}
+                alt={prop.name}
                 className="w-full sm:w-16 h-40 sm:h-16 object-cover rounded-md"
                 onError={(e) => {
                   e.target.onerror = null;
@@ -26,30 +30,23 @@ const RentedTab = () => {
               />
 
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-800 text-lg sm:text-base">
-                  {prop.propertyName}
+                <h3 className="font-semibold text-gray-800 text-lg sm:text-xl">
+                  {prop.name}
                 </h3>
-                <h4 className="text-sm text-gray-600">
-                  Lease Ends: {progress.toFixed(0)}
-                </h4>
-
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
-                  <span className="text-sm text-gray-600">
-                    Next Rent Date:(202-2-2)
-                  </span>
-                  <span className="text-blue-600 font-bold text-base sm:text-lg">
-                    Rent: {formatCurrency(prop.price)}
-                  </span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline text-cyan-600 font-medium text-base sm:text-lg">
+                  <span>{progress.toFixed(0)}% Offered</span>
+                  <span>Offer: {formatCurrency(prop.price)}</span>{" "}
                 </div>
+                <ProgressBar progress={progress} className="mt-2" />
               </div>
             </div>
           );
         })
       ) : (
-        <p className="text-gray-600">No properties are rented.</p>
+        <p className="text-gray-600">No properties are offered to sell.</p>
       )}
     </div>
   );
 };
 
-export default RentedTab;
+export default PendingTab;

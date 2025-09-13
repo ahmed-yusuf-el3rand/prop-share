@@ -5,11 +5,11 @@ const PercentagesGraph = ({ ownersData }) => {
 
   return (
     <div className="md:w-1/2">
-      <div className="bg-gray-50 p-5 rounded-lg mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-3 ">
+      <div className="p-5">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3">
           Owners Percentages
         </h2>
-        <div className="h-64 flex items-center justify-center bg-white rounded-lg border border-gray-200">
+        <div className="h-64 flex items-center justify-center bg-white rounded-lg ">
           <svg
             width="200"
             height="200"

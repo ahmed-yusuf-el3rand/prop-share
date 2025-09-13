@@ -1,15 +1,23 @@
-import { useState } from "react";
-import PurchaseModal from "../modals/PurchaseModal";
+import { ownersData } from "../ownersData";
+import { useEffect, useState } from "react";
 import SellModal from "../modals/SellModal";
+import { useLocation } from "react-router-dom";
+import { propertyData } from "../propertyData";
+import PurchaseModal from "../modals/PurchaseModal";
 import PercentagesGraph from "../features/propertyPage/PercentagesGraph";
 import PropertyDetails from "../features/propertyPage/PropertyDetails";
-import { ownersData } from "../ownersData";
-import { propertyData } from "../propertyData";
 
 const PropertyPage = () => {
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isSellModalOpen, setIsSellModalOpen] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.isPurchaseModalOpen) {
+      setIsPurchaseModalOpen(true);
+    }
+  }, [location.state]);
 
   if (!propertyData) {
     return (
@@ -24,8 +32,8 @@ const PropertyPage = () => {
   };
 
   return (
-    <div className="mx-auto p-6 mb-36">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden p-6">
+    <div className="max-w-6xl mx-auto p-6 mb-24">
+      <div className="bg-white overflow-hidden p-6">
         <div className="md:flex md:space-x-8">
           <PropertyDetails
             property={propertyData}

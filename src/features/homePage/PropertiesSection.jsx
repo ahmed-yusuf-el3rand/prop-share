@@ -1,11 +1,10 @@
-import { propertiesData } from "../../propertiesData";
 import { useNavigate } from "react-router-dom";
-import PropertyCard from "../propertyPage/PropertyCard";
-import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions";
+import { propertiesData } from "../../propertiesData";
+import PropertyCard from "../../components/common/PropertyCard";
 
 const PropertiesSection = () => {
-  const properties = propertiesData.slice(0, 4);
   const navigate = useNavigate();
+  const properties = propertiesData.slice(0, 4);
 
   return (
     <section className="py-16 px-4 bg-white">
@@ -20,8 +19,12 @@ const PropertiesSection = () => {
               <PropertyCard
                 key={property.id}
                 property={property}
-                onDesireToBuy={onDesireToBuy}
                 onClick={() => navigate(`/properties/${property.id}`)}
+                handleBuyShare={() => {
+                  navigate(`/properties/${property.id}`, {
+                    state: { isPurchaseModalOpen: true },
+                  });
+                }}
               />
             ))}
           </div>

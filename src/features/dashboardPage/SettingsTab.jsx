@@ -28,21 +28,9 @@ const SettingsTab = () => {
     <div className="p-4 sm:p-6 bg-white rounded-lg shadow-lg">
       <div className="mb-6 sm:mb-8 border-b pb-4 sm:pb-6">
         <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-3 sm:mb-4 flex items-center gap-2">
-          <Book size={20} /> Basic Information
+          <Book size={20} /> Your Information
         </h3>
         <form onSubmit={settings.handlePersonalInfoSubmit}>
-          <SelectField
-            label="Account Type"
-            value={settings.userType}
-            onChange={(e) => settings.setUserType(e.target.value)}
-            options={[
-              { value: "Client", label: "Client" },
-              { value: "Developer", label: "Developer" },
-            ]}
-            icon={User}
-            disabled={true}
-            className="bg-gray-50 cursor-not-allowed"
-          />
           <InputField
             label="Full Name"
             type="text"

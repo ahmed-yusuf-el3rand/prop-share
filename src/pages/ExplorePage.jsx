@@ -1,20 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { propertiesData } from "../propertiesData";
 import InputField from "../components/common/InputField";
 import SelectField from "../components/common/SelectField";
-import PropertyCard from "../features/propertyPage/PropertyCard";
-import { MapPin, DollarSign, Calendar, Percent, Home, Tag } from "lucide-react";
-import { propertiesData } from "../propertiesData";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import PropertyCard from "../components/common/PropertyCard";
+import { MapPin, DollarSign, Percent, Home } from "lucide-react";
 
-const ExplorePage = ({ onDesireToBuy, onClick }) => {
-  const [location, setLocation] = useState("");
+const ExplorePage = () => {
+  const navigate = useNavigate();
   const locationObj = useLocation();
-  const [priceRange, setPriceRange] = useState("");
   const [type, setType] = useState("");
-  const [availability, setAvailability] = useState("");
-  const [status, setStatus] = useState("");
-  const [minOwnershipPercentage, setMinOwnershipPercentage] = useState("");
+  const [location, setLocation] = useState("");
+  const [priceRange, setPriceRange] = useState("");
+  const [minOwnership, setMinOwnership] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(locationObj.search);
@@ -24,35 +22,50 @@ const ExplorePage = ({ onDesireToBuy, onClick }) => {
     }
   }, [locationObj]);
 
-  const filteredProperties = propertiesData.filter((prop) => {
-    return (
-      (location === "" ||
-        prop.location.toLowerCase().includes(location.toLowerCase())) &&
-      (priceRange === "" ||
-        (priceRange === "100000-500000" &&
-          prop.price >= 100000 &&
-          prop.price <= 500000) ||
-        (priceRange === "500000-1000000" &&
-          prop.price > 500000 &&
-          prop.price <= 1000000) ||
-        (priceRange === "1000000+" && prop.price > 1000000)) &&
-      (type === "" || prop.type === type) &&
-      (availability === "" || prop.availability === availability) &&
-      (status === "" || prop.status === status) &&
-      (minOwnershipPercentage === "" ||
-        prop.ownershipProgress >= parseFloat(minOwnershipPercentage))
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (location) params.set("location", location);
+    navigate({ search: params.toString() }, { replace: true });
+  }, [location]);
+
+  const matchesLocation = (prop) =>
+    location === "" ||
+    prop.location.toLowerCase().includes(location.toLowerCase());
+
+  const matchesPrice = (prop) => {
+    if (priceRange === "") return true;
+    if (priceRange === "100000-500000")
+      return prop.price >= 100000 && prop.price <= 500000;
+    if (priceRange === "500000-1000000")
+      return prop.price > 500000 && prop.price <= 1000000;
+    if (priceRange === "1000000+") return prop.price > 1000000;
+    return true;
+  };
+
+  const matchesType = (prop) => type === "" || prop.type === type;
+
+  const matchesMinOwnership = (prop) =>
+    minOwnership === "" || prop.ownershipProgress >= parseFloat(minOwnership);
+
+  const filteredProperties = useMemo(() => {
+    return propertiesData.filter(
+      (prop) =>
+        matchesLocation(prop) &&
+        matchesPrice(prop) &&
+        matchesType(prop) &&
+        matchesMinOwnership(prop)
     );
-  });
+  }, [location, priceRange, type, minOwnership]);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="m-6 md:m-12">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
         Discover Properties
       </h1>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+      <div className="bg-white md:p-6 md:rounded-lg md:shadow-md mb-8">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           <InputField
             label="Location"
             value={location}
@@ -84,34 +97,11 @@ const ExplorePage = ({ onDesireToBuy, onClick }) => {
             ]}
             icon={Home}
           />
-          <SelectField
-            label="Availability"
-            value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
-            options={[
-              { value: "", label: "Any Availability" },
-              { value: "full", label: "Full" },
-              { value: "fractional", label: "Fractional" },
-              { value: "rent", label: "For Rent" }, // Added 'rent' option
-            ]}
-            icon={Calendar}
-          />
-          {/* <SelectField
-            label="Status"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            options={[
-              { value: "", label: "Any Status" },
-              { value: "ready", label: "Ready" },
-              { value: "desire", label: "Desire" },
-            ]}
-            icon={Tag}
-          /> */}
           <InputField
             label="Min Ownership %"
             type="number"
-            value={minOwnershipPercentage}
-            onChange={(e) => setMinOwnershipPercentage(e.target.value)}
+            value={minOwnership}
+            onChange={(e) => setMinOwnership(e.target.value)}
             placeholder="e.g., 50"
             min="0"
             max="100"
@@ -127,8 +117,12 @@ const ExplorePage = ({ onDesireToBuy, onClick }) => {
             <PropertyCard
               key={property.id}
               property={property}
-              onDesireToBuy={onDesireToBuy}
-              onClick={() => onClick(property.id)}
+              handleBuyShare={() => {
+                navigate(`/properties/${property.id}`, {
+                  state: { isPurchaseModalOpen: true },
+                });
+              }}
+              onClick={() => navigate(`/properties/${property.id}`)}
             />
           ))
         ) : (

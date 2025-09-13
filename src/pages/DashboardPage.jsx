@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import OwnedTab from "../features/dashboardPage/OwnedTab.jsx";
-
-import PendingTab from "../features/dashboardPage/PendingTab.jsx";
-import MoneyTab from "../features/dashboardPage/MoneyTab.jsx";
-import RentedTab from "../features/dashboardPage/RentedTab.jsx";
-import SettingsTab from "../features/dashboardPage/SettingsTab.jsx";
-import NotificationsTab from "../features/dashboardPage/NotificationsTab.jsx";
 import TabButton from "../components/common/TabButton.jsx";
+import OwnedTab from "../features/dashboardPage/OwnedTab.jsx";
+import MoneyTab from "../features/dashboardPage/MoneyTab.jsx";
+import OfferedTab from "../features/dashboardPage/OfferedTab.jsx";
+import SettingsTab from "../features/dashboardPage/SettingsTab.jsx";
 import { Home, Hourglass, DollarSign, Settings, Bell } from "lucide-react";
+import NotificationsTab from "../features/dashboardPage/NotificationsTab.jsx";
 
 const DashboardPage = () => {
   const location = useLocation();
@@ -24,12 +22,10 @@ const DashboardPage = () => {
     switch (activeTab) {
       case "owned":
         return <OwnedTab />;
-      case "pending":
-        return <PendingTab />;
+      case "offered":
+        return <OfferedTab />;
       case "money":
         return <MoneyTab />;
-      case "rented":
-        return <RentedTab />;
       case "settings":
         return <SettingsTab />;
       case "notifications":
@@ -39,12 +35,12 @@ const DashboardPage = () => {
     }
   };
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="hidden sm:block text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
         Dashboard
       </h1>
 
-      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
         <div className="grid grid-cols-2 sm:flex flex-wrap gap-2 sm:gap-4 border-b border-gray-200 mb-4 sm:mb-6">
           <TabButton
             active={activeTab === "owned"}
@@ -54,18 +50,11 @@ const DashboardPage = () => {
             Owned
           </TabButton>
           <TabButton
-            active={activeTab === "pending"}
-            onClick={() => setActiveTab("pending")}
+            active={activeTab === "offered"}
+            onClick={() => setActiveTab("offered")}
             icon={Hourglass}
           >
-            Pending
-          </TabButton>
-          <TabButton
-            active={activeTab === "rented"}
-            onClick={() => setActiveTab("rented")}
-            icon={Home}
-          >
-            Rented
+            Offered
           </TabButton>
           <TabButton
             active={activeTab === "money"}
@@ -89,8 +78,8 @@ const DashboardPage = () => {
             Notifications
           </TabButton>
         </div>
-        <div className="overflow-x-auto">{renderTabContent()}</div>
       </div>
+      <div className="overflow-x-auto bg-white mt-5">{renderTabContent()}</div>
     </div>
   );
 };

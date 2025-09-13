@@ -1,11 +1,10 @@
+import Button from "./Button.jsx";
+import { Percent } from "lucide-react";
 import { useRef, useEffect } from "react";
+import ProgressBar from "./ProgressBar.jsx";
 import formatCurrency from "../../utils/formatCurrency.js";
-import ProgressBar from "../../components/common/ProgressBar.jsx";
-import Button from "../../components/common/Button.jsx";
-import { handleDesireToBuy as onDesireToBuy } from "../../hooks/usePropertyActions.js";
-import { Percent, Home } from "lucide-react";
 
-const PropertyCard = ({ property, onClick }) => {
+const PropertyCard = ({ property, onClick, handleBuyShare }) => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -50,60 +49,38 @@ const PropertyCard = ({ property, onClick }) => {
           />
         ))}
       </div>
+
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-2">
           {property.name}
         </h3>
         <p className="text-gray-600 text-sm mb-3 flex justify-between items-center">
           <span>{property.location}</span>
-          <span className="text-gray-500">{property.type}</span>
+          <span>{property.type}</span>
         </p>
         <div className="flex justify-between items-baseline mb-3">
-          <span className="text-2xl font-bold text-blue-600">
+          <span className="text-2xl font-bold text-cyan-600">
             {formatCurrency(property.price)}
           </span>
           <span className="text-sm text-gray-500">
             {property.ownershipProgress}% Owned
           </span>
         </div>
+
         <div className="mb-4">
           <ProgressBar progress={property.ownershipProgress} />
         </div>
 
-        {property.availability === "fractional" ? (
-          <Button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDesireToBuy(property);
-            }}
-            className="w-full"
-            icon={Percent}
-          >
-            Buy Fraction Now
-          </Button>
-        ) : property.availability === "rent" ? (
-          <Button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDesireToBuy(property);
-            }}
-            className="w-full"
-            icon={Home}
-          >
-            Express Interest to Rent
-          </Button>
-        ) : (
-          <Button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDesireToBuy(property);
-            }}
-            className="w-full"
-            icon={Percent}
-          >
-            Desire to Buy
-          </Button>
-        )}
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleBuyShare();
+          }}
+          className="w-full bg-cyan-600 hover:bg-cyan-700"
+          icon={Percent}
+        >
+          Buy Share
+        </Button>
       </div>
     </div>
   );

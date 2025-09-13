@@ -63,7 +63,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-lg shadow-xl bg-gradient-to-br to-blue-800 from-purple-700">
+    <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-lg shadow-xl bg-gradient-to-br from-cyan-700 to-green-600">
       <div
         className="absolute inset-0 z-0 opacity-20"
         style={{
@@ -82,13 +82,13 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl mx-auto animate-fadeInUp animation-delay-400">
-          <div className="flex-1 w-full sm:mt-4">
+          <div className="flex-1 w-full sm:mt-4 text-center">
             <InputField
               type="text"
               icon={MapPin}
               value={searchLocation}
-              placeholder="Search by location, e.g., Cairo"
-              className={`bg-white text-black text-base rounded-lg py-2 px-4 shadow-sm focus:ring-2 ${
+              placeholder="e.g., Cairo"
+              className={`bg-white text-black rounded-lg py-2 px-4 shadow-sm focus:ring-2 ${
                 error
                   ? "border-red-600 focus:ring-red-500"
                   : "focus:ring-blue-400"
@@ -113,7 +113,7 @@ const HeroSection = () => {
           </div>
         </div>
         {error && (
-          <p className="text-red-600 text-lg font-medium mt-1">{error}</p>
+          <p className="text-red-600 text-lg font-semibold mt-1">{error}</p>
         )}
         <div className="mt-4 md:mt-12  grid grid-cols-1 md:grid-cols-3 gap-4 text-lg font-semibold animate-fadeInUp animation-delay-600">
           <div className="flex flex-col items-center">

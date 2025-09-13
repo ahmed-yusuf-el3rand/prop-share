@@ -89,12 +89,12 @@ const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
       return;
     }
 
-    onConfirm(
-      <span className="text-green-600">
-        Now You have {percentage.toFixed(2)}% of this property for{" "}
-        {formatCurrency(amount)}.
-      </span>
-    );
+    onConfirm({
+      type: "success",
+      text: ` Now You have ${percentage.toFixed(
+        2
+      )}% of this property for${formatCurrency(amount)}.`,
+    });
 
     onClose();
   };
