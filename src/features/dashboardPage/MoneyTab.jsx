@@ -1,10 +1,10 @@
 import formatCurrency from "../../utils/formatCurrency";
+import { DollarSign } from "lucide-react";
 import {
   rentProfits,
   sellingProfits,
   propertySellingProfits,
 } from "../../propertiesData";
-import { DollarSign } from "lucide-react";
 
 const MoneyTab = () => {
   return (

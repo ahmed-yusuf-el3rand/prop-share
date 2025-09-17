@@ -26,7 +26,7 @@ const NotificationsTab = () => {
   };
 
   return (
-    <div className="mt-6">
+    <div>
       <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
         <Bell size={20} /> Your Notifications
       </h3>
@@ -44,7 +44,9 @@ const NotificationsTab = () => {
               <div className="flex justify-between items-center p-3">
                 <span
                   className={`text-sm text-gray-700 ${
-                    notif.expanded?"overflow-x-hidden break-words":"truncate"
+                    notif.expanded
+                      ? "overflow-x-hidden break-words"
+                      : "truncate"
                   }`}
                 >
                   {notif.text}

@@ -10,7 +10,7 @@ import NotificationsTab from "../features/dashboardPage/NotificationsTab.jsx";
 
 const DashboardPage = () => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState("owned");
+  const [activeTab, setActiveTab] = useState("settings");
 
   useEffect(() => {
     if (location.state?.tab) {
@@ -79,7 +79,7 @@ const DashboardPage = () => {
           </TabButton>
         </div>
       </div>
-      <div className="overflow-x-auto bg-white mt-5">{renderTabContent()}</div>
+      <div className="overflow-x-auto bg-white my-6">{renderTabContent()}</div>
     </div>
   );
 };

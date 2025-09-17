@@ -6,6 +6,7 @@ const InputField = ({
   placeholder,
   className = "",
   icon: Icon = null,
+  children,
   ...props
 }) => (
   <div className="mb-4">
@@ -31,6 +32,15 @@ const InputField = ({
           } ${className}`}
           {...props}
         />
+      ) : type === "stripeElement" ? (
+        <div
+          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            Icon ? "pl-10" : ""
+          } ${className}`}
+          {...props}
+        >
+          {children}
+        </div>
       ) : (
         <input
           type={type}

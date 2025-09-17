@@ -76,26 +76,26 @@ const ExplorePage = () => {
           <SelectField
             label="Price Range"
             value={priceRange}
-            onChange={(e) => setPriceRange(e.target.value)}
+            onChange={setPriceRange}
+            icon={DollarSign}
             options={[
               { value: "", label: "Any Price" },
               { value: "100000-500000", label: "$100K - $500K" },
               { value: "500000-1000000", label: "$500K - $1M" },
               { value: "1000000+", label: "$1M+" },
             ]}
-            icon={DollarSign}
           />
           <SelectField
             label="Property Type"
             value={type}
-            onChange={(e) => setType(e.target.value)}
+            onChange={setType}
+            icon={Home}
             options={[
               { value: "", label: "Any Type" },
               { value: "Apartment", label: "Apartment" },
               { value: "House", label: "House" },
               { value: "Commercial", label: "Commercial" },
             ]}
-            icon={Home}
           />
           <InputField
             label="Min Ownership %"
