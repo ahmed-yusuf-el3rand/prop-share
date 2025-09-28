@@ -1,10 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import { propertiesData } from "../../propertiesData";
+import { useProperties } from "../../hooks/useProperties";
 import PropertyCard from "../../components/common/PropertyCard";
+import { propertiesData } from "../../propertiesData";
+import { useNavigate } from "react-router-dom";
 
 const PropertiesSection = () => {
+  // const { data: properties = [], isLoading, error } = useProperties;
+  const properties = propertiesData;
+
   const navigate = useNavigate();
-  const properties = propertiesData.slice(0, 4);
+  const goToProperty = (id, openPurchase = false) => {
+    navigate(
+      `/properties/${id}`,
+      openPurchase ? { state: { isPurchaseOpen: true } } : undefined
+    );
+  };
+  
+  // if (isLoading) return <p>Loading properties...</p>;
+  // if (error) return <p className="text-red-500">Failed to load properties.</p>;
 
   return (
     <section className="py-16 px-4 bg-white">
@@ -19,12 +31,8 @@ const PropertiesSection = () => {
               <PropertyCard
                 key={property.id}
                 property={property}
-                onClick={() => navigate(`/properties/${property.id}`)}
-                handleBuyShare={() => {
-                  navigate(`/properties/${property.id}`, {
-                    state: { isPurchaseModalOpen: true },
-                  });
-                }}
+                onClick={() => goToProperty(property.id)}
+                onBuyShare={() => goToProperty(property.id, true)}
               />
             ))}
           </div>

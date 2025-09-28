@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import ProgressBar from "./ProgressBar.jsx";
 import formatCurrency from "../../utils/formatCurrency.js";
 
-const PropertyCard = ({ property, onClick, handleBuyShare }) => {
+const PropertyCard = ({ property, onClick, onBuyShare }) => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const PropertyCard = ({ property, onClick, handleBuyShare }) => {
         <Button
           onClick={(e) => {
             e.stopPropagation();
-            handleBuyShare();
+            onBuyShare();
           }}
           className="w-full bg-cyan-600 hover:bg-cyan-700"
           icon={Percent}

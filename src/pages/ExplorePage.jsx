@@ -1,61 +1,31 @@
-import { useState, useEffect, useMemo } from "react";
-import { propertiesData } from "../propertiesData";
+import { useState } from "react";
+import { useNavigation } from "../hooks/useNavigation";
 import InputField from "../components/common/InputField";
+import { useFilteredProps } from "../hooks/useProperties";
 import SelectField from "../components/common/SelectField";
-import { useLocation, useNavigate } from "react-router-dom";
 import PropertyCard from "../components/common/PropertyCard";
 import { MapPin, DollarSign, Percent, Home } from "lucide-react";
 
 const ExplorePage = () => {
-  const navigate = useNavigate();
-  const locationObj = useLocation();
-  const [type, setType] = useState("");
-  const [location, setLocation] = useState("");
-  const [priceRange, setPriceRange] = useState("");
-  const [minOwnership, setMinOwnership] = useState("");
+  const { goToProperty } = useNavigation();
+  const [filters, setFilters] = useState({
+    type: "",
+    location: "",
+    priceRange: "",
+    minOwnership: "",
+  });
+  const {
+    data: filteredProperties = [],
+    isLoading,
+    error,
+  } = useFilteredProps(filters);
 
-  useEffect(() => {
-    const params = new URLSearchParams(locationObj.search);
-    const locationFromQuery = params.get("location");
-    if (locationFromQuery) {
-      setLocation(locationFromQuery);
-    }
-  }, [locationObj]);
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (location) params.set("location", location);
-    navigate({ search: params.toString() }, { replace: true });
-  }, [location]);
-
-  const matchesLocation = (prop) =>
-    location === "" ||
-    prop.location.toLowerCase().includes(location.toLowerCase());
-
-  const matchesPrice = (prop) => {
-    if (priceRange === "") return true;
-    if (priceRange === "100000-500000")
-      return prop.price >= 100000 && prop.price <= 500000;
-    if (priceRange === "500000-1000000")
-      return prop.price > 500000 && prop.price <= 1000000;
-    if (priceRange === "1000000+") return prop.price > 1000000;
-    return true;
+  const handleFilterChange = (field, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
-
-  const matchesType = (prop) => type === "" || prop.type === type;
-
-  const matchesMinOwnership = (prop) =>
-    minOwnership === "" || prop.ownershipProgress >= parseFloat(minOwnership);
-
-  const filteredProperties = useMemo(() => {
-    return propertiesData.filter(
-      (prop) =>
-        matchesLocation(prop) &&
-        matchesPrice(prop) &&
-        matchesType(prop) &&
-        matchesMinOwnership(prop)
-    );
-  }, [location, priceRange, type, minOwnership]);
 
   return (
     <div className="m-6 md:m-12">
@@ -68,15 +38,15 @@ const ExplorePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           <InputField
             label="Location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={filters.location}
+            onChange={(e) => handleFilterChange("location", e.target.value)}
             placeholder="e.g., Cairo"
             icon={MapPin}
           />
           <SelectField
             label="Price Range"
-            value={priceRange}
-            onChange={setPriceRange}
+            value={filters.priceRange}
+            onChange={(value) => handleFilterChange("priceRange", value)}
             icon={DollarSign}
             options={[
               { value: "", label: "Any Price" },
@@ -87,8 +57,8 @@ const ExplorePage = () => {
           />
           <SelectField
             label="Property Type"
-            value={type}
-            onChange={setType}
+            value={filters.type}
+            onChange={(value) => handleFilterChange("type", value)}
             icon={Home}
             options={[
               { value: "", label: "Any Type" },
@@ -100,8 +70,8 @@ const ExplorePage = () => {
           <InputField
             label="Min Ownership %"
             type="number"
-            value={minOwnership}
-            onChange={(e) => setMinOwnership(e.target.value)}
+            value={filters.minOwnership}
+            onChange={(e) => handleFilterChange("minOwnership", e.target.value)}
             placeholder="e.g., 50"
             min="0"
             max="100"
@@ -111,26 +81,28 @@ const ExplorePage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map((property) => (
-            <PropertyCard
-              key={property.id}
-              property={property}
-              handleBuyShare={() => {
-                navigate(`/properties/${property.id}`, {
-                  state: { isPurchaseModalOpen: true },
-                });
-              }}
-              onClick={() => navigate(`/properties/${property.id}`)}
-            />
-          ))
-        ) : (
-          <p className="col-span-full text-center text-gray-600 text-lg">
-            No properties match your filters.
-          </p>
-        )}
-      </div>
+      {error && <p className="text-red-500">Failed to load properties.</p>}
+
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProperties?.length > 0 ? (
+            filteredProperties.map((property) => (
+              <PropertyCard
+                key={property.id}
+                property={property}
+                onBuyShare={() => goToProperty(property.id, true)}
+                onClick={() => goToProperty(property.id)}
+              />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-600 text-lg">
+              No properties match your filters.
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

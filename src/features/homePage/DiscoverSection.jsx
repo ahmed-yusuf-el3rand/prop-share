@@ -12,7 +12,7 @@ const DiscoverSection = () => {
     <section className="py-16 bg-blue-100">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-12">
-         Discover the PropShare
+          Discover the PropShare
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
