@@ -1,21 +1,43 @@
 import { useQuery } from "@tanstack/react-query";
 import propertiesService from "../services/propertiesService";
 
-const useProperties = (limit) => {
+const defaultOptions = {
+  staleTime: 5 * 60 * 1000,
+  keepPreviousData: true,
+};
+
+const useProperties = (limit, user) => {
   return useQuery({
-    queryKey: ["properties"],
+    queryKey: ["properties", user?.id],
     queryFn: () => propertiesService.list({ limit }),
-    staleTime: 5 * 60 * 1000,
+    ...defaultOptions,
   });
 };
 
-const useFilteredProps = (filters) => {
+const useFilteredProps = (filters, user) => {
   return useQuery({
-    queryKey: ["properties", filters],
+    queryKey: ["properties", filters, user?.id],
     queryFn: () => propertiesService.list(filters),
-    staleTime: 5 * 60 * 1000,
-    keepPreviousData: true,
+    ...defaultOptions,
   });
 };
 
-export { useProperties, useFilteredProps };
+const useOwnedProps = (user) => {
+  return useQuery({
+    queryKey: ["user-properties", "owned", user?.id],
+    queryFn: () => propertiesService.owned(),
+    ...defaultOptions,
+  });
+};
+
+const useOfferedProps = (user) => {
+  return useQuery({
+    queryKey: ["user-properties", "offered", user?.id],
+    queryFn: () => propertiesService.offered(),
+    ...defaultOptions,
+  });
+};
+
+
+
+export { useProperties, useFilteredProps, useOwnedProps, useOfferedProps };

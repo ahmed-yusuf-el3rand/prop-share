@@ -11,7 +11,6 @@ const SettingsTab = () => {
     <div className="p-4 sm:p-6 bg-white rounded-lg shadow-lg">
       <InformationForm />
       <PasswordForm />
-
       <Elements stripe={stripePromise}>
         <BankCardForm />
       </Elements>

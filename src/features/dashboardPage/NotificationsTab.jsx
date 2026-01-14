@@ -1,10 +1,15 @@
 import { Bell, X } from "lucide-react";
 import { useState } from "react";
-import { rentProfits } from "../../propertiesData";
 
-const NotificationsTab = () => {
+// Mock data for demonstration purposes
+const data = [
+  "Your order #1234 has been shipped.",
+];
+
+
+const NotificationsTab = ({ isLoading, error }) => {
   const [notifications, setNotifications] = useState(
-    rentProfits.notifications.map((text) => ({
+    data.map((text) => ({
       text,
       opened: false,
       expanded: false,
@@ -13,10 +18,8 @@ const NotificationsTab = () => {
 
   const toggleNotification = (index) => {
     setNotifications((prev) =>
-      prev.map((notif, i) =>
-        i === index
-          ? { ...notif, opened: true, expanded: !notif.expanded }
-          : notif
+      prev.map((n, i) =>
+        i === index ? { ...n, opened: true, expanded: !n.expanded } : n
       )
     );
   };
@@ -25,31 +28,46 @@ const NotificationsTab = () => {
     setNotifications((prev) => prev.filter((_, i) => i !== index));
   };
 
+  // const handleRemove = useCallback(
+  //   (id) => {
+  //     setNotifications((prev) => prev.filter((n) => n.id !== id));
+  //     deleteNotification(id);
+  //   },
+  //   [deleteNotification]
+  // );
+
+  if (isLoading)
+    return <p className="text-center">Loading your notifications...</p>;
+  if (error)
+    return (
+      <p className="text-center text-red-500">
+        Failed to load your notifications.
+      </p>
+    );
+
   return (
     <div>
       <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
         <Bell size={20} /> Your Notifications
       </h3>
 
-      {notifications.length > 0 ? (
+      {notifications?.length > 0 ? (
         <ul className="space-y-2">
-          {notifications.map((notif, index) => (
+          {notifications.map((n, index) => (
             <li
               key={index}
-              className={`rounded-md shadow-sm cursor-pointer transition-colors duration-200 ${
-                notif.opened ? "bg-gray-50" : "bg-blue-50"
-              }`}
               onClick={() => toggleNotification(index)}
+              className={`rounded-md shadow-sm cursor-pointer transition-colors duration-200 ${
+                n.opened ? "bg-gray-50" : "bg-blue-50"
+              }`}
             >
               <div className="flex justify-between items-center p-3">
                 <span
                   className={`text-sm text-gray-700 ${
-                    notif.expanded
-                      ? "overflow-x-hidden break-words"
-                      : "truncate"
+                    n.expanded ? "overflow-x-hidden break-words" : "truncate"
                   }`}
                 >
-                  {notif.text}
+                  {n.text}
                 </span>
                 <button
                   className="text-gray-400 hover:text-red-500"

@@ -1,4 +1,4 @@
-import { getProperties } from "../api/properties";
+import {  getProperties } from "../api/properties";
 
 const propertiesService = {
   list: async (params = {}) => {
@@ -9,6 +9,7 @@ const propertiesService = {
 
     return [];
   },
+   owned: () => getOwnedProperties(),
 };
 
 export default propertiesService;
