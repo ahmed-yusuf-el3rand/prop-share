@@ -2,9 +2,9 @@ import {
   getNotificationsApi,
   openNotificationApi,
   deleteNotificationApi,
-} from "@/api/notifications";
+} from "@/api/notificationsApi";
 
-const getNotifications = async (userID) => {
+const getNotifications = async () => {
   const response = await getNotificationsApi();
   return response.data;
 };

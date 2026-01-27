@@ -1,11 +1,11 @@
 import { DollarSign } from "lucide-react";
-
+import { useMoney } from "../../hooks/useMoney";
 import { useAuth } from "../../context/AuthContext";
 import formatCurrency from "../../utils/formatCurrency";
 
 const MoneyTab = () => {
   const { user } = useAuth();
-  const { data: moneyData = {}, isLoading, error } = useMoney(user);
+  const { data: moneyData = {}, isLoading, error } = useMoney(user?.id);
 
   if (isLoading)
     return <p className="text-center">Loading your money data...</p>;

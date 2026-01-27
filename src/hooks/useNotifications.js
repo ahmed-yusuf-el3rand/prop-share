@@ -12,7 +12,7 @@ export const useNotifications = (limit, user) => {
     queryKey: [notificationsKey],
     queryFn: () => getNotifications(limit, user?.id),
     select: (data) => data.notifications,
-    enabled: !!user?.id,
+    enabled: Boolean(user?.id),
     staleTime: 60_000,
     retry: 2,
   });

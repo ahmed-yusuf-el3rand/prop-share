@@ -1,4 +1,4 @@
-import {  getProperties } from "../api/properties";
+import {  getProperties } from "../api/propertiesApi";
 
 const propertiesService = {
   list: async (params = {}) => {
