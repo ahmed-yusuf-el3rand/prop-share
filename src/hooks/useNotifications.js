@@ -69,8 +69,8 @@ export const useNotifications = (limit, user) => {
 
   return {
     ...notificationsQuery,
-    deleteNotification: deleteMutation.mutateAsync,
-    openNotification: openMutation.mutateAsync,
+    deleteNotfic: deleteMutation.mutateAsync,
+    openNotfic: openMutation.mutateAsync,
     deleting: deleteMutation.isLoading,
     opening: openMutation.isLoading,
   };
