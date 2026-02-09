@@ -1,12 +1,12 @@
 import formatCurrency from "../../utils/formatCurrency";
 import { pendingProperties } from "../../propertiesData";
 import { useNavigation } from "../../hooks/useNavigation";
-import { useOfferedProps } from "../../hooks/useProperties";
+import {useUserProperties} from "../../hooks/properties/useUserProperties";
 import ProgressBar from "../../components/common/ProgressBar";
 
 const OfferedTab = () => {
   const goToProperty = useNavigation();
-  const { data = [], isLoading, error } = useOfferedProps();
+  const { data = [], isLoading, error } = useUserProperties();
   const offeredProps = pendingProperties;
 
   // if (isLoading)

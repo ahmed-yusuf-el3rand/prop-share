@@ -1,4 +1,4 @@
-import { changePassword } from "../services/passwordService";
+import { changePassword } from "../../../services/passwordService";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePassword = () => {

@@ -1,5 +1,5 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import  {getMoney}  from "../services/moneyService";
+import  {getMoney}  from "../../services/moneyService";
 
 export const useMoney = (userId) => {
   return useQuery({

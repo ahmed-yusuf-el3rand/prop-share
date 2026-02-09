@@ -1,5 +1,5 @@
 import { DollarSign } from "lucide-react";
-import { useMoney } from "../../hooks/useMoney";
+import { useMoney } from "../../hooks/dashboard/useMoney";
 import { useAuth } from "../../context/AuthContext";
 import formatCurrency from "../../utils/formatCurrency";
 
@@ -28,7 +28,7 @@ const MoneyTab = () => {
         <div className="bg-green-50 p-4 rounded-lg">
           <p className="text-sm text-green-600">Last Sell Payout:</p>
           <p className="text-xl font-bold text-green-600">
-            {formatCurrency(moneyData.sellingProfits.lastPayout)}
+            {formatCurrency(moneyData?.sellingProfits?.lastPayout)}
           </p>
           <p className="text-xs text-green-600 truncate">
             on {moneyData?.sellingProfits?.lastPayoutDate}

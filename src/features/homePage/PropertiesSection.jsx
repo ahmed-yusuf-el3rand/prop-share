@@ -1,4 +1,4 @@
-import { useProperties } from "../../hooks/useProperties";
+import { useHomeProperties } from "../../hooks/properties/useHomeProperties";
 import PropertyCard from "../../components/common/PropertyCard";
 import { propertiesData } from "../../propertiesData";
 import { useNavigate } from "react-router-dom";

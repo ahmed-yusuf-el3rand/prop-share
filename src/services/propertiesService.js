@@ -1,15 +1,46 @@
-import {  getProperties } from "../api/propertiesApi";
+import {
+  getPropertiesApi,
+  getOwnedPropsApi,
+  getOfferedPropsApi,
+  getPropertyDetailsApi,
+  buyShareApi,
+  offerPercentageApi,
+} from "../api/propertiesApi";
 
-const propertiesService = {
-  list: async (params = {}) => {
-    const response = await getProperties(params);
-    const data = response?.data;
-    if (Array.isArray(data)) return data;
-    if (data && Array.isArray(data.properties)) return data.properties;
-
-    return [];
-  },
-   owned: () => getOwnedProperties(),
+const getProperties = async (params) => {
+  const response = await getPropertiesApi(params);
+  return response.data;
 };
 
-export default propertiesService;
+const getPropertyDetails = async (propertyId) => {
+  const response = await getPropertyDetailsApi(propertyId);
+  return response.data;
+};
+const getOwnedProps = async () => {
+  const response = await getOwnedPropsApi();
+  return response.data;
+};
+
+const getOfferedProps = async () => {
+  const response = await getOfferedPropsApi();
+  return response.data;
+};
+
+const buyShare = async (purchasingDetails) => {
+  const response = await buyShareApi(purchasingDetails);
+  return response.data;
+};
+
+const offerPercentage = async (offerDetails) => {
+  const response = await offerPercentageApi(offerDetails);
+  return response.data;
+};
+
+export {
+  getProperties,
+  getOwnedProps,
+  getOfferedProps,
+  getPropertyDetails,
+  buyShare,
+  offerPercentage,
+};

@@ -1,4 +1,4 @@
-import { getUserInfo, updateUserInfo } from "../services/userInfoService";
+import { getUserInfo, updateUserInfo } from "../../../services/userInfoService";
 import {
   useQuery,
   useMutation,

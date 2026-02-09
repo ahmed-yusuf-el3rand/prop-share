@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigation } from "../hooks/useNavigation";
 import InputField from "../components/common/InputField";
-import { useFilteredProps } from "../hooks/useProperties";
+import { useExploreProperties } from "../hooks/properties/useExploreProperties";
 import SelectField from "../components/common/SelectField";
 import PropertyCard from "../components/common/PropertyCard";
 import { MapPin, DollarSign, Percent, Home } from "lucide-react";
@@ -14,11 +14,9 @@ const ExplorePage = () => {
     priceRange: "",
     minOwnership: "",
   });
-  const {
-    data: filteredProperties = [],
-    isLoading,
-    error,
-  } = useFilteredProps(filters);
+  const { data: properties, isLoading, error } = useExploreProperties(filters);
+
+  const filteredProperties = Array.isArray(properties) ? properties : [];
 
   const handleFilterChange = (field, value) => {
     setFilters((prev) => ({

@@ -19,13 +19,12 @@ export const useNotifications = (limit, user) => {
 
   const deleteMutation = useMutation({
     mutationFn: deleteNotification,
-
     onMutate: async (id) => {
       await queryClient.cancelQueries([notificationsKey]);
       const previous = queryClient.getQueryData([notificationsKey]);
 
       queryClient.setQueryData([notificationsKey], (old = []) =>
-        old ? old.filter((n) => n.id !== id) : []
+        old ? old.filter((n) => n.id !== id) : [],
       );
 
       return { previous };
@@ -44,7 +43,7 @@ export const useNotifications = (limit, user) => {
       await queryClient.cancelQueries([notificationsKey]);
       const previous = queryClient.getQueryData([notificationsKey]);
       queryClient.setQueryData([notificationsKey], (old = []) =>
-        old ? old.map((n) => (n.id === id ? { ...n, opened: true } : n)) : []
+        old ? old.map((n) => (n.id === id ? { ...n, opened: true } : n)) : [],
       );
 
       return { previous };
@@ -60,9 +59,9 @@ export const useNotifications = (limit, user) => {
       queryClient.setQueryData([notificationsKey], (old) =>
         old
           ? old.map((n) =>
-              n.id === updatedNotification.id ? updatedNotification : n
+              n.id === updatedNotification.id ? updatedNotification : n,
             )
-          : []
+          : [],
       );
     },
   });
