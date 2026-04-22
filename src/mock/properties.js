@@ -1,0 +1,90 @@
+export const properties = [
+  {
+    id: "prop1",
+    name: "Luxury Beachfront Villa",
+    location: "Miami, FL",
+    price: 1200000,
+    type: "House",
+    availability: "fractional",
+    status: "ready",
+    ownershipProgress: 75,
+    description:
+      "Stunning beachfront villa with panoramic ocean views, private pool, and direct beach access. Perfect for fractional ownership.",
+    image: "https://placehold.co/600x400/a0a0a0/ffffff?text=Beach+Villa",
+    images: [
+      "https://placehold.co/600x400/a0a0a0/ffffff?text=Beach+Villa+1",
+      "https://placehold.co/600x400/909090/ffffff?text=Beach+Villa+2",
+      "https://placehold.co/600x400/808080/ffffff?text=Beach+Villa+3",
+    ],
+  },
+  {
+    id: "prop2",
+    name: "Downtown Condo",
+    location: "New York, NY",
+    price: 450000,
+    type: "Apartment",
+    availability: "fractional",
+    status: "desire",
+    ownershipProgress: 30,
+    description:
+      "Modern condo in the heart of NYC, close to all major attractions and public transport. Great investment opportunity.",
+    image: "https://placehold.co/600x400/b0b0b0/ffffff?text=NYC+Condo",
+    images: [
+      "https://placehold.co/600x400/b0b0b0/ffffff?text=NYC+Condo+1",
+      "https://placehold.co/600x400/c0c0c0/ffffff?text=NYC+Condo+2",
+    ],
+  },
+  {
+    id: "prop3",
+    name: "Commercial Office Space",
+    location: "London, UK",
+    price: 2500000,
+    type: "Commercial",
+    priority: "high",
+    availability: "full",
+    status: "ready",
+    ownershipProgress: 0,
+    description:
+      "Prime commercial office space in a bustling business district. Ideal for a growing company or as a rental investment.",
+    image: "https://placehold.co/600x400/c0c0c0/ffffff?text=Office+Space",
+    images: [
+      "https://placehold.co/600x400/c0c0c0/ffffff?text=Office+Space+1",
+      "https://placehold.co/600x400/d0d0d0/ffffff?text=Office+Space+2",
+    ],
+  },
+  {
+    id: "prop4",
+    name: "Suburban Family Home",
+    location: "Austin, TX",
+    price: 600000,
+    type: "House",
+    availability: "full",
+    status: "ready",
+    ownershipProgress: 90,
+    description:
+      "Spacious family home in a quiet suburban neighborhood with excellent schools and amenities.",
+    image: "https://placehold.co/600x400/d0d0d0/ffffff?text=Family+Home",
+    images: [
+      "https://placehold.co/600x400/d0d0d0/ffffff?text=Family+Home+1",
+      "https://placehold.co/600x400/e0e0e0/ffffff?text=Family+Home+2",
+      "https://placehold.co/600x400/f0f0f0/ffffff?text=Family+Home+3",
+    ],
+  },
+  {
+    id: "prop6",
+    name: "Cozy Apartment for Rent",
+    location: "Seattle, WA",
+    price: 2500,
+    type: "Apartment",
+    availability: "rent",
+    status: "ready",
+    ownershipProgress: 100,
+    description:
+      "A cozy 1-bedroom apartment available for long-term rent in a vibrant Seattle neighborhood.",
+    image: "https://placehold.co/600x400/e6e6fa/000000?text=Rent+Apartment",
+    images: [
+      "https://placehold.co/600x400/e6e6fa/000000?text=Rent+Apartment+1",
+      "https://placehold.co/600x400/d8bfd8/000000?text=Rent+Apartment+2",
+    ],
+  },
+];

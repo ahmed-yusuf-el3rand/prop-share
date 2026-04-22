@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigation } from "../hooks/useNavigation";
 import InputField from "../components/common/InputField";
 import { useExploreProperties } from "../hooks/properties/useExploreProperties";
 import SelectField from "../components/common/SelectField";
 import PropertyCard from "../components/common/PropertyCard";
 import { MapPin, DollarSign, Percent, Home } from "lucide-react";
+import { properties } from "../mock/properties";
 
 const ExplorePage = () => {
   const { goToProperty } = useNavigation();
@@ -14,8 +15,17 @@ const ExplorePage = () => {
     priceRange: "",
     minOwnership: "",
   });
-  const { data: properties, isLoading, error } = useExploreProperties(filters);
+  const {
+    // data: properties,
+    data,
+    isLoading,
+    error,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useExploreProperties(filters);
 
+  const loadMoreRef = useRef(null);
   const filteredProperties = Array.isArray(properties) ? properties : [];
 
   const handleFilterChange = (field, value) => {
@@ -24,6 +34,27 @@ const ExplorePage = () => {
       [field]: value,
     }));
   };
+
+  useEffect(() => {
+    if (!hasNextPage) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      },
+      {
+        threshold: 1,
+      },
+    );
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   return (
     <div className="m-6 md:m-12">
@@ -101,6 +132,7 @@ const ExplorePage = () => {
           )}
         </div>
       )}
+      <div ref={loadMoreRef} className="h-10" />
     </div>
   );
 };
