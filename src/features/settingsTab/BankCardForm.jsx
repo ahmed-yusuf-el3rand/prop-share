@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Button from "../../components/common/Button";
+import StripeField from "../../components/common/StripeField";
+import { useBankCard } from "../../hooks/dashboard/settingsTab/useBankCard";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -13,79 +16,57 @@ import {
   PlusCircle,
   ShieldCheck,
 } from "lucide-react";
-import Button from "../../components/common/Button";
-import StripeField from "../../components/common/StripeField";
 
 const BankCard = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [bankCard, setBankCard] = useState(null); // Replace with fetched card data if exists
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-  const [focused, setFocused] = useState(false);
+  const { bankCard, loading, error, addCard, adding, deleteCard, deleting } =
+    useBankCard();
 
-  const addBankCard = async (e) => {
+  const [focused, setFocused] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleAddCard = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    setLoading(true);
-    setError("");
-    setMessage("");
+    const cardElement = elements.getElement(CardNumberElement);
 
-    try {
-      const cardElement = elements.getElement(CardNumberElement);
-
-      // Create a PaymentMethod object
-      const { error: stripeError, paymentMethod } =
-        await stripe.createPaymentMethod({
-          type: "card",
-          card: cardElement,
-        });
-
-      if (stripeError) {
-        setError(stripeError.message);
-        setLoading(false);
-        return;
-      }
-
-      // Send PaymentMethod.id to backend to attach to customer
-      const res = await fetch("/api/bank-card", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentMethodId: paymentMethod.id }),
+    const { error: stripeError, paymentMethod } =
+      await stripe.createPaymentMethod({
+        type: "card",
+        card: cardElement,
       });
 
-      if (!res.ok) throw new Error("Failed to save card. Try again.");
+    if (stripeError) {
+      setMessage(stripeError.message);
+      return;
+    }
 
-      const savedCard = await res.json();
-      setBankCard(savedCard); // e.g., { brand, last4, id }
-      setMessage("Card added successfully!");
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    const cardDetails = {
+      paymentMethodId: paymentMethod.id,
+      brand: paymentMethod.card.brand,
+      last4: paymentMethod.card.last4,
+    };
+
+    try {
+      await addCard(cardDetails);
+      setMessage("Card added successfully");
+      elements.getElement(CardNumberElement)?.clear();
+      elements.getElement(CardExpiryElement)?.clear();
+      elements.getElement(CardCvcElement)?.clear();
+    } catch (error) {
+      setMessage("Failed to add card");
     }
   };
 
-  const removeBankCard = async (id) => {
-    setLoading(true);
-    setError("");
-    setMessage("");
-
+  const handleDeleteCard = async (id) => {
     try {
-      const res = await fetch(`/api/bank-card/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!res.ok) throw new Error("Failed to remove card.");
-      setBankCard(null);
-      setMessage("Card removed.");
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+      await deleteCard(id);
+      setMessage("Card deleted successfully");
+    } catch (error) {
+      setMessage("Failed to delete card");
     }
   };
 
@@ -107,15 +88,15 @@ const BankCard = () => {
             <Button
               variant="danger"
               size="sm"
-              onClick={() => removeBankCard(bankCard.id)}
+              onClick={() => handleDeleteCard(bankCard.id)}
               icon={Trash2}
-              disabled={loading}
+              disabled={deleting}
             >
-              {loading ? "Removing..." : "Remove"}
+              {deleting ? "Deleting..." : "Delete Card"}
             </Button>
           </div>
         ) : (
-          <form onSubmit={addBankCard}>
+          <form onSubmit={handleAddCard}>
             <div className="grid md:grid-cols-2 gap-4">
               <StripeField
                 label="Card Number"
@@ -167,9 +148,9 @@ const BankCard = () => {
               type="submit"
               className="w-full mt-4 bg-cyan-600 hover:bg-cyan-700"
               icon={PlusCircle}
-              disabled={loading || !stripe}
+              disabled={adding || !stripe}
             >
-              {loading ? "Adding..." : "Add Card"}
+              {adding ? "Adding..." : "Add Card"}
             </Button>
           </form>
         )}
