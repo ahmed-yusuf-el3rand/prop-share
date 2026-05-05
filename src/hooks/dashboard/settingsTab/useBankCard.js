@@ -8,7 +8,7 @@ import {
   getBankCard,
   addBankCard,
   deleteBankCard,
-} from "@/services/bankCardService";
+} from "../../../services/bankCardService";
 
 export const useBankCard = (userId) => {
   const queryClient = useQueryClient();

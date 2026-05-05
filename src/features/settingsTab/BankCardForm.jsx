@@ -31,26 +31,29 @@ const BankCard = () => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    const cardElement = elements.getElement(CardNumberElement);
-
-    const { error: stripeError, paymentMethod } =
-      await stripe.createPaymentMethod({
-        type: "card",
-        card: cardElement,
-      });
-
-    if (stripeError) {
-      setMessage(stripeError.message);
-      return;
-    }
-
-    const cardDetails = {
-      paymentMethodId: paymentMethod.id,
-      brand: paymentMethod.card.brand,
-      last4: paymentMethod.card.last4,
-    };
-
     try {
+      const cardElement = elements.getElement(CardNumberElement);
+      const clientSecret = await createSetupIntent(customerId);
+
+      const { setupIntent, error } = await stripe.confirmCardSetup(
+        clientSecret,
+        {
+          paymentMethod: {
+            card: cardElement,
+          },
+        },
+      );
+      if (stripeError) {
+        setMessage(stripeError.message);
+        return;
+      }
+
+      const cardDetails = {
+        paymentMethodId: paymentMethod.id,
+        brand: paymentMethod.card.brand,
+        last4: paymentMethod.card.last4,
+      };
+
       await addCard(cardDetails);
       setMessage("Card added successfully");
       elements.getElement(CardNumberElement)?.clear();
