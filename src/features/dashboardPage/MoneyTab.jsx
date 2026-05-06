@@ -1,6 +1,6 @@
 import { DollarSign } from "lucide-react";
 import { useMoney } from "../../hooks/dashboard/useMoney";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/auth/useAuth";
 import formatCurrency from "../../utils/formatCurrency";
 
 const MoneyTab = () => {

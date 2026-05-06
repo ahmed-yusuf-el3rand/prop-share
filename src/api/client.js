@@ -15,9 +15,19 @@ const client = axios.create({
 
 client.interceptors.request.use((config) => {
   // const token = tokenService.getToken();
-  let token="";
+  let token = "";
   if (token) config.headers.Authorization = `bearer ${token}`;
   return config;
 });
+
+client.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      window.location.href = "/login";
+    }
+    return Promise.reject(err);
+  },
+);
 
 export default client;

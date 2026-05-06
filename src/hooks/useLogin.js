@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/auth/useAuth";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { validateEmail, validatePassword } from "../utils/validation";
