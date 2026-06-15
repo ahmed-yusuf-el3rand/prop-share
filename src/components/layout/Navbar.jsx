@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import DesktopMenu from "../../features/navbar/DesktopMenu";
 import MobileMenu from "../../features/navbar/MobileMenu";
-import {useAuth}  from "../../context/auth/useAuth";
+import { useAuth } from "../../context/auth/useAuth";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,19 +17,11 @@ const Navbar = () => {
   };
 
   const handleSettingsClick = () => {
-    if (user?.role === "developer") {
-      navigate("/developer-dashboard", { state: { tab: "settings" } });
-    } else {
-      navigate("/client-dashboard", { state: { tab: "settings" } });
-    }
+    navigate("/dashboard", { state: { tab: "settings" } });
   };
 
   const handleDashboardClick = () => {
-    if (user?.role === "developer") {
-      navigate("/developer-dashboard", { state: { tab: "owned" } });
-    } else {
-      navigate("/client-dashboard", { state: { tab: "owned" } });
-    }
+      navigate("/dashboard", { state: { tab: "owned" } });
   };
 
   return (

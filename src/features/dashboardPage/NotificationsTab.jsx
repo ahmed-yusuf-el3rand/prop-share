@@ -1,26 +1,27 @@
 import { Bell, X } from "lucide-react";
 import { useState } from "react";
+import { useNotifications } from "../../hooks/dashboard/useNotifications";
 
 // Mock data for demonstration purposes
-const data = [
-  "Your order #1234 has been shipped.",
-];
+const data = ["Your order #1234 has been shipped."];
 
-
-const NotificationsTab = ({ isLoading, error }) => {
+const NotificationsTab = ({isLoading}) => {
   const [notifications, setNotifications] = useState(
     data.map((text) => ({
       text,
       opened: false,
       expanded: false,
-    }))
+    })),
   );
+  
+  const { data:notificationsData, deleteNotfic, openNotfic, deleting, opening, isError, error } =
+    useNotifications();
 
   const toggleNotification = (index) => {
     setNotifications((prev) =>
       prev.map((n, i) =>
-        i === index ? { ...n, opened: true, expanded: !n.expanded } : n
-      )
+        i === index ? { ...n, opened: true, expanded: !n.expanded } : n,
+      ),
     );
   };
 

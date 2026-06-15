@@ -5,15 +5,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import {
   validateFullName,
-  validateCompanyName,
   validateEmail,
   validatePassword,
-} from "../utils/validation";
+} from "../../utils/validation";
 
 export const useSignup = () => {
-  const [userType, setUserType] = useState("");
   const [fullName, setFullName] = useState("");
-  const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,18 +24,11 @@ export const useSignup = () => {
     setError("");
 
     const trimmedFullName = fullName.trim();
-    const trimmedCompanyName = companyName.trim();
     const trimmedEmail = email.trim();
     const trimmedPassword = password.trim();
 
-    if (!userType) {
-      setError("Please fill in all required fields.");
-      return;
-    }
-
     if (
-      (userType === "Investor" && !trimmedFullName) ||
-      (userType === "Developer" && !trimmedCompanyName) ||
+      !trimmedFullName ||
       !trimmedEmail ||
       (!googleUser && !trimmedPassword)
     ) {
@@ -46,13 +36,8 @@ export const useSignup = () => {
       return;
     }
 
-    if (userType === "Investor" && !validateFullName(trimmedFullName)) {
+    if (!validateFullName(trimmedFullName)) {
       setError("Full name can only contain letters and spaces.");
-      return;
-    }
-
-    if (userType === "Developer" && !validateCompanyName(trimmedCompanyName)) {
-      setError("Company name can only contain letters and spaces.");
       return;
     }
 
@@ -63,7 +48,7 @@ export const useSignup = () => {
 
     if (!googleUser && !validatePassword(trimmedPassword)) {
       setError(
-        "Password must be at least 8 characters long and contain letters, numbers and special characters."
+        "Password must be at least 8 characters long and contain letters, numbers and special characters.",
       );
       return;
     }
@@ -87,7 +72,7 @@ export const useSignup = () => {
           "https://www.googleapis.com/oauth2/v3/userinfo",
           {
             headers: { Authorization: `Bearer ${response.access_token}` },
-          }
+          },
         );
 
         const userInfo = res.data;
@@ -101,7 +86,7 @@ export const useSignup = () => {
         setEmail(userInfo.email);
         setFullName(userInfo.name);
 
-        toast.success("Google sign-up successful! Please choose a role.");
+        toast.success("Google sign-up successful!.");
       } catch (err) {
         console.error("Google sign up failed:", err);
         setError("Google sign up failed");
@@ -119,16 +104,12 @@ export const useSignup = () => {
     handleSubmit,
     handleResendVerification,
     handleGoogleSignUp,
-    userType,
-    setUserType,
     fullName,
     setFullName,
     email,
     setEmail,
     password,
     setPassword,
-    companyName,
-    setCompanyName,
     error,
     googleUser,
     isSignedUp,

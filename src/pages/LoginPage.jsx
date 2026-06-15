@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const {
-    email,
-    setEmail,
-    password,
-    setPassword,
+    formData,
     error,
     handleSubmit,
-    handleGoogleLogin,
+    isLoading,
+    handleEmailChange,
+    handlePasswordChange,
   } = useLogin();
+
+  const {
+    handleGoogleLogin,
+    error: googleError,
+    isLoading: isGoogleLoading,
+  } = useGoogleAuth();
 
   return (
     <div className="px-4 py-6 flex justify-center items-center ">
@@ -25,8 +30,8 @@ const LoginPage = () => {
           <InputField
             label="Email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleEmailChange}
             placeholder="your@example.com"
             icon={Mail}
             autoFocus
@@ -34,16 +39,26 @@ const LoginPage = () => {
           <InputField
             label="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handlePasswordChange}
             placeholder="********"
             icon={Lock}
           />
           {error && (
             <p className="text-red-600 text-sm mb-4 text-center">{error}</p>
           )}
-          <Button type="submit" className="w-full mt-4" icon={LogIn}>
-            Login
+          {googleError && (
+            <p className="text-red-600 text-sm mb-4 text-center">
+              {googleError}
+            </p>
+          )}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full mt-4"
+            icon={LogIn}
+          >
+            {isLoading ? "Logging in..." : "Login"}
           </Button>
           <p className="text-center text-sm mt-3">
             <Link
@@ -62,7 +77,11 @@ const LoginPage = () => {
         </form>
 
         <Button
-          onClick={handleGoogleLogin}
+          onClick={() => {
+            setError("");
+            handleGoogleLogin;
+          }}
+          disabled={isGoogleLoading}
           variant="secondary"
           className="w-full bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 text-sm sm:text-base group"
           icon={() => (
@@ -93,7 +112,7 @@ const LoginPage = () => {
             </svg>
           )}
         >
-          Login with Google
+          {isGoogleLoading ? "Logging in with Google..." : "Login with Google"}
         </Button>
         <p className="text-center text-gray-600 text-sm mt-6">
           Don't have an account?{" "}

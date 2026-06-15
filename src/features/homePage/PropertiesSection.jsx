@@ -1,20 +1,18 @@
 import { useHomeProperties } from "../../hooks/properties/useHomeProperties";
 import PropertyCard from "../../components/common/PropertyCard";
-import { propertiesData } from "../../propertiesData";
+import { properties } from "../../mock/properties";
 import { useNavigate } from "react-router-dom";
 
 const PropertiesSection = () => {
-  // const { data: properties = [], isLoading, error } = useProperties;
-  const properties = propertiesData;
-
+  const { data, isLoading, error } = useHomeProperties;
   const navigate = useNavigate();
   const goToProperty = (id, openPurchase = false) => {
     navigate(
       `/properties/${id}`,
-      openPurchase ? { state: { isPurchaseOpen: true } } : undefined
+      openPurchase ? { state: { isPurchaseOpen: true } } : undefined,
     );
   };
-  
+
   // if (isLoading) return <p>Loading properties...</p>;
   // if (error) return <p className="text-red-500">Failed to load properties.</p>;
 

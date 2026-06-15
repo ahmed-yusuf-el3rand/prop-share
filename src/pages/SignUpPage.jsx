@@ -58,36 +58,14 @@ const SignUpPage = () => {
             Sign Up
           </h1>
           <form onSubmit={handleSubmit}>
-            <SelectField
-              label="Sign up as:"
-              value={userType}
-              onChange={(e) => setUserType(e.target.value)}
-              options={[
-                { value: "", label: "Select a role...", disabled: true },
-                { value: "Investor", label: "Investor" },
-                { value: "Developer", label: "Developer" },
-              ]}
+            <InputField
+              label="Full Name"
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="Alice Johnson"
               icon={User}
             />
-            {userType === "Developer" ? (
-              <InputField
-                label="Company Name"
-                type="text"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="Real Estate Corp."
-                icon={Briefcase}
-              />
-            ) : (
-              <InputField
-                label="Full Name"
-                type="text"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                placeholder="Alice Johnson"
-                icon={User}
-              />
-            )}
 
             <InputField
               label="Email"

@@ -1,4 +1,4 @@
-export const ownersData = [
+export const owners = [
     { name: "You", percentage: 5, color: "#3B82F6" },
     { name: "Owner A", percentage: 20, color: "#F59E0B" },
     { name: "Owner B", percentage: 15, color: "#10B981" },

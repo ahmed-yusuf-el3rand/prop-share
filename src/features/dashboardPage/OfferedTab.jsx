@@ -1,13 +1,13 @@
 import formatCurrency from "../../utils/formatCurrency";
-import { pendingProperties } from "../../propertiesData";
+import { offeredProperties } from "../../mock/offeredProperties";
 import { useNavigation } from "../../hooks/useNavigation";
-import {useUserProperties} from "../../hooks/properties/useUserProperties";
+import { useOwnedProperties } from "../../hooks/properties/useOwnedProperties";
 import ProgressBar from "../../components/common/ProgressBar";
 
 const OfferedTab = () => {
   const goToProperty = useNavigation();
-  const { data = [], isLoading, error } = useUserProperties();
-  const offeredProps = pendingProperties;
+  const { data, isLoading, error } = useOfferedProperties();
+  const offeredProps = offeredProperties;
 
   // if (isLoading)
   //   return <p className="text-center">Loading your offered properties...</p>;

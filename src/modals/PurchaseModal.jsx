@@ -6,12 +6,14 @@ import formatCurrency from "../utils/formatCurrency";
 import InputField from "../components/common/InputField";
 import { CheckCircle, DollarSign, Percent } from "lucide-react";
 import calculatePurchase from "../utils/calculatePurchase";
+import { useBuyShare } from "../hooks/properties/useBuyShare";
 
 const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
   const [purchaseType, setPurchaseType] = useState("percentage");
   const [value, setValue] = useState("");
   const [message, setMessage] = useState(null);
   const { user } = useAuth();
+  const { purchaseShare, isBuying, isError } = useBuyShare();
   const maxPercentage = 100;
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
     const { percentage, amount } = calculatePurchase(
       purchaseType,
       inputValue,
-      property.price
+      property.price,
     );
 
     if (percentage > maxPercentage) {
@@ -45,7 +47,7 @@ const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
       setMessage({
         type: "success",
         text: `You are buying ${percentage}% of this property for ${formatCurrency(
-          amount
+          amount,
         )}.`,
       });
     }
@@ -78,7 +80,7 @@ const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
     const { percentage, amount } = calculatePurchase(
       purchaseType,
       inputValue,
-      property.price
+      property.price,
     );
 
     if (percentage > maxPercentage) {
@@ -89,10 +91,23 @@ const PurchaseModal = ({ isOpen, onClose, property, onConfirm }) => {
       return;
     }
 
+    const purchasingDetails={
+      property,
+      value,
+      percentage,
+    }
+
+    try {
+       purchaseShare(purchasingDetails);
+    } catch (error) {
+      setMessage(error.message);
+      return;
+    }
+
     onConfirm({
       type: "success",
       text: ` Now You have ${percentage.toFixed(
-        2
+        2,
       )}% of this property for${formatCurrency(amount)}.`,
     });
 

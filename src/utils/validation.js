@@ -3,11 +3,6 @@ function validateFullName(fullName) {
   return FULL_NAME_PATTERN.test(fullName);
 }
 
-function validateCompanyName(companyName) {
-  const COMPANY_NAME_PATTERN = /^[\w\s&.\-]+$/;
-  return COMPANY_NAME_PATTERN.test(companyName);
-}
-
 function validateEmail(email) {
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return EMAIL_PATTERN.test(email);
@@ -21,7 +16,6 @@ function validatePassword(password) {
 
 export {
   validateFullName,
-  validateCompanyName,
   validateEmail,
   validatePassword,
 };

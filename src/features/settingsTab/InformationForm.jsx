@@ -3,6 +3,7 @@ import Button from "../../components/common/Button";
 import { Book, User, Mail, Edit } from "lucide-react";
 import InputField from "../../components/common/InputField";
 import { validateEmail, validateFullName } from "../../utils/validation";
+import {useUserInfo} from "../../hooks/dashboard/settingsTab/useUserInfo"
 
 const InformationForm = () => {
   const [fullName, setFullName] = useState("");
@@ -10,6 +11,8 @@ const InformationForm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { data, updating } = useUserInfo();
 
   const handlePersonalInfo = (e) => {
     e.preventDefault();

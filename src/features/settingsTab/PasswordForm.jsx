@@ -3,6 +3,7 @@ import { Lock, Edit } from "lucide-react";
 import Button from "../../components/common/Button";
 import InputField from "../../components/common/InputField";
 import { validatePassword } from "../../utils/validation";
+import {usePassword} from "../../hooks/dashboard/settingsTab/usePassword"
 
 const PasswordForm = () => {
   const oldPasswordRef = useRef();
@@ -11,6 +12,8 @@ const PasswordForm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+   const { data, updating } = usePassword();
 
   const handleChangePassword = (e) => {
     e.preventDefault();

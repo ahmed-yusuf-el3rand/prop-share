@@ -1,17 +1,19 @@
-import { ownersData } from "../ownersData";
+import { owners } from "../mock/owners";
 import { useEffect, useState } from "react";
 import SellModal from "../modals/SellModal";
 import { useLocation } from "react-router-dom";
-import { propertyData } from "../propertyData";
+import { property } from "../mock/property";
 import PurchaseModal from "../modals/PurchaseModal";
 import PercentagesGraph from "../features/propertyPage/PercentagesGraph";
 import PropertyDetails from "../features/propertyPage/PropertyDetails";
+import { usePropertyDetails } from "../hooks/properties/usePropertyDetails";
 
-const PropertyPage = () => {
+const PropertyPage = (propertyId) => {
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isSellModalOpen, setIsSellModalOpen] = useState(false);
   const [message, setMessage] = useState(null);
   const location = useLocation();
+  const { data } = usePropertyDetails(propertyId);
 
   useEffect(() => {
     if (location.state?.isPurchaseModalOpen) {
@@ -19,7 +21,7 @@ const PropertyPage = () => {
     }
   }, [location.state]);
 
-  if (!propertyData) {
+  if (!property) {
     return (
       <div className="container mx-auto p-6 text-center text-gray-600">
         Property not found.
@@ -28,7 +30,7 @@ const PropertyPage = () => {
   }
 
   const cancelOffer = () => {
-    propertyData.status = "unowned";
+    property.status = "unowned";
   };
 
   return (
@@ -36,27 +38,27 @@ const PropertyPage = () => {
       <div className="bg-white overflow-hidden p-6">
         <div className="md:flex md:space-x-8">
           <PropertyDetails
-            property={propertyData}
+            property={property}
             handleBuyShare={setIsPurchaseModalOpen}
             handleOfferToSell={setIsSellModalOpen}
             handleCancelOffer={cancelOffer}
             message={message}
           />
-          <PercentagesGraph ownersData={ownersData} />
+          <PercentagesGraph ownersData={owners} />
         </div>
       </div>
 
       <PurchaseModal
         isOpen={isPurchaseModalOpen}
         onClose={() => setIsPurchaseModalOpen(false)}
-        property={propertyData}
+        property={property}
         onConfirm={setMessage}
       />
 
       <SellModal
         isOpen={isSellModalOpen}
         onClose={() => setIsSellModalOpen(false)}
-        property={propertyData}
+        property={property}
         onConfirm={setMessage}
       />
     </div>

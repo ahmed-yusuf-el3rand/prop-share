@@ -3,7 +3,8 @@ import {
   getNotifications,
   deleteNotification,
   openNotification,
-} from "@/services/notificationsService";
+} from "../../services/notificationService";
+
 
 export const useNotifications = (limit, user) => {
   const queryClient = useQueryClient();

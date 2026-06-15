@@ -1,12 +1,12 @@
-import { ownedProperties } from "../../propertiesData";
+import { ownedProperties } from "../../mock/ownedProperties";
 import formatCurrency from "../../utils/formatCurrency";
 import { useNavigation } from "../../hooks/useNavigation";
-import {useUserProperties} from "../../hooks/properties/useUserProperties";
+import {useUserProperties} from "../../hooks/properties/useOwnedProperties";
 import ProgressBar from "../../components/common/ProgressBar";
 
 const OwnedTab = () => {
   const { goToProperty } = useNavigation();
-  const { data = [], isLoading, error } = useUserProperties();
+  const { data , isLoading, error } = useOwnedProperties();
   const ownedProps = ownedProperties;
 
   // if (isLoading)

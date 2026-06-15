@@ -4,12 +4,14 @@ import Button from "../components/common/Button";
 import Modal from "../components/common/Modal";
 import { DollarSign, CheckCircle, Percent } from "lucide-react";
 import formatCurrency from "../utils/formatCurrency";
+import { useOfferPercentage } from "../hooks/properties/useOfferPercentage";
 
 const SellModal = ({ isOpen, onClose, property, onConfirm }) => {
   const [percentage, setPercentage] = useState("");
   const [price, setPrice] = useState("");
   const [message, setMessage] = useState(null);
   const maxPercentage = 100;
+  const { offerProperty, isOffering, isError } = useOfferPercentage;
 
   useEffect(() => {
     if (isOpen) {
@@ -49,7 +51,7 @@ const SellModal = ({ isOpen, onClose, property, onConfirm }) => {
     } else {
       setMessage({
         type: "success",
-        text: `You will offer this percentage of this property to sell for ${priceValue}`,
+        text: `You offered this percentage of this property to sell for ${priceValue}`,
       });
     }
   };
@@ -79,10 +81,22 @@ const SellModal = ({ isOpen, onClose, property, onConfirm }) => {
       return;
     }
 
+    const offerDetails = {
+      property,
+      percentageValue,
+      price,
+    };
+    try {
+      offerProperty(offerDetails);
+    } catch (error) {
+      setMessage(error.message);
+      return;
+    }
+
     onConfirm({
       type: "success",
       text: `You offered ${percentage}% of this property to sell for ${formatCurrency(
-        price
+        price,
       )}.`,
     });
     onClose();
