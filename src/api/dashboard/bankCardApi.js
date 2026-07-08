@@ -1,4 +1,4 @@
-import client from "./client";
+import client from "../client";
 
 const getBankCardApi = () => client.get("/bank-card");
 

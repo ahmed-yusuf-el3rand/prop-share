@@ -3,43 +3,25 @@ import InputField from "../components/common/InputField";
 import { User, Lock, Briefcase, Mail, UserPlus } from "lucide-react";
 import Button from "../components/common/Button";
 import { useSignup } from "../hooks/useSignup";
+import { useGoogleSignup } from "../hooks/auth/useGoogleSignup";
 import { Link } from "react-router-dom";
 
 const SignUpPage = () => {
-  const {
-    userType,
-    setUserType,
-    fullName,
-    setFullName,
-    companyName,
-    setCompanyName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    error,
-    googleUser,
-    isSignedUp,
-    message,
-    handleSubmit,
-    handleResendVerification,
-    handleGoogleSignUp,
-  } = useSignup();
+  const { form, error, isSuccess, isPending, handleChange, handleSubmit } =
+    useSignup();
+
+  const { handleGoogleSignup, isPending: isGooglePending } = useGoogleSignup();
 
   return (
     <div className="p-6 flex justify-center items-center">
-      {isSignedUp ? (
+      {isSuccess ? (
         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-40 mb-80 text-center flex flex-col items-center gap-4">
           <h2 className="text-3xl font-bold mb-4 ">
             {" "}
             We’ve sent a verification email
           </h2>
-          <p
-            className={`${
-              message ? "text-green-700" : "text-gray-700"
-            } mb-4 font-medium`}
-          >
-            {message && message} Please check your inbox.
+          <p className="text-gray-700 mb-4 font-medium">
+            Please check your inbox.
           </p>
           <Button
             onClick={handleResendVerification}
@@ -60,29 +42,31 @@ const SignUpPage = () => {
           <form onSubmit={handleSubmit}>
             <InputField
               label="Full Name"
+              name="fullName"
               type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={form.fullName}
+              onChange={handleChange}
               placeholder="Alice Johnson"
               icon={User}
             />
 
             <InputField
               label="Email"
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={form.email}
+              onChange={handleChange}
               placeholder="your@example.com"
               icon={Mail}
-              disabled={!!googleUser}
             />
 
             {!googleUser && (
               <InputField
                 label="Password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
                 placeholder="********"
                 icon={Lock}
               />
@@ -92,8 +76,8 @@ const SignUpPage = () => {
               <p className="text-red-600 text-sm mb-4 text-center">{error}</p>
             )}
 
-            <Button type="submit" className="w-full mt-4" icon={UserPlus}>
-              {googleUser ? "Continue" : "Sign Up"}
+            <Button type="submit" disabled={isPending} className="w-full mt-4" icon={UserPlus}>
+              {isPending ? "Creating Account" : "Sign Up"}
             </Button>
           </form>
 
@@ -108,7 +92,8 @@ const SignUpPage = () => {
               </div>
 
               <Button
-                onClick={handleGoogleSignUp}
+                onClick={handleGoogleSignup}
+                disabled={isGooglePending}
                 variant="secondary"
                 className="w-full bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
                 icon={() => (
@@ -138,7 +123,7 @@ const SignUpPage = () => {
                   </svg>
                 )}
               >
-                Sign Up with Google
+                {isGooglePending ? "Connecting..." : "Sign Up with Google"}
               </Button>
             </>
           )}

@@ -3,116 +3,59 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {
-  validateFullName,
-  validateEmail,
-  validatePassword,
-} from "../../utils/validation";
+import { validateSignupForm } from "../../utils/validation";
+import { useMutation } from "@tanstack/react-query";
+import { signupUser } from "../../services/authService";
 
 export const useSignup = () => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [googleUser, setGoogleUser] = useState(null);
-  const [isSignedUp, setIsSignedUp] = useState(false);
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
+
+  const signupMutation = useMutation({
+    mutationFn: signupUser,
+    onSuccess: () => {
+      setError("");
+    },
+    onError: (error) => {
+      setError(error?.response?.data?.message || "Failed to create account");
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationError = validateSignupForm(
+      form.fullName,
+      form.email,
+      form.password,
+    );
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    signupMutation.mutate({
+      fullName: form.fullName.trim(),
+      email: form.email.trim(),
+      password: form.password.trim(),
+    });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setError("");
-
-    const trimmedFullName = fullName.trim();
-    const trimmedEmail = email.trim();
-    const trimmedPassword = password.trim();
-
-    if (
-      !trimmedFullName ||
-      !trimmedEmail ||
-      (!googleUser && !trimmedPassword)
-    ) {
-      setError("Please fill in all required fields.");
-      return;
-    }
-
-    if (!validateFullName(trimmedFullName)) {
-      setError("Full name can only contain letters and spaces.");
-      return;
-    }
-
-    if (!validateEmail(trimmedEmail)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-
-    if (!googleUser && !validatePassword(trimmedPassword)) {
-      setError(
-        "Password must be at least 8 characters long and contain letters, numbers and special characters.",
-      );
-      return;
-    }
-
-    if (googleUser) {
-      navigate("/login");
-    } else {
-      setIsSignedUp(true);
-    }
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleResendVerification = () => {
-    setMessage("Verification email resent.");
-  };
-
-  //the code inside it will replaced with the backend call later
-  const handleGoogleSignUp = useGoogleLogin({
-    onSuccess: async (response) => {
-      try {
-        const res = await axios.get(
-          "https://www.googleapis.com/oauth2/v3/userinfo",
-          {
-            headers: { Authorization: `Bearer ${response.access_token}` },
-          },
-        );
-
-        const userInfo = res.data;
-
-        setGoogleUser({
-          uid: userInfo.sub,
-          email: userInfo.email,
-          fullName: userInfo.name,
-        });
-
-        setEmail(userInfo.email);
-        setFullName(userInfo.name);
-
-        toast.success("Google sign-up successful!.");
-      } catch (err) {
-        console.error("Google sign up failed:", err);
-        setError("Google sign up failed");
-      }
-    },
-    onError: () => {
-      console.error("Google sign up failed");
-      setError("Google sign up failed");
-    },
-    flow: "implicit",
-    prompt: "select_account",
-  });
 
   return {
-    handleSubmit,
-    handleResendVerification,
-    handleGoogleSignUp,
-    fullName,
-    setFullName,
-    email,
-    setEmail,
-    password,
-    setPassword,
+    form,
     error,
-    googleUser,
-    isSignedUp,
-    message,
+    handleChange,
+    handleSubmit,
+    isPending: signupMutation.isPending,
+    isSuccess: signupMutation.isSuccess,
+    signupResponse: signupMutation.data,
   };
 };
