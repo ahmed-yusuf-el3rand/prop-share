@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import InputField from "../../components/common/InputField";
 import { MapPin, Search } from "lucide-react";
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
-  const [searchLocation, SetSearchLocation] = useState("");
+  const [location, setLocation] = useState("");
   const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
   const [counters, setCounters] = useState({
     properties: 0,
     investors: 0,
@@ -30,11 +31,11 @@ const HeroSection = () => {
       setCounters({
         properties: Math.min(
           Math.round((target.properties * frame) / steps),
-          target.properties
+          target.properties,
         ),
         investors: Math.min(
           Math.round((target.investors * frame) / steps),
-          target.investors
+          target.investors,
         ),
         roi: Math.min(Math.round((target.roi * frame) / steps), target.roi),
       });
@@ -47,19 +48,33 @@ const HeroSection = () => {
   const validateSearchInput = (value) => {
     const trimmed = value.trim();
     if (!trimmed) return "Location is required.";
-    if (trimmed.length < 2) return "Please enter at least 4 characters.";
+    if (trimmed.length < 4) return "Please enter at least 4 characters.";
     return "";
   };
 
   const handleSearch = () => {
-    const errorValue = validateSearchInput(searchLocation);
+    setError("");
+    const errorValue = validateSearchInput(location);
     if (errorValue) {
       setError(errorValue);
+      setIsError(true);
       return;
     }
 
+    navigate(`/explore?location=${encodeURIComponent(location.trim())}`);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSearch();
+  };
+
+  const handleChange = (e) => {
     setError("");
-    navigate(`/explore?location=${encodeURIComponent(searchLocation.trim())}`);
+    setIsError(false);
+
+    const value = e.target.value;
+    setLocation(value);
   };
 
   return (
@@ -82,39 +97,39 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl mx-auto animate-fadeInUp animation-delay-400">
-          <div className="flex-1 w-full sm:mt-4 text-center">
-            <InputField
-              type="text"
-              icon={MapPin}
-              value={searchLocation}
-              placeholder="e.g., Cairo"
-              className={`bg-white text-black rounded-lg py-2 px-4 shadow-sm focus:ring-2 ${
-                error
-                  ? "border-red-600 focus:ring-red-500"
-                  : "focus:ring-blue-400"
-              }`}
-              onChange={(e) => {
-                SetSearchLocation(e.target.value);
-                setError(validateSearchInput(e.target.value));
-              }}
-              onKeyDown={(e) => {
-                e.key === "Enter" && handleSearch();
-              }}
-            />
-          </div>
-          <div className="flex-1 w-full">
-            <Button
-              onClick={handleSearch}
-              className="bg-yellow-400 hover:bg-yellow-300 text-black font-medium rounded-lg py-2 px-4 w-full transition-all duration-200"
-              icon={Search}
-            >
-              Search
-            </Button>
-          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row  items-center gap-4 w-full max-w-2xl mx-auto"
+          >
+            <div className="flex-1 w-full sm:mt-4 text-center">
+              <InputField
+                type="text"
+                icon={MapPin}
+                value={location}
+                placeholder="Search by city or location"
+                name="location"
+                id="location"
+                aria-label="Search by city or location"
+                autoComplete="off"
+                onChange={handleChange}
+                className={` ${isError && " border-red-500"}`}
+                onFocus={() => setIsError(false)}
+              />
+            </div>
+            <div className="flex-1 w-full">
+              <Button
+                type="submit"
+                icon={Search}
+                // disabled={!location.trim()}
+                className="
+              bg-yellow-400 hover:bg-yellow-300 text-black font-medium rounded-lg py-2 px-4 w-full transition-all duration-200"
+              >
+                Search
+              </Button>
+            </div>
+          </form>
         </div>
-        {error && (
-          <p className="text-red-600 text-lg font-semibold mt-1">{error}</p>
-        )}
+        {error && <p className="text-red-600  font-semibold mt-1">{error}</p>}
         <div className="mt-4 md:mt-12  grid grid-cols-1 md:grid-cols-3 gap-4 text-lg font-semibold animate-fadeInUp animation-delay-600">
           <div className="flex flex-col items-center">
             <span className="text-3xl font-bold text-yellow-300">

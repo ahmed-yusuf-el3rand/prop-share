@@ -1,4 +1,4 @@
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import { Home, Compass, User, LogOut, LogIn, Settings } from "lucide-react";
 
 const MobileMenu = ({

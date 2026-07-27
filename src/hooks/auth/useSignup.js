@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { validateSignupForm } from "../../utils/validation";
 import { useMutation } from "@tanstack/react-query";
-import { signupUser } from "../../services/authService";
+import {
+  signupUser,
+  resendVerificationEmail,
+} from "../../services/authService";
 
 export const useSignup = () => {
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -25,8 +25,22 @@ export const useSignup = () => {
     },
   });
 
+  const resendMutation = useMutation({
+    mutationFn: resendVerificationEmail,
+    onSuccess: (data) => {
+      setMessage(data.message || "Verification email resent successfully");
+    },
+
+    onError: (error) => {
+      setError(
+        error?.response?.data?.message || "Failed to resend verification email",
+      );
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
     const validationError = validateSignupForm(
       form.fullName,
       form.email,
@@ -49,13 +63,24 @@ export const useSignup = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleResendVerification = () => {
+    setError("");
+    if (!signupMutation.data.email) {
+      return;
+    }
+
+    resendMutation.mutate(signupMutation.data.email);
+  };
+
   return {
     form,
     error,
+    message,
     handleChange,
     handleSubmit,
+    handleResendVerification,
     isPending: signupMutation.isPending,
     isSuccess: signupMutation.isSuccess,
-    signupResponse: signupMutation.data,
+    isResending: resendMutation.isPending,
   };
 };

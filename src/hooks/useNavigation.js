@@ -6,11 +6,16 @@ export const useNavigation = () => {
   const goToProperty = (id, openPurchase = false) => {
     navigate(
       `/properties/${id}`,
-      openPurchase ? { state: { isPurchaseModalOpen: true } } : undefined
+      openPurchase ? { state: { isPurchaseModalOpen: true } } : undefined,
     );
+  };
+
+  const goToLogin = () => {
+    navigate("/login");
   };
 
   return {
     goToProperty,
+    goToLogin,
   };
 };

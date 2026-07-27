@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import { Book, User, Mail, Edit } from "lucide-react";
 import InputField from "../../components/common/InputField";
 import { validateEmail, validateFullName } from "../../utils/validation";

@@ -1,8 +1,6 @@
 const PrivacyPolicyPage = () => (
-  <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
-    <h1 className="text-3xl font-bold emb-6">Privacy Policy</h1>
-    <p className="text-sm text-gray-500 mb-10">Effective Date: July 7, 2025</p>
-
+  <div className="mx-10 py-20 text-gray-800">
+    <h1 className="text-3xl font-bold emb-6 mb-20 text-center">Privacy Policy</h1>
     <section className="space-y-6">
       <div>
         <h2 className="text-xl font-semibold mb-2">1. What We Collect</h2>
@@ -69,10 +67,11 @@ const PrivacyPolicyPage = () => (
         </h2>
         <p>
           We may update this Privacy Policy. We will notify users of significant
-          changes and update the “Effective Date” above.
+          changes and update the “Effective Date” below.
         </p>
       </div>
     </section>
+    <p className="text-sm text-gray-500 mt-10 text-right">Effective Date: July 27, 2026</p>
   </div>
 );
 

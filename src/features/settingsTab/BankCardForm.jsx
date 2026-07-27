@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import StripeField from "../../components/common/StripeField";
 import { useBankCard } from "../../hooks/dashboard/settingsTab/useBankCard";
 import {

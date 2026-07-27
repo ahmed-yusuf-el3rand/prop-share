@@ -1,5 +1,5 @@
 import { Building2, Users, Target } from "lucide-react";
-import Button from "../components/common/Button";
+import Button from "../components/common/buttons/Button";
 
 const AboutUs = () => {
   return (

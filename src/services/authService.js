@@ -1,4 +1,13 @@
-import { loginApi, googleLoginApi,signupApi,googleSignupApi,resendVerificationEmailApi } from "@api/auth";
+import {
+  loginApi,
+  googleLoginApi,
+  registerApi,
+  googleRegisterApi,
+  verifyEmailApi,
+  resendVerificationEmailApi,
+  resetPasswordApi,
+  changePasswordApi,
+} from "../api/auth";
 
 const loginUser = async (credentials) => {
   const response = await loginApi(credentials);
@@ -11,19 +20,39 @@ const loginWithGoogle = async (code) => {
 };
 
 const signupUser = async (data) => {
-  const response = await signupApi(data);
+  const response = await registerApi(data);
   return response.data;
 };
 
 const signupWithGoogle = async (code) => {
-  const response = await googleSignupApi(code);
-  return response.data;
-}
-
-const resendVerificationEmail = async (email) => {
-  const response= await resendVerificationEmailApi(email);
+  const response = await googleRegisterApi(code);
   return response.data;
 };
 
+const verifyEmail = async (token) => {
+  const response = await verifyEmailApi(token);
+  return response.data;
+};
 
-export { loginUser, loginWithGoogle, signupUser, signupWithGoogle,resendVerificationEmail };
+const resendVerificationEmail = async (email) => {
+  const response = await resendVerificationEmailApi(email);
+  return response.data;
+};
+
+const changePassword = async ({ currentPassword, newPassword }) => {
+  const { data } = await changePasswordApi({ currentPassword, newPassword });
+  return data;
+};
+
+
+
+export {
+  loginUser,
+  loginWithGoogle,
+  signupUser,
+  signupWithGoogle,
+  verifyEmail,
+  resendVerificationEmail,
+  changePassword,
+
+};

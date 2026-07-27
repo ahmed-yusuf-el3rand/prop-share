@@ -1,7 +1,8 @@
 const TermsPage = () => (
-  <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
-    <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
-    <p className="text-sm text-gray-500 mb-10">Last updated: July 7, 2025</p>
+  <div className=" mx-10  py-20 text-gray-800">
+    <h1 className="text-3xl font-bold mb-20 text-center">
+      Terms of our Service
+    </h1>
 
     <section className="space-y-6">
       <div>
@@ -88,6 +89,9 @@ const TermsPage = () => (
         </p>
       </div>
     </section>
+    <p className="text-sm text-gray-500 mt-10 text-right">
+      Last updated: July 15, 2026
+    </p>
   </div>
 );
 

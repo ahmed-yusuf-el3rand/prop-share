@@ -1,3 +1,21 @@
-import { loginApi, googleLoginApi } from "./credentials";
+import {
+  loginApi,
+  googleLoginApi,
+  registerApi,
+  googleRegisterApi,
+  changePasswordApi,
+  resetPasswordApi,
+} from "./credentials";
 
-export { loginApi, googleLoginApi };
+import { verifyEmailApi, resendVerificationEmailApi } from "./verification";
+
+export {
+  loginApi,
+  googleLoginApi,
+  registerApi,
+  googleRegisterApi,
+  verifyEmailApi,
+  resendVerificationEmailApi,
+  resetPasswordApi,
+  changePasswordApi,
+};

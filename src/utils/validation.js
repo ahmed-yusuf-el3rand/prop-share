@@ -57,4 +57,4 @@ function validateSignupForm(fullName, email, password) {
   return null;
 }
 
-export { validateLoginForm, validateSignupForm };
+export { validateLoginForm, validateSignupForm,validateFullName, validateEmail, validatePassword };

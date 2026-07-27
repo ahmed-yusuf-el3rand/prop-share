@@ -31,7 +31,7 @@ const Button = ({
       className={`${baseStyle} ${className}`}
       {...props}
     >
-      {Icon && <Icon size={20} />}
+      {Icon && <Icon size={20}  />}
       {children}
     </button>
   );

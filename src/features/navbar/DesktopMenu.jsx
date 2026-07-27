@@ -1,4 +1,4 @@
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import { Home, Compass, User, LogIn, ChevronDown } from "lucide-react";
 
 const DesktopMenu = ({

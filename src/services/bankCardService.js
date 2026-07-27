@@ -3,7 +3,7 @@ import {
   addBankCardApi,
   createSetupIntentApi,
   deleteBankCardApi,
-} from "../api/bankCardApi";
+} from "../api/dashboard/bankCardApi";
 
 const getBankCard = async () => {
   const response = await getBankCardApi();

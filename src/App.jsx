@@ -1,5 +1,5 @@
 import "./index.css";
-import AboutUs from "./pages/AboutUs";
+import AboutUsPage from "./pages/AboutUsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import TermsPage from "./pages/TermsPage";
@@ -16,6 +16,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 import { AuthProvider } from "./context/auth/AuthProvider";
 import AuthRoute from "./routes/AuthRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import VerifyEmailPage from "./pages/VerifyEmailPage";
 
 const App = () => {
   return (
@@ -35,10 +36,11 @@ const App = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
+          <Route path="/verify-email" element={<VerifyEmailPage />} />
+          <Route path="/reset-password" element={<PasswordResetPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/reset-password" element={<PasswordResetPage />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
           <Route
             path="*"
             element={<h1 className="text-center mt-20">404 Not Found</h1>}

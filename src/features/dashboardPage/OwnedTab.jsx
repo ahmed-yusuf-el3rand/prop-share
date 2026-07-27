@@ -1,7 +1,7 @@
 import { ownedProperties } from "../../mock/ownedProperties";
 import formatCurrency from "../../utils/formatCurrency";
 import { useNavigation } from "../../hooks/useNavigation";
-import {useUserProperties} from "../../hooks/properties/useOwnedProperties";
+import {useOwnedProperties} from "../../hooks/properties/useOwnedProperties";
 import ProgressBar from "../../components/common/ProgressBar";
 
 const OwnedTab = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import InputField from "../components/common/InputField";
-import Button from "../components/common/Button";
+import Button from "../components/common/buttons/Button";
 import Modal from "../components/common/Modal";
 import { DollarSign, CheckCircle, Percent } from "lucide-react";
 import formatCurrency from "../utils/formatCurrency";

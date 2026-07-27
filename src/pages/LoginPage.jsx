@@ -1,8 +1,9 @@
-import Button from "../components/common/Button";
+import Button from "../components/common/buttons/Button";
 import { Mail, Lock, LogIn } from "lucide-react";
 import InputField from "../components/common/InputField";
-import { useLogin } from "../hooks/useLogin";
+import { useLogin } from "../hooks/auth/useLogin";
 import { Link } from "react-router-dom";
+import { useGoogleAuth } from "../hooks/auth/useGoogleAuth";
 
 const LoginPage = () => {
   const {

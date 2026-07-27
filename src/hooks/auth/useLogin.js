@@ -19,7 +19,7 @@ export const useLogin = () => {
 
     onSuccess: ({ user, token }) => {
       login({ user, token });
-         navigate("/");
+      navigate("/");
     },
 
     onError: (error) => {

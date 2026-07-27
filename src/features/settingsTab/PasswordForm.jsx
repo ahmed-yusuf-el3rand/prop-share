@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Lock, Edit } from "lucide-react";
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import InputField from "../../components/common/InputField";
 import { validatePassword } from "../../utils/validation";
 import {usePassword} from "../../hooks/dashboard/settingsTab/usePassword"

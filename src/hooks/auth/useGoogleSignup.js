@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signupWithGoogle } from "../../services/authService";
 import { useState } from "react";
 
-const useGoogleSignup = () => {
+export const useGoogleSignup = () => {
   const [error, setError] = useState("");
 
   const googleMutation = useMutation({

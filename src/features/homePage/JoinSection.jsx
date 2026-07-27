@@ -1,5 +1,5 @@
 import { useAuth } from "../../context/auth/useAuth";
-import Button from "../../components/common/Button";
+import Button from "../../components/common/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { User } from "lucide-react";
 

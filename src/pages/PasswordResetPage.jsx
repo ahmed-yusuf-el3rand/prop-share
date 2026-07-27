@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import Button from "../components/common/Button";
+import Button from "../components/common/buttons/Button";
 import InputField from "../components/common/InputField";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";

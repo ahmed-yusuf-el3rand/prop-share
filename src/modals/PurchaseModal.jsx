@@ -1,7 +1,7 @@
 import Modal from "../components/common/Modal";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/auth/useAuth";
-import Button from "../components/common/Button";
+import Button from "../components/common/buttons/Button";
 import formatCurrency from "../utils/formatCurrency";
 import InputField from "../components/common/InputField";
 import { CheckCircle, DollarSign, Percent } from "lucide-react";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import TabButton from "../components/common/TabButton.jsx";
+import TabButton from "../components/common/buttons/TabButton.jsx";
 import OwnedTab from "../features/dashboardPage/OwnedTab.jsx";
 import MoneyTab from "../features/dashboardPage/MoneyTab.jsx";
 import OfferedTab from "../features/dashboardPage/OfferedTab.jsx";
