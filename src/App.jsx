@@ -10,6 +10,7 @@ import PropertyPage from "./pages/PropertyPage";
 import Footer from "./components/layout/Footer";
 import DashboardPage from "./pages/DashboardPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import PasswordForgotPage from "./pages/PasswordForgotPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/common/ScrollToTop";
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
           <Route path="/verify-email" element={<VerifyEmailPage />} />
+          <Route path="/forgot-password" element={<PasswordForgotPage />} />
           <Route path="/reset-password" element={<PasswordResetPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

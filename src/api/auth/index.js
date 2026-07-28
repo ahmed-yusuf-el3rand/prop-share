@@ -4,6 +4,7 @@ import {
   registerApi,
   googleRegisterApi,
   changePasswordApi,
+  forgotPasswordApi,
   resetPasswordApi,
 } from "./credentials";
 
@@ -16,6 +17,7 @@ export {
   googleRegisterApi,
   verifyEmailApi,
   resendVerificationEmailApi,
-  resetPasswordApi,
   changePasswordApi,
+  forgotPasswordApi,
+  resetPasswordApi,
 };

@@ -5,8 +5,9 @@ import {
   googleRegisterApi,
   verifyEmailApi,
   resendVerificationEmailApi,
-  resetPasswordApi,
   changePasswordApi,
+  forgotPasswordApi,
+  resetPasswordApi,
 } from "../api/auth";
 
 const loginUser = async (credentials) => {
@@ -39,11 +40,19 @@ const resendVerificationEmail = async (email) => {
   return response.data;
 };
 
+const forgotPassword = async (email) => {
+  const response = await forgotPasswordApi(email);
+  return response.data;
+};
+
 const changePassword = async ({ currentPassword, newPassword }) => {
   const { data } = await changePasswordApi({ currentPassword, newPassword });
   return data;
 };
-
+const resetPassword = async ({token, newPassword}) => {
+  const response = await resetPasswordApi({token, newPassword});
+  return response.data;
+};
 
 
 export {
@@ -54,5 +63,6 @@ export {
   verifyEmail,
   resendVerificationEmail,
   changePassword,
-
+  forgotPassword,
+  resetPassword,
 };

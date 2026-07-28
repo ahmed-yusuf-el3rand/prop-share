@@ -9,8 +9,7 @@ function validateEmail(email) {
 }
 
 function validatePassword(password) {
-  const PASSWORD_PATTERN =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return PASSWORD_PATTERN.test(password);
 }
 
@@ -19,7 +18,7 @@ function validateLoginForm(email, password) {
   const trimmedPassword = password.trim();
 
   if (!trimmedEmail || !trimmedPassword) {
-    return "Please enter both email and password.";
+    return "Please fill in all required fields.";
   }
 
   const isValidEmail = validateEmail(trimmedEmail);
@@ -57,4 +56,23 @@ function validateSignupForm(fullName, email, password) {
   return null;
 }
 
-export { validateLoginForm, validateSignupForm,validateFullName, validateEmail, validatePassword };
+function validateResetPasswordForm(newPassword,confirmNewPassword){
+  const trimmedNewPassword = newPassword.trim();
+  const trimmedConfirmNewPassword = confirmNewPassword.trim();
+
+
+  if (!trimmedNewPassword || !trimmedConfirmNewPassword) {
+    return "Please fill in all required fields.";
+  }
+
+  if (!validatePassword(trimmedNewPassword)) {
+    return "Password must be at least 8 characters long and contain letters, numbers and special characters.";
+  }
+
+  if (trimmedNewPassword!==trimmedConfirmNewPassword) {
+    return "Passwords do not match"
+  }
+  return null;
+}
+
+export { validateFullName, validateEmail, validatePassword,validateLoginForm, validateSignupForm,validateResetPasswordForm };

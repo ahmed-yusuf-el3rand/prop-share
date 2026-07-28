@@ -1,6 +1,6 @@
 const PrivacyPolicyPage = () => (
   <div className="mx-10 py-20 text-gray-800">
-    <h1 className="text-3xl font-bold emb-6 mb-20 text-center">Privacy Policy</h1>
+    <h1 className="text-3xl font-bold mb-20 text-center">Privacy Policy</h1>
     <section className="space-y-6">
       <div>
         <h2 className="text-xl font-semibold mb-2">1. What We Collect</h2>
