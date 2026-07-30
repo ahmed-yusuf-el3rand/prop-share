@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 py-10 text-base opacity-90">
+    <footer className="bg-gray-100 py-10 text-base opacity-90">
       <div className="max-w-full px-4  ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           <div>

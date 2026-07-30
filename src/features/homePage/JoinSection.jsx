@@ -11,13 +11,13 @@ const JoinSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 text-gray-800  text-center ">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+    <section className="py-12 px-4 text-gray-800 text-center">
+      <div className="max-w-7xl mx-auto border-t-2 border-gray-400">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold m-12">
           Begin with PropShare
         </h2>
         <p className="text-base sm:text-lg md:text-xl opacity-90 mb-8">
-           Leveraging your fractional ownership.
+           Scale your wealth through strategic fractional real estate ownership..
         </p>
         <div className="flex justify-center">
           {!isLoggedIn && (

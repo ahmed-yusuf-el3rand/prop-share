@@ -72,15 +72,15 @@ const PropertyDetails = ({
             {property.location}
           </a>
         </p>
-        <p className="font-semibold text-blue-700 text-lg">
+        <p className="font-semibold text-lg">
           Share :{" "}
-          <span className="text-blue-600 text-lg">
+          <span className="text-lg">
             {formatCurrency(property.sharesValue)}
           </span>
         </p>
        </div>
         <div className="flex justify-between items-center">
-          <p className="text-cyan-600 text-3xl font-bold ">
+          <p className="text-3xl font-bold ">
             {formatCurrency(property.price)}
           </p>
           <p>
@@ -137,8 +137,8 @@ const PropertyDetails = ({
                 : handleCancelOffer
             }
             variant={property.status === "Owned" ? "success" : "danger"}
-            className={`flex-1 cursor-pointer ${
-              property.status === "Owned" ? "hover:bg-green-700" : ""
+            className={`bg-yellow-400 flex-1 cursor-pointer ${
+              property.status === "Owned" ? "hover:bg-yellow-300" : ""
             }`}
             icon={property.status === "Owned" ? Tag : XCircle}
           >

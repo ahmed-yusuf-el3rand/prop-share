@@ -110,7 +110,7 @@ const HeroSection = () => {
                 aria-label="Search by city or location"
                 autoComplete="off"
                 onChange={handleChange}
-                className={` ${isError && " border-red-500"}`}
+                className={`focus:ring-yellow-400 ${isError && "border-2 border-red-500"}`}
                 onFocus={() => setIsError(false)}
               />
             </div>
