@@ -7,16 +7,16 @@ import {
   Wallet,
 } from "lucide-react";
 
-const DiscoverSection = () => {
+const ManyFeaturesSection = () => {
   return (
-    <section className="py-16 bg-blue-100">
-      <div className="max-w-6xl mx-auto px-4 text-center">
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-12">
-          Discover the PropShare
+         Many Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <DollarSign size={48} className="text-green-600 mb-4" />
+            <DollarSign size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Accessible Investment
             </h3>
@@ -26,7 +26,7 @@ const DiscoverSection = () => {
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <Percent size={48} className="text-blue-600 mb-4" />
+            <Percent size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Diversify Your Portfolio
             </h3>
@@ -36,7 +36,7 @@ const DiscoverSection = () => {
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <ShieldCheck size={48} className="text-purple-600 mb-4" />
+            <ShieldCheck size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Hassle-Free Ownership
             </h3>
@@ -46,7 +46,7 @@ const DiscoverSection = () => {
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <TrendingUpIcon size={48} className="text-red-600 mb-4" />
+            <TrendingUpIcon size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Transparent & Secure
             </h3>
@@ -56,7 +56,7 @@ const DiscoverSection = () => {
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <Users size={48} className="text-yellow-600 mb-4" />
+            <Users size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Community & Support
             </h3>
@@ -81,4 +81,4 @@ const DiscoverSection = () => {
   );
 };
 
-export default DiscoverSection;
+export default ManyFeaturesSection;

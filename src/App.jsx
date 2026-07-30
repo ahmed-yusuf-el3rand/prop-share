@@ -18,6 +18,7 @@ import { AuthProvider } from "./context/auth/AuthProvider";
 import AuthRoute from "./routes/AuthRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
@@ -43,10 +44,7 @@ const App = () => {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
-          <Route
-            path="*"
-            element={<h1 className="text-center mt-20">404 Not Found</h1>}
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </AuthProvider>

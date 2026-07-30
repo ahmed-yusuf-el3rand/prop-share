@@ -3,10 +3,10 @@ import InputField from "../../components/common/InputField";
 import { MapPin, Search } from "lucide-react";
 import Button from "../../components/common/buttons/Button";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const HeroSection = () => {
   const [location, setLocation] = useState("");
-  const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
   const [counters, setCounters] = useState({
     properties: 0,
@@ -53,10 +53,9 @@ const HeroSection = () => {
   };
 
   const handleSearch = () => {
-    setError("");
     const errorValue = validateSearchInput(location);
     if (errorValue) {
-      setError(errorValue);
+      toast.error(errorValue);
       setIsError(true);
       return;
     }
@@ -70,7 +69,6 @@ const HeroSection = () => {
   };
 
   const handleChange = (e) => {
-    setError("");
     setIsError(false);
 
     const value = e.target.value;
@@ -129,7 +127,6 @@ const HeroSection = () => {
             </div>
           </form>
         </div>
-        {error && <p className="text-red-600  font-semibold mt-1">{error}</p>}
         <div className="mt-4 md:mt-12  grid grid-cols-1 md:grid-cols-3 gap-4 text-lg font-semibold animate-fadeInUp animation-delay-600">
           <div className="flex flex-col items-center">
             <span className="text-3xl font-bold text-yellow-300">

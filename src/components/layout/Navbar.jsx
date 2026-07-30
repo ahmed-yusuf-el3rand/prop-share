@@ -21,17 +21,18 @@ const Navbar = () => {
   };
 
   const handleDashboardClick = () => {
-      navigate("/dashboard", { state: { tab: "owned" } });
+    navigate("/dashboard", { state: { tab: "owned" } });
   };
 
   return (
     <>
       <nav className="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-40">
         <div
-          className="text-2xl font-bold text-cyan-700 cursor-pointer"
+          className="text-2xl font-bold cursor-pointer"
           onClick={() => navigate("/")}
         >
-          PropShare
+          <span className=" text-cyan-700">Prop</span>
+          <span className="text-yellow-500">Share</span>
         </div>
 
         <div className="hidden md:flex space-x-6 items-center">

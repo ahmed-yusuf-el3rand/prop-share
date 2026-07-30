@@ -124,8 +124,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-lg font-bold text-gray-500">
-          &copy; {new Date().getFullYear()} PropShare. All rights reserved.
+        <div className="mt-6 pt-6 text-center font-bold text-xl text-gray-500">
+          &copy; {new Date().getFullYear()} PropShare.
         </div>
       </div>
     </footer>
