@@ -11,13 +11,19 @@ const DesktopMenu = ({
 }) => {
   return (
     <>
-      <Button variant="ghost" onClick={() => navigate("/")} icon={Home}>
+      <Button
+        variant="ghost"
+        onClick={() => navigate("/")}
+        icon={Home}
+        className="hover:bg-yellow-300"
+      >
         Home
       </Button>
       <Button
         variant="ghost"
         onClick={() => navigate("/explore")}
         icon={Search}
+        className="hover:bg-yellow-300"
       >
         Explore
       </Button>
@@ -53,7 +59,12 @@ const DesktopMenu = ({
           </div>
         </div>
       ) : (
-        <Button variant="ghost" onClick={() => navigate("/login")} icon={LogIn}>
+        <Button
+          variant="ghost"
+          onClick={() => navigate("/login")}
+          icon={LogIn}
+          className="hover:bg-yellow-300"
+        >
           Login
         </Button>
       )}

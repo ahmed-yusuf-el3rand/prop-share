@@ -10,12 +10,12 @@ import {
 const ManyFeaturesSection = () => {
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-12">
+      <div className="max-w-7xl mx-auto px-4 text-center border-t-2 border-gray-400">
+        <h2 className="text-3xl font-bold text-gray-800 m-12">
          Many Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <DollarSign size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Accessible Investment
@@ -25,7 +25,7 @@ const ManyFeaturesSection = () => {
               estate accessible to more investors.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <Percent size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Diversify Your Portfolio
@@ -35,7 +35,7 @@ const ManyFeaturesSection = () => {
               reducing risk.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <ShieldCheck size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Hassle-Free Ownership
@@ -45,7 +45,7 @@ const ManyFeaturesSection = () => {
               so you can enjoy passive income.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <TrendingUpIcon size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Transparent & Secure
@@ -55,7 +55,7 @@ const ManyFeaturesSection = () => {
               immutable records of ownership.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <Users size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Community & Support
@@ -65,7 +65,7 @@ const ManyFeaturesSection = () => {
               support whenever you need it.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <Wallet size={48} className="text-cyan-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               Liquidity Options

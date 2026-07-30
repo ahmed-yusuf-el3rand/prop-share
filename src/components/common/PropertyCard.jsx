@@ -59,7 +59,7 @@ const PropertyCard = ({ property, onClick, onBuyShare }) => {
           <span>{property.type}</span>
         </p>
         <div className="flex justify-between items-baseline mb-3">
-          <span className="text-2xl font-bold text-cyan-600">
+          <span className="text-2xl font-bold text-gray-600">
             {formatCurrency(property.price)}
           </span>
           <span className="text-sm text-gray-500">
@@ -76,7 +76,7 @@ const PropertyCard = ({ property, onClick, onBuyShare }) => {
             e.stopPropagation();
             onBuyShare();
           }}
-          className="w-full bg-cyan-600 hover:bg-cyan-700"
+          className="w-full bg-yellow-400 hover:bg-yellow-300"
           icon={Percent}
         >
           Buy Share

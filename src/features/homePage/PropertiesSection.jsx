@@ -18,7 +18,7 @@ const PropertiesSection = () => {
 
   return (
     <section className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto border-t-2 border-gray-400 p-12">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
           Properties
         </h2>

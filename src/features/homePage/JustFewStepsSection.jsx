@@ -7,9 +7,9 @@ const EasyStepsSection = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-12">
           Just Few Steps
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-          <div className="flex flex-col items-center p-6  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 ">
+          <div className="flex flex-col items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
+            <h3 className="text-2xl font-semibold text-cyan-600 m-5">
               Discover
             </h3>
             <p className="text-gray-600">
@@ -17,8 +17,8 @@ const EasyStepsSection = () => {
               fractional or full ownership.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+          <div className="flex flex-col items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
+            <h3 className="text-2xl font-semibold text-cyan-600 m-5">
               Invest
             </h3>
             <p className="text-gray-600">
@@ -26,8 +26,8 @@ const EasyStepsSection = () => {
               your budget.
             </p>
           </div>
-          <div className="flex flex-col items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">Earn</h3>
+          <div className="flex flex-col items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
+            <h3 className="text-2xl font-semibold text-cyan-600 m-5">Earn</h3>
             <p className="text-gray-600">
               Enjoy rental income and potential property appreciation as a
               co-owner.
