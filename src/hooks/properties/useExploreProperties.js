@@ -20,7 +20,7 @@ export const useExploreProperties = (filters) => {
   const debouncedFilters = useDebounce(filters, 500);
   return useInfiniteQuery({
     queryKey: ["properties", { filters }],
-    queryFn: ({ pageParam = 1 }) => getProperties({ filters, page: pageParam }),
+    queryFn: ({ signal }, { pageParam = 1 }) => getProperties({ filters, page: pageParam }, { signal }),
     getNextPageParam: (lastPage) => lastPage.nextPage,
     select: (data) => data.pages.flatMap((page) => page.properties),
     staleTime: 5 * 60 * 1000,

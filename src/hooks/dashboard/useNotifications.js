@@ -11,7 +11,7 @@ export const useNotifications = (limit, user) => {
   const notificationsKey = ["notifications", user?.id];
   const notificationsQuery = useQuery({
     queryKey: [notificationsKey],
-    queryFn: () => getNotifications(limit, user?.id),
+    queryFn: ({ signal }) => getNotifications( limit, user?.id, { signal }),
     select: (data) => data.notifications,
     enabled: Boolean(user?.id),
     staleTime: 60_000,

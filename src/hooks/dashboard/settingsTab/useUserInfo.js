@@ -11,7 +11,7 @@ export const useUserInfo = () => {
   const userInfoKey = ["userInfo"];
   const userInfoQuery = useQuery({
     queryKey: userInfoKey,
-    queryFn: getUserInfo,
+    queryFn: ({ signal }) => getUserInfo({ signal }),
     select: (data) => data.userInfo,
     enabled: Boolean(),
     staleTime: 60_000,

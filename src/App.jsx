@@ -12,9 +12,8 @@ import DashboardPage from "./pages/DashboardPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import PasswordForgotPage from "./pages/PasswordForgotPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/common/ScrollToTop";
-import { AuthProvider } from "./context/auth/AuthProvider";
 import AuthRoute from "./routes/AuthRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
@@ -22,33 +21,31 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <ScrollToTop />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/properties/:id" element={<PropertyPage />} />
-          <Route path="/explore" element={<ExplorePage />} />
-          <Route element={<AuthRoute />}>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </Route>
-          <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<DashboardPage />} />
-          </Route>
-          <Route path="/verify-email" element={<VerifyEmailPage />} />
-          <Route path="/forgot-password" element={<PasswordForgotPage />} />
-          <Route path="/reset-password" element={<PasswordResetPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-      </AuthProvider>
-    </BrowserRouter>
+    <>
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/properties/:id" element={<PropertyPage />} />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route element={<AuthRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </Route>
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/forgot-password" element={<PasswordForgotPage />} />
+        <Route path="/reset-password" element={<PasswordResetPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </>
   );
 };
 

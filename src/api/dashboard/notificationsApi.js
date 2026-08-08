@@ -1,6 +1,6 @@
 import client from "../client";
 
-const getNotificationsApi = () => client.get("/notifications");
+const getNotificationsApi = ({ signal }) => client.get("/notifications", { signal });
 
 const openNotificationApi = (id) => client.post(`/notifications/${id}/open`);
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export const useNavigation = () => {
   const navigate = useNavigate();
 
-  const goToProperty = (id, openPurchase = false) => {
+  const goToPropertyDetails = (id, openPurchase = false) => {
     navigate(
       `/properties/${id}`,
       openPurchase ? { state: { isPurchaseModalOpen: true } } : undefined,
@@ -14,8 +14,18 @@ export const useNavigation = () => {
     navigate("/login");
   };
 
+  const goToLoginReplace = () => {
+    navigate("/login", { replace: true });
+  }
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
   return {
-    goToProperty,
+    goToPropertyDetails,
     goToLogin,
+    goToHome,
+    goToLoginReplace,
   };
 };

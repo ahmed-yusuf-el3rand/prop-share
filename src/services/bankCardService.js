@@ -5,8 +5,8 @@ import {
   deleteBankCardApi,
 } from "../api/dashboard/bankCardApi";
 
-const getBankCard = async () => {
-  const response = await getBankCardApi();
+const getBankCard = async ({ signal }) => {
+  const response = await getBankCardApi({ signal });
   return response.data;
 };
 

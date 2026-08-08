@@ -4,7 +4,7 @@ import { getOfferedProps } from "../../services/propertiesService";
 export const useOfferedProperties = () => {
   return useQuery({
     queryKey: ["properties", "offered"],
-    queryFn: getOfferedProps,
+    queryFn: ({ signal }) => getOfferedProps({ signal }),
     enabled: activeTab === "offered",
     staleTime: 5 * 60 * 1000,
     placeholderData: keepPreviousData,

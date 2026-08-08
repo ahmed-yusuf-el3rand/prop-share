@@ -7,22 +7,22 @@ import {
   offerPercentageApi,
 } from "../api/propertiesApi";
 
-const getProperties = async (params) => {
-  const response = await getPropertiesApi(params);
+const getProperties = async (params, { signal }) => {
+  const response = await getPropertiesApi(params, { signal });
   return response.data;
 };
 
-const getPropertyDetails = async (propertyId) => {
-  const response = await getPropertyDetailsApi(propertyId);
+const getPropertyDetails = async (propertyId, { signal }) => {
+  const response = await getPropertyDetailsApi(propertyId, { signal });
   return response.data;
 };
-const getOwnedProps = async () => {
-  const response = await getOwnedPropsApi();
+const getOwnedProps = async ({ signal }) => {
+  const response = await getOwnedPropsApi({ signal });
   return response.data;
 };
 
-const getOfferedProps = async () => {
-  const response = await getOfferedPropsApi();
+const getOfferedProps = async ({ signal }) => {
+  const response = await getOfferedPropsApi({ signal });
   return response.data;
 };
 

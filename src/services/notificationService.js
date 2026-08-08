@@ -4,8 +4,8 @@ import {
   deleteNotificationApi,
 } from "../api/dashboard/notificationsApi";
 
-const getNotifications = async () => {
-  const response = await getNotificationsApi();
+const getNotifications = async ({ signal }) => {
+  const response = await getNotificationsApi({ signal });
   return response.data;
 };
 

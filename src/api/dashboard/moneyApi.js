@@ -1,3 +1,3 @@
 import client from "../client";
 
-export const getMoneyApi = () => client.get("/money");
+export const getMoneyApi = ({ signal }) => client.get("/money", { signal });

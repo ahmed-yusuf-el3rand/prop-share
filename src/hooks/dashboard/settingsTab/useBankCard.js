@@ -16,7 +16,7 @@ export const useBankCard = (userId) => {
 
   const bankCardQuery = useQuery({
     queryKey: bankCardKey,
-    queryFn: getBankCard,
+    queryFn: ({ signal }) => getBankCard({ signal }),
     select: (data) => data.bankCard,
     staleTime: 60_000,
     enabled: Boolean(userId),
@@ -24,7 +24,7 @@ export const useBankCard = (userId) => {
   });
 
   const addMutation = useMutation({
-    mutationFn: addBankCard,
+    mutationFn: ({ signal }) => addBankCard({ signal }),
     onMutate: async (newCard) => {
       await queryClient.cancelQueries(bankCardKey);
       const previous = queryClient.getQueryData(bankCardKey);
@@ -49,7 +49,7 @@ export const useBankCard = (userId) => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deleteBankCard,
+    mutationFn: ({ signal }) => deleteBankCard({ signal }),
     onMutate: async (id) => {
       await queryClient.cancelQueries(bankCardKey);
       const previous = queryClient.getQueryData(bankCardKey);

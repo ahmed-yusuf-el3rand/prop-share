@@ -1,27 +1,27 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/useAuth";
 import { useMutation } from "@tanstack/react-query";
-import { loginUser } from "../../services/authService";
+import { login } from "../../services/authService";
 import { validateLoginForm } from "../../utils/validation";
+import { resetLogoutState } from "../../api/client";
+import { useNavigation } from "../../hooks/useNavigation";
 
 export const useLogin = () => {
+  const [error, setError] = useState("");
+  const { goToHome } = useNavigation();
+  const { login: loginAuth } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const { login } = useAuth();
 
   const loginMutation = useMutation({
-    mutationFn: loginUser,
-
-    onSuccess: ({ user, token }) => {
-      login({ user, token });
-      navigate("/");
+    mutationFn: login,
+    onSuccess: ({ user }) => {
+      resetLogoutState();
+      loginAuth({ user });
+      goToHome();
     },
-
     onError: (error) => {
       setError(error?.response?.data?.message || "Invalid email or password.");
     },

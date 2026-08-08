@@ -1,6 +1,6 @@
 import client from "../client";
 
-const getBankCardApi = () => client.get("/bank-card");
+const getBankCardApi = ({ signal }) => client.get("/bank-card", { signal });
 
 const createSetupIntentApi = (customerId) =>
   client.post("/create-setup-intent", { customerId });

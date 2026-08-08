@@ -6,6 +6,8 @@ import {
   changePasswordApi,
   forgotPasswordApi,
   resetPasswordApi,
+  getCurrentUserApi,
+  logoutApi,
 } from "./credentials";
 
 import { verifyEmailApi, resendVerificationEmailApi } from "./verification";

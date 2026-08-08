@@ -4,7 +4,7 @@ import  {getMoney}  from "../../services/moneyService";
 export const useMoney = (userId) => {
   return useQuery({
     queryKey: ["money", userId],
-    queryFn: () => getMoney(userId),
+    queryFn: ({ signal }) => getMoney(userId, { signal }),
     enabled: Boolean(userId),
     staleTime: 5 * 60 * 1000,
     retry: 2,

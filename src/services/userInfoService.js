@@ -1,7 +1,7 @@
 import { getUserInfoApi, updateUserInfoApi } from "../api/userInfoApi";
 
-const getUserInfo = async () => {
-  const { data } = await getUserInfoApi();
+const getUserInfo = async ({ signal }) => {
+  const { data } = await getUserInfoApi({ signal });
   return data;
 };
 const updateUserInfo = async ({ updatedUserInfo }) => {

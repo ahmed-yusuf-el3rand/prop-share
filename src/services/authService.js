@@ -10,7 +10,7 @@ import {
   resetPasswordApi,
 } from "../api/auth";
 
-const loginUser = async (credentials) => {
+const login = async (credentials) => {
   const response = await loginApi(credentials);
   return response.data;
 };
@@ -54,9 +54,19 @@ const resetPassword = async ({token, newPassword}) => {
   return response.data;
 };
 
+const getCurrentUser = async () => {
+  const response = await getCurrentUserApi();
+  return response.data;
+}
+
+const logout = async () => {
+  const response = await logoutApi();
+  return response.data;
+}
+
 
 export {
-  loginUser,
+  login,
   loginWithGoogle,
   signupUser,
   signupWithGoogle,
@@ -65,4 +75,6 @@ export {
   changePassword,
   forgotPassword,
   resetPassword,
+  getCurrentUser,
+  logout
 };

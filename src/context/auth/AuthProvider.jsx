@@ -1,32 +1,67 @@
-import {  useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
+import { useNavigation } from "../../hooks/useNavigation";
+import { getCurrentUser, logout } from "../../services/authService";
+import { resetLogoutState } from "../../api/client";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { goToLoginReplace } = useNavigation();
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-      setIsLoggedIn(true);
-    }
+    const checkAuth = async () => {
+      try {
+        const userData = await getCurrentUser();
+        setUser(userData);
+      } catch {
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      setUser(null);
+      resetLogoutState();
+      goToLoginReplace();
+    };
+
+    window.addEventListener("Unauthorized", handleUnauthorized);
+
+    return () => {
+      window.removeEventListener("Unauthorized", handleUnauthorized);
+    };
+  }, [goToLoginReplace]);
 
   const login = (userData) => {
     setUser(userData);
-    setIsLoggedIn(true);
-    sessionStorage.setItem("user", JSON.stringify(userData));
   };
 
-  const logout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-    sessionStorage.removeItem("user");
+  const logout = async () => {
+    try {
+      await logout();
+    } finally {
+      setUser(null);
+      resetLogoutState();
+      goToLoginReplace();
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isLoggedIn }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+        isAuthenticated: !!user,
+        isLoading,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

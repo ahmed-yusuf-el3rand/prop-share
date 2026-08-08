@@ -1,33 +1,61 @@
 import axios from "axios";
-// import { tokenService } from "./tokenService";
+
+let isLoggingOut = false;
 
 const client = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    "http://localhost:5173/api/v1" ||
-    "http://localhost:5174/api/v1",
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: Number(import.meta.env.VITE_API_TIMEOUT),
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10000,
 });
 
-client.interceptors.request.use((config) => {
-  // const token = tokenService.getToken();
-  let token = "";
-  if (token) config.headers.Authorization = `bearer ${token}`;
-  return config;
-});
 
 client.interceptors.response.use(
-  (res) => res,
-  (err) => {
-    if (err.response?.status === 401) {
-      window.location.href = "/login";
+  (response) => response,
+  (error) => {
+
+    if (axios.isCancel(error)) {
+      return Promise.reject(error);
     }
-    return Promise.reject(err);
+    
+    if (!error.response) {
+      return Promise.reject(error);
+    }
+
+    const { status, config } = error;
+
+    const ignoredRoutes = [
+      "/auth/login",
+      "/auth/register",
+      "/auth/forgot-password",
+      "/auth/reset-password",
+      "/auth/verify-email",
+    ];
+
+    const shouldIgnore = ignoredRoutes.some((route) =>
+      config?.url?.includes(route),
+    );
+
+    if (status === 401 && !shouldIgnore && !isLoggingOut) {
+      isLoggingOut = true;
+      window.dispatchEvent(new Event("Unauthorized"));
+    }
+
+    return Promise.reject(error);
   },
 );
 
+export const resetLogoutState = () => {
+  isLoggingOut = false;
+};
+
 export default client;
+
+//  Refresh token interceptor (automatic access token renewal)
+//  Request queue while refreshing tokens
+//  Exponential retry for transient network failures
+//  Global toast notifications for network/server errors
+//  Offline detection and retry when connectivity returns
+//  Structured logging for monitoring and debugging
