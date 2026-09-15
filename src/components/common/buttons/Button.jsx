@@ -9,15 +9,15 @@ const Button = ({
   let baseStyle =
     "px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2";
   if (variant === "primary") {
-    baseStyle += " bg-blue-600 text-white hover:bg-blue-700 shadow-md";
+    baseStyle += " bg-cyan-600 hover:bg-cyan-700 text-white shadow-md";
   } else if (variant === "secondary") {
-    baseStyle += " bg-gray-200 text-gray-800 hover:bg-gray-300 shadow-sm";
-  } else if (variant === "outline") {
-    baseStyle += " border border-gray-300 text-gray-700 hover:bg-gray-50";
+    baseStyle += " bg-yellow-400 hover:bg-yellow-300 text-white shadow-sm";
+  } else if (variant === "third") {
+    baseStyle += " text-gray-700 hover:bg-yellow-300 hover:text-white";
   } else if (variant === "danger") {
-    baseStyle += " bg-red-600 text-white hover:bg-red-700 shadow-md";
+    baseStyle += " bg-red-600 hover:bg-red-700 text-white shadow-md";
   } else if (variant === "ghost") {
-    baseStyle += " text-gray-700 hover:bg-gray-100";
+    baseStyle += " text-gray-700 hover:bg-gray-300";
   } else if (variant === "success") {
     baseStyle += " bg-green-600 text-white cursor-not-allowed";
   } else if (variant === "ghost2") {
@@ -31,7 +31,7 @@ const Button = ({
       className={`${baseStyle} ${className}`}
       {...props}
     >
-      {Icon && <Icon size={20}  />}
+      {Icon && <Icon size={20} />}
       {children}
     </button>
   );

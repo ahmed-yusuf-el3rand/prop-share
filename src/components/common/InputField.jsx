@@ -27,14 +27,14 @@ const InputField = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
             Icon ? "pl-10" : ""
           } ${className}`}
           {...props}
         />
       ) : type === "stripeElement" ? (
         <div
-          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
             Icon ? "pl-10" : ""
           } ${className}`}
           {...props}
@@ -47,7 +47,7 @@ const InputField = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500  ${
+          className={`shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500  ${
             Icon ? "pl-10" : ""
           } ${className}`}
           {...props}

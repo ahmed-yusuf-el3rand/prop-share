@@ -36,10 +36,6 @@ const DashboardPage = () => {
   };
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="hidden sm:block text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
-        Dashboard
-      </h1>
-
       <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
         <div className="grid grid-cols-2 sm:flex flex-wrap gap-2 sm:gap-4 border-b border-gray-200 mb-4 sm:mb-6">
           <TabButton

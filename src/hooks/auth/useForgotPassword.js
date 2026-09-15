@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { validateEmail } from "../../utils/validation";
 import { forgotPassword } from "../../services/authService";
 
-export const usePasswordForgot = () => {
+export const useForgotPassword = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [cooldown, setCooldown] = useState(0);
   const timerRef = useRef(null);
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     email: "",
   });
 
@@ -43,7 +43,7 @@ export const usePasswordForgot = () => {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
@@ -52,13 +52,13 @@ export const usePasswordForgot = () => {
       setError(validationError);
       return;
     }
-    forgotMutation.mutate({ email: form.email.trim() });
+    forgotMutation.mutate({ email: formData.email.trim() });
   };
 
   const handleEmailChange = (e) => {
-    setError("");
     setMessage("");
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setError("");
+    setFormData((prev) => ({ ...prev, email: e.target.value }));
   };
 
   useEffect(() => {
@@ -70,12 +70,12 @@ export const usePasswordForgot = () => {
   }, []);
 
   return {
-    isLoading: forgotMutation.isPending,
     handleSubmit,
     handleEmailChange,
-    form,
+    formData,
     error,
     message,
     cooldown,
+    isPending: forgotMutation.isPending,
   };
 };

@@ -23,7 +23,7 @@ export const useLogin = () => {
       goToHome();
     },
     onError: (error) => {
-      setError(error?.response?.data?.message || "Invalid email or password.");
+      setError(error?.response?.data?.message ?? "Invalid email or password.");
     },
   });
 
@@ -44,22 +44,16 @@ export const useLogin = () => {
     });
   };
 
-  const handleEmailChange = (e) => {
+  const handleChange = (e) => {
     setError("");
-    setFormData((prev) => ({ ...prev, email: e.target.value }));
-  };
-
-  const handlePasswordChange = (e) => {
-    setError("");
-    setFormData((prev) => ({ ...prev, password: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return {
     formData,
     error,
     handleSubmit,
-    handleEmailChange,
-    handlePasswordChange,
-    isLoading: loginMutation.isPending,
+    handleChange,
+    isPending: loginMutation.isPending,
   };
 };

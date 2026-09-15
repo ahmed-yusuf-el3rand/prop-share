@@ -9,7 +9,8 @@ function validateEmail(email) {
 }
 
 function validatePassword(password) {
-  const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const PASSWORD_PATTERN =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return PASSWORD_PATTERN.test(password);
 }
 
@@ -56,10 +57,9 @@ function validateSignupForm(fullName, email, password) {
   return null;
 }
 
-function validateResetPasswordForm(newPassword,confirmNewPassword){
+function validateResetPasswordForm(newPassword, confirmNewPassword) {
   const trimmedNewPassword = newPassword.trim();
   const trimmedConfirmNewPassword = confirmNewPassword.trim();
-
 
   if (!trimmedNewPassword || !trimmedConfirmNewPassword) {
     return "Please fill in all required fields.";
@@ -69,10 +69,25 @@ function validateResetPasswordForm(newPassword,confirmNewPassword){
     return "Password must be at least 8 characters long and contain letters, numbers and special characters.";
   }
 
-  if (trimmedNewPassword!==trimmedConfirmNewPassword) {
-    return "Passwords do not match"
+  if (trimmedNewPassword !== trimmedConfirmNewPassword) {
+    return "Passwords do not match";
   }
   return null;
 }
 
-export { validateFullName, validateEmail, validatePassword,validateLoginForm, validateSignupForm,validateResetPasswordForm };
+function validateSearchInput(searchValue) {
+  const trimmed = searchValue.trim();
+  if (!trimmed) return "Location is required.";
+  if (trimmed.length < 4) return "Please enter at least 4 characters.";
+  return null;
+}
+
+export {
+  validateFullName,
+  validateEmail,
+  validatePassword,
+  validateLoginForm,
+  validateSignupForm,
+  validateResetPasswordForm,
+  validateSearchInput,
+};

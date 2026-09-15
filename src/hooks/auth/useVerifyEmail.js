@@ -17,19 +17,16 @@ export const useVerifyEmail = () => {
 
   const verifyMutation = useMutation({
     mutationFn: verifyEmail,
-
     onSuccess: (data) => {
       setError("");
       setMessage(
         data?.message || "Your account has been activated successfully.",
       );
     },
-
     onError: (error) => {
       setEmail(error?.response?.data?.email);
     },
   });
-
   useEffect(() => {
     if (token) {
       verifyMutation.mutate(token);
@@ -45,7 +42,6 @@ export const useVerifyEmail = () => {
           "Verification email resent successfully, please check your inbox.",
       );
     },
-
     onError: (error) => {
       setError(
         error?.response?.data?.message ||
@@ -70,7 +66,7 @@ export const useVerifyEmail = () => {
   };
 
   return {
-    isLoading: verifyMutation.isPending,
+    isPending: verifyMutation.isPending,
     isSuccess: verifyMutation.isSuccess,
     error,
     message,

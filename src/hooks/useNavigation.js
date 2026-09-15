@@ -16,16 +16,34 @@ export const useNavigation = () => {
 
   const goToLoginReplace = () => {
     navigate("/login", { replace: true });
-  }
+  };
 
   const goToHome = () => {
     navigate("/");
   };
+
+  const goToExplore = (location) => {
+    navigate(`/explore?location=${encodeURIComponent(location.trim())}`);
+  };
+
+  const goToProperty = (id, openPurchase = false) => {
+    navigate(
+      `/properties/${id}`,
+      openPurchase ? { state: { isPurchaseOpen: true } } : undefined,
+    );
+  };
+
+  const goToSignup = () => {
+    navigate("/signup");
+  }
 
   return {
     goToPropertyDetails,
     goToLogin,
     goToHome,
     goToLoginReplace,
+    goToExplore,
+    goToProperty,
+    goToSignup,
   };
 };

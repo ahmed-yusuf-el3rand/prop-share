@@ -1,5 +1,3 @@
-import { Zap, ShieldCheck, TrendingUpIcon } from "lucide-react";
-
 const EasyStepsSection = () => {
   return (
     <section className="py-16 bg-white">

@@ -10,10 +10,8 @@ import {
 const ManyFeaturesSection = () => {
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 text-center border-t-2 border-gray-400">
-        <h2 className="text-3xl font-bold text-gray-800 m-12">
-         Many Features
-        </h2>
+      <div className="max-w-7xl mx-auto px-4 text-center border-t-2 border-cyan-700">
+        <h2 className="text-3xl font-bold text-gray-800 m-12">Many Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-t-2 border-yellow-500">
             <DollarSign size={48} className="text-cyan-600 mb-4" />

@@ -61,7 +61,6 @@ const ExplorePage = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
         Discover Properties
       </h1>
-
       <div className="bg-white md:p-6 md:rounded-lg md:shadow-md mb-8">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
@@ -109,9 +108,11 @@ const ExplorePage = () => {
           />
         </div>
       </div>
-
-      {error && <p className="text-red-500">Failed to load properties.</p>}
-
+      {error && (
+        <p className="text-red-500 text-center font-medium">
+          Failed to load properties.
+        </p>
+      )}
       {isLoading ? (
         <p>Loading...</p>
       ) : (

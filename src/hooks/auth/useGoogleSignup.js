@@ -11,8 +11,8 @@ export const useGoogleSignup = () => {
     onSuccess: () => {
       setError("");
     },
-    onError: () => {
-      setError("Google sign up failed");
+    onError: (error) => {
+      setError(error?.response?.data?.message ?? "Google sign up failed");
     },
   });
 
@@ -23,8 +23,8 @@ export const useGoogleSignup = () => {
       setError("");
       googleMutation.mutate(code);
     },
-    onError: () => {
-      setError("Google sign up failed");
+    onError: (error) => {
+      setError(error?.response?.data?.message ?? "Google sign up failed");
     },
   });
 

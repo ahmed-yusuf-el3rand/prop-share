@@ -10,8 +10,8 @@ import PropertyPage from "./pages/PropertyPage";
 import Footer from "./components/layout/Footer";
 import DashboardPage from "./pages/DashboardPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import PasswordForgotPage from "./pages/PasswordForgotPage";
-import PasswordResetPage from "./pages/PasswordResetPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+// import PasswordResetPage from "./pages/PasswordResetPage";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/common/ScrollToTop";
 import AuthRoute from "./routes/AuthRoute";
@@ -33,12 +33,12 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Route>
-        <Route element={<ProtectedRoute />}>
+        {/* <Route element={<ProtectedRoute />}> */}
           <Route path="/dashboard" element={<DashboardPage />} />
-        </Route>
+        {/* </Route> */}
         <Route path="/verify-email" element={<VerifyEmailPage />} />
-        <Route path="/forgot-password" element={<PasswordForgotPage />} />
-        <Route path="/reset-password" element={<PasswordResetPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        {/* <Route path="/reset-password" element={<ResetPasswordPage />} /> */}
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />

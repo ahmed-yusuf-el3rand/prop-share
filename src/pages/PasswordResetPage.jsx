@@ -65,9 +65,6 @@ const PasswordResetPage = () => {
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Reset Password
         </h1>
-        <p className="text-gray-600 text-sm sm:text-base mb-6 text-center">
-          Enter your new Password
-        </p>
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-7">
           <InputField
             label="New Password"
@@ -92,8 +89,7 @@ const PasswordResetPage = () => {
           />
           <Button
             type="submit"
-            className="w-full"
-            icon={Edit}
+            className="w-full bg-yellow-300 hover:bg-yellow-500"
             disabled={isLoading}
           >
             Update

@@ -76,7 +76,7 @@ const PropertyCard = ({ property, onClick, onBuyShare }) => {
             e.stopPropagation();
             onBuyShare();
           }}
-          className="w-full bg-yellow-400 hover:bg-yellow-300"
+          className="w-full"
           icon={Percent}
         >
           Buy Share

@@ -32,7 +32,7 @@ const Navbar = () => {
           onClick={() => navigate("/")}
         >
           <span className=" text-cyan-700">Prop</span>
-          <span className="text-yellow-500">Share</span>
+          <span className="text-yellow-400">Share</span>
         </div>
 
         <div className="hidden md:flex space-x-6 items-center">

@@ -21,19 +21,18 @@ export const useSignup = () => {
       setError("");
     },
     onError: (error) => {
-      setError(error?.response?.data?.message || "Failed to create account");
+      setError(error?.response?.data?.message ?? "Failed to create account");
     },
   });
 
   const resendMutation = useMutation({
     mutationFn: resendVerificationEmail,
     onSuccess: (data) => {
-      setMessage(data.message || "Verification email resent successfully");
+      setMessage(data.message ?? "Verification email resent successfully");
     },
-
     onError: (error) => {
       setError(
-        error?.response?.data?.message || "Failed to resend verification email",
+        error?.response?.data?.message ?? "Failed to resend verification email",
       );
     },
   });
@@ -68,7 +67,6 @@ export const useSignup = () => {
     if (!signupMutation.data.email) {
       return;
     }
-
     resendMutation.mutate(signupMutation.data.email);
   };
 

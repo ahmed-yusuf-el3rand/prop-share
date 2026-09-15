@@ -1,5 +1,3 @@
-import Button from "../components/common/buttons/Button";
-
 const AboutUs = () => {
   return (
     <div className="max-w-7xl mx-auto my-12 px-6 py-12">
