@@ -18,27 +18,28 @@ const PropertiesSection = () => {
             Failed to load properties.
           </p>
         )}
-        {isLoading && (
+        {isLoading ? (
           <div className="flex flex-col items-center gap-4">
             <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
             <p className="text-gray-700 font-medium">Loading properties...</p>
           </div>
-        )}
-        {properties.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {properties.map((property) => (
-              <PropertyCard
-                key={property.id}
-                property={property}
-                onClick={() => goToProperty(property.id)}
-                onBuyShare={() => goToProperty(property.id, true)}
-              />
-            ))}
-          </div>
         ) : (
-          <p className="text-center text-gray-600 text-lg">
-            No properties available at the moment.
-          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {properties?.length > 0 ? (
+              properties.map((property) => (
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                  onClick={() => goToProperty(property.id)}
+                  onBuyShare={() => goToProperty(property.id, true)}
+                />
+              ))
+            ) : (
+              <p className="text-center text-gray-600 text-lg">
+                No properties available at the moment.
+              </p>
+            )}
+          </div>
         )}
       </div>
     </section>

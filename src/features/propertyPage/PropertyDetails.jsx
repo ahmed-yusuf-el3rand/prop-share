@@ -58,27 +58,27 @@ const PropertyDetails = ({
 
           <p className="text-lg font-semibold text-gray-600">{property.type}</p>
         </div>
-       <div className="flex justify-between">
-         <p className=" text-lg font-semibold underline text-blue-600">
-          {" "}
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              property.location
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className="flex justify-between">
+          <p className=" text-lg font-semibold underline text-blue-600">
             {" "}
-            {property.location}
-          </a>
-        </p>
-        <p className="font-semibold text-lg">
-          Share :{" "}
-          <span className="text-lg">
-            {formatCurrency(property.sharesValue)}
-          </span>
-        </p>
-       </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                property.location,
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              {property.location}
+            </a>
+          </p>
+          <p className="font-semibold text-lg">
+            Share :{" "}
+            <span className="text-lg">
+              {formatCurrency(property.sharesValue)}
+            </span>
+          </p>
+        </div>
         <div className="flex justify-between items-center">
           <p className="text-3xl font-bold ">
             {formatCurrency(property.price)}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useVerifyEmail } from "../hooks/auth/useVerifyEmail";
 import Button from "../components/common/buttons/Button";
-import { Mail, Loader2} from "lucide-react";
+import { Mail, Loader2 } from "lucide-react";
 
 const VerifyEmailPage = () => {
   const {
@@ -17,7 +17,6 @@ const VerifyEmailPage = () => {
   return (
     <div className="p-6 flex justify-center items-center">
       <div className="p-8 w-full max-w-4xl mt-40 mb-80 text-center flex flex-col items-center gap-4 ">
-
         {isLoading && (
           <div className="flex flex-col items-center gap-4">
             <Loader2 className="h-10 w-10 animate-spin text-blue-600" />
@@ -39,7 +38,7 @@ const VerifyEmailPage = () => {
           </>
         )}
 
-        {!isLoading && !isSuccess && error && (
+        {error && (
           <>
             <h2 className="text-3xl font-bold mb-4 text-red-600">
               Verification Failed

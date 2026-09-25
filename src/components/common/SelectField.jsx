@@ -13,6 +13,7 @@ const SelectField = ({
   value,
   onChange,
   options,
+  name,
   icon: Icon = null,
 }) => {
   return (
@@ -21,7 +22,7 @@ const SelectField = ({
         {label}
       </label>
 
-      <Listbox value={value} onChange={onChange}>
+      <Listbox value={value} name={name} onChange={onChange} >
         <div className="relative">
           <ListboxButton className="relative w-full cursor-pointer rounded-lg border bg-white py-2 pr-10 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pl-10">
             <Icon

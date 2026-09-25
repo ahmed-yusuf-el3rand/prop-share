@@ -1,11 +1,11 @@
 import Button from "../components/common/buttons/Button";
 import InputField from "../components/common/InputField";
-import { Lock, Edit, Loader2 } from "lucide-react";
-import { usePasswordReset } from "../hooks/auth/usePasswordReset";
+import { Lock, Loader2 } from "lucide-react";
+import { usePasswordReset } from "../hooks/auth/useResetPassword";
 import { useEffect } from "react";
 import { useNavigation } from "../hooks/useNavigation";
 
-const PasswordResetPage = () => {
+const ResetPasswordPage = () => {
   const { goToLogin } = useNavigation();
   const {
     isLoading,
@@ -105,4 +105,4 @@ const PasswordResetPage = () => {
   );
 };
 
-export default PasswordResetPage;
+export default ResetPasswordPage;

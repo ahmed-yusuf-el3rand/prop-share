@@ -11,7 +11,7 @@ import Footer from "./components/layout/Footer";
 import DashboardPage from "./pages/DashboardPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-// import PasswordResetPage from "./pages/PasswordResetPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/common/ScrollToTop";
 import AuthRoute from "./routes/AuthRoute";
@@ -38,7 +38,7 @@ const App = () => {
         {/* </Route> */}
         <Route path="/verify-email" element={<VerifyEmailPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        {/* <Route path="/reset-password" element={<ResetPasswordPage />} /> */}
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />

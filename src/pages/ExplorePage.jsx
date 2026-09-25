@@ -1,39 +1,27 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigation } from "../hooks/useNavigation";
 import InputField from "../components/common/InputField";
 import { useExploreProperties } from "../hooks/properties/useExploreProperties";
 import SelectField from "../components/common/SelectField";
 import PropertyCard from "../components/common/PropertyCard";
-import { MapPin, DollarSign, Percent, Home } from "lucide-react";
+import { MapPin, DollarSign, Percent, Home, Loader2 } from "lucide-react";
 import { properties } from "../mock/properties";
 
 const ExplorePage = () => {
-  const { goToProperty } = useNavigation();
-  const [filters, setFilters] = useState({
-    type: "",
-    location: "",
-    priceRange: "",
-    minOwnership: "",
-  });
   const {
     // data: properties,
-    data,
     isLoading,
     error,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useExploreProperties(filters);
+    filters,
+    handleChange,
+  } = useExploreProperties();
 
   const loadMoreRef = useRef(null);
+  const { goToProperty } = useNavigation();
   const filteredProperties = Array.isArray(properties) ? properties : [];
-
-  const handleFilterChange = (field, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
 
   useEffect(() => {
     if (!hasNextPage) return;
@@ -59,22 +47,23 @@ const ExplorePage = () => {
   return (
     <div className="m-6 md:m-12">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
-        Discover Properties
+        Explore Properties
       </h1>
       <div className="bg-white md:p-6 md:rounded-lg md:shadow-md mb-8">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           <InputField
             label="Location"
+            name="location"
             value={filters.location}
-            onChange={(e) => handleFilterChange("location", e.target.value)}
+            onChange={(e) => handleChange("location", e.target.value)}
             placeholder="e.g., Cairo"
             icon={MapPin}
           />
           <SelectField
             label="Price Range"
+            name="priceRange"
             value={filters.priceRange}
-            onChange={(value) => handleFilterChange("priceRange", value)}
+            onChange={(value) => handleChange("priceRange", value)}
             icon={DollarSign}
             options={[
               { value: "", label: "Any Price" },
@@ -85,8 +74,9 @@ const ExplorePage = () => {
           />
           <SelectField
             label="Property Type"
+            name="type"
             value={filters.type}
-            onChange={(value) => handleFilterChange("type", value)}
+            onChange={(value) => handleChange("type", value)}
             icon={Home}
             options={[
               { value: "", label: "Any Type" },
@@ -97,9 +87,10 @@ const ExplorePage = () => {
           />
           <InputField
             label="Min Ownership %"
+            name="minOwnership"
             type="number"
             value={filters.minOwnership}
-            onChange={(e) => handleFilterChange("minOwnership", e.target.value)}
+            onChange={(e) => handleChange("minOwnership", e.target.value)}
             placeholder="e.g., 50"
             min="0"
             max="100"
@@ -109,12 +100,15 @@ const ExplorePage = () => {
         </div>
       </div>
       {error && (
-        <p className="text-red-500 text-center font-medium">
-          Failed to load properties.
+        <p className="text-red-500 text-center font-medium mb-9">
+          Failed to load properties. Please try again later.
         </p>
       )}
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
+          <p className="text-gray-700 font-medium">Loading properties...</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProperties?.length > 0 ? (
