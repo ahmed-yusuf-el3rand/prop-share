@@ -1,5 +1,5 @@
 import Button from "../../components/common/Button";
-import {  XCircle, Tag, Percent } from "lucide-react";
+import { XCircle, Tag, Percent } from "lucide-react";
 import formatCurrency from "../../utils/formatCurrency";
 import { useRef, useEffect } from "react";
 
@@ -30,7 +30,6 @@ const PropertyDetails = ({
 
     return () => clearInterval(interval);
   }, []);
-
 
   return (
     <div className="md:w-1/2 mb-6">
@@ -137,10 +136,8 @@ const PropertyDetails = ({
                 ? handleOfferToSell
                 : handleCancelOffer
             }
-            variant={property.status === "Owned" ? "success" : "danger"}
-            className={`bg-yellow-400 flex-1 cursor-pointer ${
-              property.status === "Owned" ? "hover:bg-yellow-300" : ""
-            }`}
+            variant={property.status === "Owned" ? "secondary" : "danger"}
+            className="flex-1 cursor-pointer"
             icon={property.status === "Owned" ? Tag : XCircle}
           >
             {property.status === "Owned" ? "Offer To Sell" : "Cancel Offer"}

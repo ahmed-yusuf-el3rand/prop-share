@@ -14,16 +14,12 @@ const Button = ({
   } else if (variant === "secondary") {
     baseStyle += " bg-yellow-400 hover:bg-yellow-300 text-white shadow-sm";
   } else if (variant === "third") {
-    baseStyle += " text-gray-700 hover:bg-yellow-300 hover:text-white";
+    baseStyle += " text-cyan-700 hover:bg-yellow-300";
   } else if (variant === "danger") {
     baseStyle += " bg-red-600 hover:bg-red-700 text-white shadow-md";
   } else if (variant === "ghost") {
-    baseStyle += " text-gray-700 hover:bg-gray-300";
-  } else if (variant === "success") {
-    baseStyle += " bg-green-600 text-white cursor-not-allowed";
-  } else if (variant === "ghost-1") {
     baseStyle =
-      "px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center justify-start gap-2 text-gray-700 hover:bg-gray-100";
+      "px-4 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-start gap-2 text-cyan-700 hover:bg-yellow-300";
   } else if (variant === "tabButton") {
     baseStyle = `flex items-center gap-2 px-4 py-2 text-lg font-medium border-b-2 transition-colors duration-200
       ${

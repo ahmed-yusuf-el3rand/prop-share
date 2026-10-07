@@ -31,8 +31,8 @@ const MobileMenu = ({
           </div>
           <Button
             icon={Home}
-            variant="ghost-1"
-            className="w-full text-center py-3 text-lg hover:bg-gray-100"
+            variant="ghost"
+            className="w-full text-center text-lg"
             onClick={() => {
               goToHome();
               closeMenu();
@@ -41,8 +41,8 @@ const MobileMenu = ({
             Home
           </Button>
           <Button
-            variant="ghost-1"
-            className="w-full text-center py-3 text-lg hover:bg-gray-100"
+            variant="ghost"
+            className="w-full text-center text-lg"
             icon={Compass}
             onClick={() => {
               goToDefaultExplore();
@@ -55,9 +55,9 @@ const MobileMenu = ({
           {isLoggedIn ? (
             <>
               <Button
-                variant="ghost-1"
+                variant="ghost"
                 icon={User}
-                className="w-full text-center py-3 text-lg hover:bg-gray-100"
+                className="w-full text-center text-lg"
                 onClick={() => {
                   goToOwnedTab();
                   closeMenu();
@@ -66,9 +66,9 @@ const MobileMenu = ({
                 Dashboard
               </Button>
               <Button
-                variant="ghost-1"
+                variant="ghost"
                 icon={Settings}
-                className="w-full text-center py-3 text-lg hover:bg-gray-100"
+                className="w-full text-center text-lg"
                 onClick={() => {
                   goToSettingsTab();
                   closeMenu();
@@ -77,11 +77,11 @@ const MobileMenu = ({
                 Settings
               </Button>
 
-              <div className="w-full border-t border-gray-100 my-2"></div>
+              <div className="w-full border-t border-cyan-100 my-2"></div>
               <Button
-                variant="ghost-1"
+                variant="ghost"
                 icon={LogOut}
-                className="w-full text-center py-3 text-lg text-red-600 hover:bg-red-50"
+                className="w-full text-center text-lg text-red-600 hover:bg-red-50"
                 onClick={() => {
                   handleLogout();
                   closeMenu();
@@ -92,9 +92,9 @@ const MobileMenu = ({
             </>
           ) : (
             <Button
-              variant="ghost-1"
+              variant="ghost"
               icon={LogIn}
-              className="w-full text-center py-3 text-lg hover:bg-gray-100"
+              className="w-full text-center text-lg"
               onClick={() => {
                 goToLogin();
                 closeMenu();

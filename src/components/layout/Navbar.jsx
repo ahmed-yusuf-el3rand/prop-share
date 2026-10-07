@@ -30,7 +30,7 @@ const Navbar = () => {
           />
         </div>
         <button
-          className="md:hidden text-gray-600"
+          className="md:hidden text-cyan-700 hover:text-cyan-600"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
