@@ -38,7 +38,7 @@ const NotificationsTab = () => {
               key={index}
               onClick={() => handleToggle(index)}
               className={`rounded-md shadow-sm cursor-pointer transition-colors duration-200 ${
-                n.opened ? "bg-gray-50" : "bg-blue-50"
+                n.opened ? "bg-gray-50" : "bg-cyan-50"
               }`}
             >
               <div className="flex justify-between items-center p-3">

@@ -14,7 +14,7 @@ const StripeField = ({ label, icon: Icon, id, isFocused, children }) => (
       <div
         id={id}
         className={`shadow border rounded-lg w-full py-2 px-3 pl-10 transition ${
-          isFocused ? "ring-2 ring-blue-500 border-blue-500" : ""
+          isFocused ? "ring-2 ring-cyan-500 border-cyan-500" : ""
         }`}
       >
         {children}

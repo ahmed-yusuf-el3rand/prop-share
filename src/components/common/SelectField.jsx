@@ -24,7 +24,7 @@ const SelectField = ({
 
       <Listbox value={value} name={name} onChange={onChange} >
         <div className="relative">
-          <ListboxButton className="relative w-full cursor-pointer rounded-lg border bg-white py-2 pr-10 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pl-10">
+          <ListboxButton className="relative w-full cursor-pointer rounded-lg border bg-white py-2 pr-10 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 pl-10">
             <Icon
               size={20}
               className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -51,14 +51,14 @@ const SelectField = ({
                   disabled={option.disabled}
                   className={({ focus }) =>
                     `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                      focus ? "bg-blue-100 text-blue-900" : "text-gray-700"
+                      focus ? "bg-cyan-100 text-cyan-900" : "text-gray-700"
                     } ${option.disabled ? "opacity-50 cursor-not-allowed" : ""}`
                   }
                 >
                   {({ selected }) => (
                     <>
                       {selected && (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-600">
                           <Check size={18} />
                         </span>
                       )}

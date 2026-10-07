@@ -32,7 +32,7 @@ const ResetPasswordPage = () => {
       <div className="flex justify-center items-center min-h-[70vh] px-4">
         <div className="bg-white p-6 sm:p-8 w-full max-w-3xl">
           <div className="flex flex-col items-center gap-4">
-            <Loader2 className="h-10 w-10 animate-spin text-blue-600" />
+            <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
             <p className="text-gray-700 font-medium">
               Updating your password...
             </p>
@@ -49,7 +49,7 @@ const ResetPasswordPage = () => {
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600 mb-4 sm:mb-6 text-center">
               {message}
             </h1>
-            <Loader2 className="h-10 w-10 animate-spin text-blue-600" />
+            <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
             <p className="text-gray-700 font-medium">
               Redirecting you to the login page...
             </p>
