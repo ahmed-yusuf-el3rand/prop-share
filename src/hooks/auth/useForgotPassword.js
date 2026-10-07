@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import { validateEmail } from "../../utils/validation";
+import { validateEmailForm } from "../../utils/validation";
 import { forgotPassword } from "../../services/authService";
 
 export const useForgotPassword = () => {
@@ -37,7 +37,7 @@ export const useForgotPassword = () => {
 
     onError: (error) => {
       setError(
-        error?.response?.data?.message ??
+        error?.message ??
           "Something went wrong. Please try again.",
       );
     },
@@ -47,7 +47,7 @@ export const useForgotPassword = () => {
     e.preventDefault();
     setMessage("");
     setError("");
-    const validationError = validateEmail(form.email);
+    const validationError = validateEmailForm(formData);
     if (validationError) {
       setError(validationError);
       return;

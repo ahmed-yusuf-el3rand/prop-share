@@ -45,8 +45,8 @@ const ForgotPasswordPage = () => {
                 ? `Resend in ${cooldown}s`
                 : "Send Reset Link"}
           </Button>
-          {message && <p className="text-green-600 text-center">{message}</p>}
-          {error && <p className="text-red-600 text-center">{error}</p>}
+          {message && <p className="text-green-600 text-center mt-5">{message}</p>}
+          {error && <p className="text-red-600 text-center mt-5">{error}</p>}
         </form>
         <p className="text-center text-gray-600 mt-6">
           Remember your password?{" "}
