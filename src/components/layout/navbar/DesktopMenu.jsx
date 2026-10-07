@@ -13,7 +13,7 @@ const DesktopMenu = ({ isLoggedIn, currentUser, handleLogout }) => {
       <Button variant="third" onClick={goToDefaultExplore} icon={Search}>
         Explore
       </Button>
-      {true ? (
+      {isLoggedIn ? (
         <div className="relative group">
           <Button variant="third" icon={User}>
             {currentUser?.fullName}
