@@ -1,16 +1,16 @@
-import Button from "../../components/common/buttons/Button";
+import Button from "../../common/Button";
 import { Home, Compass, User, LogOut, LogIn, Settings } from "lucide-react";
+import { useNavigation } from "../../../hooks/useNavigation";
 
 const MobileMenu = ({
   isLoggedIn,
   currentUser,
   handleLogout,
-  navigate,
-  handleSettingsClick,
-  handleDashboardClick,
   closeMenu,
   isOpen,
 }) => {
+  const { goToDefaultExplore, goToHome, goToLogin, goToSettingsTab, goToOwnedTab } = useNavigation();
+  
   return (
     <div
       className={`fixed inset-0 z-30 transition-opacity duration-300 ${
@@ -25,27 +25,27 @@ const MobileMenu = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col pt-20 px-4">
-          <div className="flex flex-row items-center justify-center mb-6 text-lg font-medium text-blue-700">
+          <div className="flex flex-row items-center justify-center mb-6 text-lg font-medium text-cyan-600">
             <div className="mr-2 ">{currentUser && <User size={20} />}</div>
             <span>{currentUser?.fullName}</span>
           </div>
           <Button
             icon={Home}
-            variant="ghost2"
-            className="w-full text-center py-3 text-lg hover:bg-gray-100 block items-start"
+            variant="ghost-1"
+            className="w-full text-center py-3 text-lg hover:bg-gray-100"
             onClick={() => {
-              navigate("/");
+              goToHome();
               closeMenu();
             }}
           >
             Home
           </Button>
           <Button
-            variant="ghost2"
+            variant="ghost-1"
             className="w-full text-center py-3 text-lg hover:bg-gray-100"
             icon={Compass}
             onClick={() => {
-              navigate("/explore");
+              goToDefaultExplore();
               closeMenu();
             }}
           >
@@ -55,22 +55,22 @@ const MobileMenu = ({
           {isLoggedIn ? (
             <>
               <Button
-                variant="ghost2"
+                variant="ghost-1"
                 icon={User}
                 className="w-full text-center py-3 text-lg hover:bg-gray-100"
                 onClick={() => {
-                  handleDashboardClick();
+                  goToOwnedTab();
                   closeMenu();
                 }}
               >
                 Dashboard
               </Button>
               <Button
-                variant="ghost2"
+                variant="ghost-1"
                 icon={Settings}
                 className="w-full text-center py-3 text-lg hover:bg-gray-100"
                 onClick={() => {
-                  handleSettingsClick();
+                  goToSettingsTab();
                   closeMenu();
                 }}
               >
@@ -79,7 +79,7 @@ const MobileMenu = ({
 
               <div className="w-full border-t border-gray-100 my-2"></div>
               <Button
-                variant="ghost2"
+                variant="ghost-1"
                 icon={LogOut}
                 className="w-full text-center py-3 text-lg text-red-600 hover:bg-red-50"
                 onClick={() => {
@@ -92,11 +92,11 @@ const MobileMenu = ({
             </>
           ) : (
             <Button
-              variant="ghost2"
+              variant="ghost-1"
               icon={LogIn}
               className="w-full text-center py-3 text-lg hover:bg-gray-100"
               onClick={() => {
-                navigate("/login");
+                goToLogin();
                 closeMenu();
               }}
             >

@@ -1,4 +1,4 @@
-import Button from "./buttons/Button.jsx";
+import Button from "./Button.jsx";
 import { Percent } from "lucide-react";
 import { useRef, useEffect } from "react";
 import ProgressBar from "./ProgressBar.jsx";

@@ -1,44 +1,26 @@
-import { Bell, X } from "lucide-react";
-import { useState } from "react";
+import { X,Loader2 } from "lucide-react";
 import { useNotifications } from "../../hooks/dashboard/useNotifications";
 
-// Mock data for demonstration purposes
-const data = ["Your order #1234 has been shipped."];
+const NotificationsTab = () => {
+  const {
+    data: notificationsData,
+    error,
+    isPending: isLoading,
+    notifications,
+    handleToggle,
+    handleDelete,
+    errorMessage,
+  } = useNotifications();
 
-const NotificationsTab = ({isLoading}) => {
-  const [notifications, setNotifications] = useState(
-    data.map((text) => ({
-      text,
-      opened: false,
-      expanded: false,
-    })),
-  );
-  
-  const { data:notificationsData, deleteNotfic, openNotfic, deleting, opening, isError, error } =
-    useNotifications();
-
-  const toggleNotification = (index) => {
-    setNotifications((prev) =>
-      prev.map((n, i) =>
-        i === index ? { ...n, opened: true, expanded: !n.expanded } : n,
-      ),
+  if (false)
+    return (
+      <div className="flex flex-col items-center gap-4">
+        <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
+        <p className="text-gray-700 font-medium">
+          Loading your notifications...
+        </p>
+      </div>
     );
-  };
-
-  const removeNotification = (index) => {
-    setNotifications((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  // const handleRemove = useCallback(
-  //   (id) => {
-  //     setNotifications((prev) => prev.filter((n) => n.id !== id));
-  //     deleteNotification(id);
-  //   },
-  //   [deleteNotification]
-  // );
-
-  if (isLoading)
-    return <p className="text-center">Loading your notifications...</p>;
   if (error)
     return (
       <p className="text-center text-red-500">
@@ -48,16 +30,13 @@ const NotificationsTab = ({isLoading}) => {
 
   return (
     <div>
-      <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-        <Bell size={20} /> Your Notifications
-      </h3>
-
+      <p className="text-center text-red-500">{errorMessage}</p>
       {notifications?.length > 0 ? (
         <ul className="space-y-2">
           {notifications.map((n, index) => (
             <li
               key={index}
-              onClick={() => toggleNotification(index)}
+              onClick={() => handleToggle(index)}
               className={`rounded-md shadow-sm cursor-pointer transition-colors duration-200 ${
                 n.opened ? "bg-gray-50" : "bg-blue-50"
               }`}
@@ -74,7 +53,7 @@ const NotificationsTab = ({isLoading}) => {
                   className="text-gray-400 hover:text-red-500"
                   onClick={(e) => {
                     e.stopPropagation();
-                    removeNotification(index);
+                    handleDelete(index);
                   }}
                 >
                   <X size={16} />
@@ -84,7 +63,7 @@ const NotificationsTab = ({isLoading}) => {
           ))}
         </ul>
       ) : (
-        <p className="text-gray-600 text-sm">No new notifications.</p>
+        <p className="text-gray-600 text-sm ml-7">No new notifications.</p>
       )}
     </div>
   );

@@ -82,12 +82,44 @@ function validateSearchInput(searchValue) {
   return null;
 }
 
+function validateChangePasswordForm(
+  oldPasswordRef,
+  newPasswordRef,
+  confirmPasswordRef,
+) {
+  const oldPwd = oldPasswordRef.current.value.trim();
+  const newPwd = newPasswordRef.current.value.trim();
+  const confirmPwd = confirmPasswordRef.current.value.trim();
+  if (!oldPwd) {
+    return "Please enter your current password.";
+  }
+  if (!validatePassword(newPwd)) {
+    return "New password must be at least 8 characters and secure.";
+  }
+  if (newPwd !== confirmPwd) {
+    return "New password and confirmation do not match.";
+  }
+  return null;
+}
+
+function validateUserInformationForm(formData) {
+  const trimmedName = formData.fullName.trim();
+  const trimmedEmail = formData.email.trim();
+  if (!validateFullName(trimmedName)) {
+    return "Please enter a valid name.";
+  }
+  if (!validateEmail(trimmedEmail)) {
+    return "Please enter a valid email address.";
+  }
+  return null;
+}
+
 export {
-  validateFullName,
   validateEmail,
-  validatePassword,
   validateLoginForm,
   validateSignupForm,
-  validateResetPasswordForm,
   validateSearchInput,
+  validateResetPasswordForm,
+  validateChangePasswordForm,
+  validateUserInformationForm
 };

@@ -1,4 +1,4 @@
-import Button from "../components/common/buttons/Button";
+import Button from "../components/common/Button";
 import InputField from "../components/common/InputField";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ const ForgotPasswordPage = () => {
     <div className="flex justify-center items-center px-4 py-6">
       <div className="bg-white p-4 sm:p-8 w-full max-w-3xl mt-20 mb-40">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
-          Reset Password
+          Forgot Password
         </h1>
         <p className="text-gray-600 text-sm sm:text-base mb-6 text-center">
           Enter your email address below and we'll send you a link to reset your

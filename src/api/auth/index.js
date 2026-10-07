@@ -22,4 +22,6 @@ export {
   changePasswordApi,
   forgotPasswordApi,
   resetPasswordApi,
+  getCurrentUserApi,
+  logoutApi,
 };

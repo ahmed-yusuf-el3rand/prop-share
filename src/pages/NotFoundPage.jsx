@@ -1,6 +1,3 @@
-import Button from "../components/common/buttons/Button";
-import { House } from "lucide-react";
-
 const NotFoundPage = () => {
 
   return (

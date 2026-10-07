@@ -1,14 +1,11 @@
 import { useAuth } from "../../context/auth/useAuth";
-import Button from "../../components/common/buttons/Button";
+import Button from "../../components/common/Button";
 import { useNavigation } from "../../hooks/useNavigation";
 import { User } from "lucide-react";
 
 const BeginSection = () => {
   const { goToSignup } = useNavigation();
   const { isLoggedIn } = useAuth();
-  const handleSignUpButton = () => {
-    goToSignup();
-  };
 
   return (
     <section className="py-16 px-4 text-gray-800 text-center border-t-2 border-gray-200">
@@ -22,7 +19,7 @@ const BeginSection = () => {
         <div className="flex justify-center">
           {!isLoggedIn && (
             <Button
-              onClick={handleSignUpButton}
+              onClick={goToSignup}
               className="sm:px sm:py-3  sm:text-lg w-full max-w-xs"
               icon={User}
             >

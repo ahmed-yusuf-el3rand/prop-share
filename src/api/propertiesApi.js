@@ -7,6 +7,7 @@ const getOfferedPropsApi = ({ signal }) => client.get("properties/offered", { si
 
 const buyShareApi = (purchasingDetails) => client.patch("properties/buy", {purchasingDetails});
 const offerPercentageApi = (offerDetails) => client.patch("properties/offer", {offerDetails});
+const cancelOfferApi = (offerId) => client.delete(`properties/cancelOffer/${offerId}`);
 
 export {
   getPropertiesApi,
@@ -15,4 +16,5 @@ export {
   getPropertyDetailsApi,
   buyShareApi,
   offerPercentageApi,
+  cancelOfferApi,
 };

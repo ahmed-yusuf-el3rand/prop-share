@@ -11,15 +11,13 @@ const client = axios.create({
   },
 });
 
-
 client.interceptors.response.use(
   (response) => response,
   (error) => {
-
     if (axios.isCancel(error)) {
       return Promise.reject(error);
     }
-    
+
     if (!error.response) {
       return Promise.reject(error);
     }

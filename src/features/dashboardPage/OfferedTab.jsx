@@ -1,25 +1,29 @@
 import formatCurrency from "../../utils/formatCurrency";
 import { offeredProperties } from "../../mock/offeredProperties";
-import { useNavigation } from "../../hooks/useNavigation";
-import { useOwnedProperties } from "../../hooks/properties/useOwnedProperties";
+import { useOfferedProperties } from "../../hooks/properties/useOfferedProperties";
 import ProgressBar from "../../components/common/ProgressBar";
+import { Loader2 } from "lucide-react";
 
-const OfferedTab = () => {
-  const goToProperty = useNavigation();
-  const { data, isLoading, error } = useOfferedProperties();
+const OfferedTab = (activeTab) => {
+  const { data, isLoading, error, goToProperty } =
+    useOfferedProperties(activeTab);
   const offeredProps = offeredProperties;
-
-  // if (isLoading)
-  //   return <p className="text-center">Loading your offered properties...</p>;
-  // if (error)
-  //   return (
-  //     <p className="text-center text-red-500">
-  //       Failed to load your offered properties.
-  //     </p>
-  //   );
 
   return (
     <div className="space-y-4">
+      {isLoading && (
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
+          <p className="text-gray-700 font-medium">
+            Loading your offered properties...
+          </p>
+        </div>
+      )}
+      {error && (
+        <p className="text-center text-red-500">
+          Failed to load your offered properties.
+        </p>
+      )}
       {offeredProps?.length > 0 ? (
         offeredProps.map((prop) => (
           <div
@@ -41,7 +45,7 @@ const OfferedTab = () => {
               <h3 className="font-semibold text-gray-800 text-lg sm:text-xl">
                 {prop.name}
               </h3>
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline text-cyan-600 font-medium text-base sm:text-lg">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline text-gray-800 font-medium text-base sm:text-lg">
                 <span>{prop.offerPercentage.toFixed(0)}% Offered</span>
                 <span>Offer: {formatCurrency(prop.offerValue)}</span>{" "}
               </div>

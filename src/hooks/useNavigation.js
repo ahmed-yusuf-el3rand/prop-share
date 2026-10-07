@@ -35,7 +35,19 @@ export const useNavigation = () => {
 
   const goToSignup = () => {
     navigate("/signup");
-  }
+  };
+
+  const goToSettingsTab = () => {
+    navigate("/dashboard", { state: { tab: "settings" } });
+  };
+
+  const goToOwnedTab = () => {
+    navigate("/dashboard", { state: { tab: "owned" } });
+  };
+
+  const goToDefaultExplore = () => {
+    navigate("/explore");
+  };
 
   return {
     goToPropertyDetails,
@@ -45,5 +57,8 @@ export const useNavigation = () => {
     goToExplore,
     goToProperty,
     goToSignup,
+    goToSettingsTab,
+    goToOwnedTab,
+    goToDefaultExplore,
   };
 };

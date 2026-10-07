@@ -46,6 +46,6 @@ export const useExploreProperties = () => {
   return {
     filters,
     handleChange,
-    ...infiniteQuery,
+    // ...infiniteQuery,
   };
 };

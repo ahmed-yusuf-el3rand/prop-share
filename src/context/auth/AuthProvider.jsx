@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigation } from "../../hooks/useNavigation";
-import { getCurrentUser, logout } from "../../services/authService";
+import { getCurrentUser, logout as logOut } from "../../services/authService";
 import { resetLogoutState } from "../../api/client";
 
 export const AuthProvider = ({ children }) => {
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await logout();
+      await logOut();
     } finally {
       setUser(null);
       resetLogoutState();

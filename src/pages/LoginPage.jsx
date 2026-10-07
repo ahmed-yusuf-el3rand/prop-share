@@ -1,10 +1,10 @@
-import Button from "../components/common/buttons/Button";
+import Button from "../components/common/Button";
 import { Mail, Lock, LogIn } from "lucide-react";
 import InputField from "../components/common/InputField";
 import { useLogin } from "../hooks/auth/useLogin";
 import { Link } from "react-router-dom";
 import { useGoogleAuth } from "../hooks/auth/useGoogleAuth";
-import GoogleIcon from "../components/common/icons/GoogleIcon";
+import GoogleIcon from "../components/common/GoogleIcon";
 
 const LoginPage = () => {
   const { formData, error, isPending, handleSubmit, handleChange } = useLogin();

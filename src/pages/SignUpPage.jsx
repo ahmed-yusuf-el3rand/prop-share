@@ -1,7 +1,7 @@
 import InputField from "../components/common/InputField";
 import { User, Lock, Mail, UserPlus } from "lucide-react";
-import Button from "../components/common/buttons/Button";
-import GoogleIcon from "../components/common/icons/GoogleIcon";
+import Button from "../components/common/Button";
+import GoogleIcon from "../components/common/GoogleIcon";
 import { useSignup } from "../hooks/auth/useSignup";
 import { useGoogleSignup } from "../hooks/auth/useGoogleSignup";
 import { Link } from "react-router-dom";

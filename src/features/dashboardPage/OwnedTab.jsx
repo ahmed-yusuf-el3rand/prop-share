@@ -1,25 +1,28 @@
 import { ownedProperties } from "../../mock/ownedProperties";
 import formatCurrency from "../../utils/formatCurrency";
-import { useNavigation } from "../../hooks/useNavigation";
-import {useOwnedProperties} from "../../hooks/properties/useOwnedProperties";
+import { useOwnedProperties } from "../../hooks/properties/useOwnedProperties";
 import ProgressBar from "../../components/common/ProgressBar";
+import { Loader2 } from "lucide-react";
 
-const OwnedTab = () => {
-  const { goToProperty } = useNavigation();
-  const { data , isLoading, error } = useOwnedProperties();
+const OwnedTab = (activeTab) => {
+  const { data, isLoading, error,goToProperty } = useOwnedProperties(activeTab);
   const ownedProps = ownedProperties;
-
-  // if (isLoading)
-  //   return <p className="text-center">Loading your owned properties...</p>;
-  // if (error)
-  //   return (
-  //     <p className="text-center text-red-500">
-  //       Failed to load your owned properties.
-  //     </p>
-  //   );
 
   return (
     <div className="space-y-4">
+      {isLoading && (
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
+          <p className="text-gray-700 font-medium">
+            Loading your owned properties...
+          </p>
+        </div>
+      )}
+      {error && (
+        <p className="text-center text-red-500">
+          Failed to load your owned properties.
+        </p>
+      )}
       {ownedProps?.length > 0 ? (
         ownedProps.map((prop) => (
           <div
@@ -36,12 +39,11 @@ const OwnedTab = () => {
                 e.target.src = `https://placehold.co/64x64/e0e0e0/000000?text=Prop`;
               }}
             />
-
             <div className="flex-1">
               <h3 className="font-semibold text-gray-800 sm:text-xl text-lg">
                 {prop.name}
               </h3>
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 text-cyan-600 font-medium text-base sm:text-lg">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 text-gray-600 font-medium text-base sm:text-lg">
                 <span>{prop.heldPercentage}% Held</span>
                 <span>Share: {formatCurrency(prop.shareValue)}</span>
               </div>

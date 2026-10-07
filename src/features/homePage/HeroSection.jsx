@@ -1,7 +1,7 @@
 import InputField from "../../components/common/InputField";
 import { MapPin, Search } from "lucide-react";
-import Button from "../../components/common/buttons/Button";
-import { useHeroSection } from "../../hooks/home/useHeroSection";
+import Button from "../../components/common/Button";
+import { useHeroSection } from "../../hooks/useHeroSection";
 
 const HeroSection = () => {
   const {
@@ -32,7 +32,7 @@ const HeroSection = () => {
           Fractional ownership made simple, secure, and profitable.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl mx-auto animate-fadeInUp animation-delay-400">
+        <div className="animate-fadeInUp animation-delay-400">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col sm:flex-row  items-center gap-4 w-full max-w-2xl mx-auto"

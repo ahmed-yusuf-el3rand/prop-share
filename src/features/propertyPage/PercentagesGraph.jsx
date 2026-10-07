@@ -4,7 +4,7 @@ const PercentagesGraph = ({ ownersData }) => {
   let currentOffset = 0;
 
   return (
-    <div className="md:w-1/2">
+    <div className="md:w-1/2 mb-6">
       <div className="p-5">
         <h2 className="text-xl font-semibold text-gray-800 mb-3">
           Owners Percentages

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import TabButton from "../components/common/buttons/TabButton.jsx";
+import Button from "../components/common/Button.jsx";
 import OwnedTab from "../features/dashboardPage/OwnedTab.jsx";
 import MoneyTab from "../features/dashboardPage/MoneyTab.jsx";
 import OfferedTab from "../features/dashboardPage/OfferedTab.jsx";
@@ -21,58 +21,63 @@ const DashboardPage = () => {
   const renderTabContent = () => {
     switch (activeTab) {
       case "owned":
-        return <OwnedTab />;
+        return <OwnedTab activeTab="owned" />;
       case "offered":
-        return <OfferedTab />;
+        return <OfferedTab activeTab="offered"/>;
       case "money":
-        return <MoneyTab />;
+        return <MoneyTab activeTab="money"/>;
       case "settings":
-        return <SettingsTab />;
+        return <SettingsTab activeTab="settings"/>;
       case "notifications":
-        return <NotificationsTab />;
+        return <NotificationsTab activeTab="notifications"/>;
       default:
         return null;
     }
   };
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-40">
       <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
         <div className="grid grid-cols-2 sm:flex flex-wrap gap-2 sm:gap-4 border-b border-gray-200 mb-4 sm:mb-6">
-          <TabButton
+          <Button
+            icon={Home}
+            variant="tabButton"
             active={activeTab === "owned"}
             onClick={() => setActiveTab("owned")}
-            icon={Home}
           >
             Owned
-          </TabButton>
-          <TabButton
+          </Button>
+          <Button
+            icon={Hourglass}
+            variant="tabButton"
             active={activeTab === "offered"}
             onClick={() => setActiveTab("offered")}
-            icon={Hourglass}
           >
             Offered
-          </TabButton>
-          <TabButton
+          </Button>
+          <Button
+            icon={DollarSign}
+            variant="tabButton"
             active={activeTab === "money"}
             onClick={() => setActiveTab("money")}
-            icon={DollarSign}
           >
             Money
-          </TabButton>
-          <TabButton
+          </Button>
+          <Button
+            icon={Settings}
+            variant="tabButton"
             active={activeTab === "settings"}
             onClick={() => setActiveTab("settings")}
-            icon={Settings}
           >
             Settings
-          </TabButton>
-          <TabButton
+          </Button>
+          <Button
+            icon={Bell}
+            variant="tabButton"
             active={activeTab === "notifications"}
             onClick={() => setActiveTab("notifications")}
-            icon={Bell}
           >
             Notifications
-          </TabButton>
+          </Button>
         </div>
       </div>
       <div className="overflow-x-auto bg-white my-6">{renderTabContent()}</div>

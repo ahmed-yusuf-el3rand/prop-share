@@ -53,7 +53,7 @@ const PrivacyPolicyPage = () => (
           time by contacting{" "}
           <a
             href="mailto:support@propshare.com"
-            className="text-indigo-600 hover:underline"
+            className="text-cyan-600 hover:underline"
           >
             support@propshare.com
           </a>

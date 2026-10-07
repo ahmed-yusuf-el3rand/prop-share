@@ -1,17 +1,17 @@
 import { owners } from "../mock/owners";
 import { useEffect } from "react";
-import SellModal from "../modals/SellModal";
+import SellModal from "../components/modals/SellModal";
 import { property } from "../mock/property";
-import PurchaseModal from "../modals/PurchaseModal";
+import PurchaseModal from "../components/modals/PurchaseModal";
 import PercentagesGraph from "../features/propertyPage/PercentagesGraph";
 import PropertyDetails from "../features/propertyPage/PropertyDetails";
-import { usePropertyDetails } from "../hooks/properties/usePropertyDetails";
+import { useProperty } from "../hooks/properties/useProperty";
+import { Loader2 } from "lucide-react";
 
 const PropertyPage = (propertyId) => {
   const {
     data,
     isLoading,
-    isError,
     isPurchaseModalOpen,
     setIsPurchaseModalOpen,
     isSellModalOpen,
@@ -19,8 +19,8 @@ const PropertyPage = (propertyId) => {
     message,
     setMessage,
     location,
-    cancelOffer,
-  } = usePropertyDetails(propertyId);
+    handleCancelOffer,
+  } = useProperty(propertyId);
 
   useEffect(() => {
     if (location.state?.isPurchaseModalOpen) {
@@ -30,25 +30,33 @@ const PropertyPage = (propertyId) => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 mb-40">
-      {property ? (
-        <div className="bg-white overflow-hidden p-6">
-          <div className="md:flex md:space-x-8">
-            <PropertyDetails
-              property={property}
-              handleBuyShare={setIsPurchaseModalOpen}
-              handleOfferToSell={setIsSellModalOpen}
-              handleCancelOffer={cancelOffer}
-              message={message}
-            />
-            <PercentagesGraph ownersData={owners} />
-          </div>
+      {isLoading ? (
+        <div className="flex flex-col items-center gap-4 mt-20">
+          <Loader2 className="h-10 w-10 animate-spin text-cyan-600" />
+          <p className="text-gray-700 font-medium">
+            Loading property details...
+          </p>
         </div>
       ) : (
-        <div className="container p-6 text-center text-gray-600">
-          Property not found.
+        <div className="bg-white overflow-hidden p-6">
+          {property ? (
+            <div className="md:flex md:space-x-8">
+              <PropertyDetails
+                property={property}
+                handleBuyShare={setIsPurchaseModalOpen}
+                handleOfferToSell={setIsSellModalOpen}
+                handleCancelOffer={handleCancelOffer}
+                message={message}
+              />
+              <PercentagesGraph ownersData={owners} />
+            </div>
+          ) : (
+            <div className="container p-6 text-center text-gray-600">
+              Property not found.
+            </div>
+          )}
         </div>
       )}
-
       <PurchaseModal
         isOpen={isPurchaseModalOpen}
         onClose={() => setIsPurchaseModalOpen(false)}

@@ -2,7 +2,6 @@ import {
   useQuery,
   useMutation,
   useQueryClient,
-  QueryClient,
 } from "@tanstack/react-query";
 import {
   getBankCard,
@@ -13,7 +12,6 @@ import {
 export const useBankCard = (userId) => {
   const queryClient = useQueryClient();
   const bankCardKey = ["bank-card"];
-
   const bankCardQuery = useQuery({
     queryKey: bankCardKey,
     queryFn: ({ signal }) => getBankCard({ signal }),
@@ -28,7 +26,6 @@ export const useBankCard = (userId) => {
     onMutate: async (newCard) => {
       await queryClient.cancelQueries(bankCardKey);
       const previous = queryClient.getQueryData(bankCardKey);
-
       queryClient.setQueryData(bankCardKey, (old) => ({
         ...old,
         bankCard: [...(old?.bankCard || []), newCard],
@@ -36,13 +33,11 @@ export const useBankCard = (userId) => {
 
       return { previous };
     },
-
     onError: (_err, _newCard, ctx) => {
       if (ctx?.previous) {
         queryClient.setQueryData(bankCardKey, ctx.previous);
       }
     },
-
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: bankCardKey });
     },
@@ -53,7 +48,6 @@ export const useBankCard = (userId) => {
     onMutate: async (id) => {
       await queryClient.cancelQueries(bankCardKey);
       const previous = queryClient.getQueryData(bankCardKey);
-
       queryClient.setQueryData(bankCardKey, (old) => ({
         ...old,
         bankCard: old?.bankCard.filter((c) => c.id !== id),
@@ -61,7 +55,6 @@ export const useBankCard = (userId) => {
 
       return { previous };
     },
-
     onError: (_err, _id, ctx) => {
       if (ctx?.previous) {
         queryClient.setQueryData(bankCardKey, ctx.previous);
@@ -76,10 +69,8 @@ export const useBankCard = (userId) => {
     bankCard: bankCardQuery.data,
     loading: bankCardQuery.isLoading,
     error: bankCardQuery.error,
-
     addCard: addMutation.mutateAsync,
     adding: addMutation.isLoading,
-
     deleteCard: deleteMutation.mutateAsync,
     deleting: deleteMutation.isLoading,
   };

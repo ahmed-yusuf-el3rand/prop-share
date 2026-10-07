@@ -5,6 +5,7 @@ import {
   getPropertyDetailsApi,
   buyShareApi,
   offerPercentageApi,
+  cancelOfferApi,
 } from "../api/propertiesApi";
 
 const getProperties = async (params, { signal }) => {
@@ -36,6 +37,11 @@ const offerPercentage = async (offerDetails) => {
   return response.data;
 };
 
+const cancelOffer = async (offerId) => {
+  const response = await cancelOfferApi(offerId);
+  return response.data;
+};
+
 export {
   getProperties,
   getOwnedProps,
@@ -43,4 +49,5 @@ export {
   getPropertyDetails,
   buyShare,
   offerPercentage,
+  cancelOffer,
 };

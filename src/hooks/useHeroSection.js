@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { useNavigation } from "../../hooks/useNavigation";
-import { validateSearchInput } from "../../utils/validation";
+import { useNavigation } from "./useNavigation";
+import { validateSearchInput } from "../utils/validation";
 
 export const useHeroSection = () => {
   const [location, setLocation] = useState("");

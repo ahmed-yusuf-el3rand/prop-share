@@ -1,5 +1,5 @@
-import Button from "../../components/common/buttons/Button";
-import { DollarSign, XCircle, Tag } from "lucide-react";
+import Button from "../../components/common/Button";
+import {  XCircle, Tag, Percent } from "lucide-react";
 import formatCurrency from "../../utils/formatCurrency";
 import { useRef, useEffect } from "react";
 
@@ -30,6 +30,8 @@ const PropertyDetails = ({
 
     return () => clearInterval(interval);
   }, []);
+
+
   return (
     <div className="md:w-1/2 mb-6">
       <div
@@ -55,11 +57,10 @@ const PropertyDetails = ({
       <div className="space-y-4 mb-6">
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-gray-800">{property.name}</h1>
-
           <p className="text-lg font-semibold text-gray-600">{property.type}</p>
         </div>
         <div className="flex justify-between">
-          <p className=" text-lg font-semibold underline text-blue-600">
+          <p className=" text-lg font-semibold hover:underline text-cyan-600">
             {" "}
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -80,7 +81,7 @@ const PropertyDetails = ({
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-3xl font-bold ">
+          <p className="text-2xl font-bold ">
             {formatCurrency(property.price)}
           </p>
           <p>
@@ -114,18 +115,18 @@ const PropertyDetails = ({
             message.type === "success" ? "text-green-600" : "text-red-600"
           }`}
         >
-          {message}
+          {message.text}
         </p>
       )}
 
-      <div className="flex space-x-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:space-x-4 gap-4 mb-6">
         <Button
           onClick={() => {
             handleBuyShare(true);
           }}
           variant="primary"
-          className="flex-1 bg-cyan-600 hover:bg-cyan-700"
-          icon={DollarSign}
+          className="flex-1"
+          icon={Percent}
         >
           Buy Share
         </Button>
@@ -142,7 +143,7 @@ const PropertyDetails = ({
             }`}
             icon={property.status === "Owned" ? Tag : XCircle}
           >
-            {property.status === "Owned" ? " Offer To Sell" : " Cancel Offer"}
+            {property.status === "Owned" ? "Offer To Sell" : "Cancel Offer"}
           </Button>
         )}
       </div>

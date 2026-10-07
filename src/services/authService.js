@@ -8,6 +8,8 @@ import {
   changePasswordApi,
   forgotPasswordApi,
   resetPasswordApi,
+  getCurrentUserApi,
+  logoutApi,
 } from "../api/auth";
 
 const login = async (credentials) => {
@@ -46,24 +48,23 @@ const forgotPassword = async (email) => {
 };
 
 const changePassword = async ({ currentPassword, newPassword }) => {
-  const { data } = await changePasswordApi({ currentPassword, newPassword });
-  return data;
+  const response = await changePasswordApi({ currentPassword, newPassword });
+  return response.data;
 };
-const resetPassword = async ({token, newPassword}) => {
-  const response = await resetPasswordApi({token, newPassword});
+const resetPassword = async ({ token, newPassword }) => {
+  const response = await resetPasswordApi({ token, newPassword });
   return response.data;
 };
 
 const getCurrentUser = async () => {
   const response = await getCurrentUserApi();
   return response.data;
-}
+};
 
 const logout = async () => {
-  const response = await logoutApi();
-  return response.data;
-}
-
+  const { data } = await logoutApi();
+  return data;
+};
 
 export {
   login,
@@ -76,5 +77,5 @@ export {
   forgotPassword,
   resetPassword,
   getCurrentUser,
-  logout
+  logout,
 };

@@ -9,7 +9,7 @@ export const usePasswordReset = () => {
   const [error, setError] = useState("");
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     newPassword: "",
     confirmNewPassword: "",
   });
@@ -20,7 +20,7 @@ export const usePasswordReset = () => {
       setMessage(
         data?.message ?? "Your password has been changed successfully",
       );
-      setForm({
+      setFormData({
         newPassword: "",
         confirmNewPassword: "",
       });
@@ -58,7 +58,7 @@ export const usePasswordReset = () => {
 
   const handleChange = (e) => {
     setError("");
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return {
@@ -66,7 +66,7 @@ export const usePasswordReset = () => {
     isSuccess: resetMutation.isSuccess,
     handleSubmit,
     handleChange,
-    form,
+    formData,
     error,
     message,
   };

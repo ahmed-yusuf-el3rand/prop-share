@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { useVerifyEmail } from "../hooks/auth/useVerifyEmail";
-import Button from "../components/common/buttons/Button";
+import Button from "../components/common/Button";
 import { Mail, Loader2 } from "lucide-react";
 
 const VerifyEmailPage = () => {

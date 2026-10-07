@@ -1,4 +1,4 @@
-import Button from "../components/common/buttons/Button";
+import Button from "../components/common/Button";
 import InputField from "../components/common/InputField";
 import { Lock, Loader2 } from "lucide-react";
 import { usePasswordReset } from "../hooks/auth/useResetPassword";
@@ -12,7 +12,7 @@ const ResetPasswordPage = () => {
     isSuccess,
     handleSubmit,
     handleChange,
-    form,
+    formData,
     error,
     message,
   } = usePasswordReset();
@@ -70,7 +70,7 @@ const ResetPasswordPage = () => {
             label="New Password"
             type="password"
             name="newPassword"
-            value={form.newPassword}
+            value={formData.newPassword}
             onChange={handleChange}
             placeholder="********"
             icon={Lock}
@@ -81,7 +81,7 @@ const ResetPasswordPage = () => {
             label="Confirm New Password"
             type="password"
             name="confirmNewPassword"
-            value={form.confirmNewPassword}
+            value={formData.confirmNewPassword}
             onChange={handleChange}
             placeholder="********"
             icon={Lock}
