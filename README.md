@@ -1,25 +1,90 @@
-# React + Vite
+# PropShare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PropShare is a real estate investment platform designed to make property investment more accessible through a modern, user-friendly digital experience.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+PropShare aims to simplify the real estate investment journey by providing a platform for users to explore investment opportunities and manage their investment-related activities.
 
-## Expanding the ESLint configuration
+The application is built with a modern frontend development stack, with an emphasis on maintainability, scalability, security, and user experience.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Core Technologies
+
+* **React** — Building a modular, component-driven user interface.
+* **Stripe** — Supporting payment-related integrations and financial onboarding workflows.
+* **React Query** — Managing server state, asynchronous data fetching, caching, and synchronization.
+* **Tailwind CSS** — Building consistent, responsive, and maintainable user interfaces
+
+## Getting Started
+
+### Prerequisites
+
+Ensure the following are installed:
+
+* Node.js (LTS recommended)
+* npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd <project-directory>
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Configure the environment variables in a `.env` file, using the variables required by the application.
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+### Available Scripts
+
+| Command           | Description                                      |
+| ----------------- | ------------------------------------------------ |
+| `npm run dev`     | Starts the development server.                   |
+| `npm run build`   | Builds the application for production.           |
+| `npm run lint`    | Runs ESLint to check code quality.               |
+| `npm run preview` | Serves the production build locally for preview. |
+
+These commands assume the corresponding scripts are defined in `package.json`.
 
 
+## Architecture and Development Principles
 
-## License
+PropShare is developed with an emphasis on:
 
-This project uses the MIT License for source code.
+* **Modularity:** Reusable components and clearly separated responsibilities.
+* **Server-State Management:** Consistent data fetching, caching, and synchronization with TanStack Query.
+* **Integration Security:** Sensitive operations and private credentials remain on the backend.
+* **Responsive Design:** Consistent experiences across desktop, tablet, and mobile devices.
+* **Maintainability:** Clear project organization and predictable application behavior.
+* **Performance:** Efficient data access, rendering, and resource usage.
 
-However, the **PropShare** platform's name, brand, UI/UX design, and business model are the intellectual property of **Ahmed Youssef**.
+## License and Intellectual Property
 
-You **may not** rebrand, resell, or launch a commercial clone of PropShare without permission.
+The source code is distributed under the terms specified in the project's `LICENSE.txt` file.
 
-© 2025 Ahmed Youssef – All rights reserved.
-# PropSharev2
+The PropShare name, branding, visual identity, UI/UX designs, and proprietary business concepts are claimed as the intellectual property of Ahmed Youssef, except for third-party materials and components governed by their respective licenses.
+
+Permission to use, reproduce, modify, distribute, or commercially exploit proprietary PropShare branding and materials must be obtained where required.
+
+Copyright © 2026 Ahmed Youssef. All rights reserved, subject to applicable third-party licenses and rights.
+
+---
+
+**PropShare** — Real estate investment, built for a modern digital experience.
