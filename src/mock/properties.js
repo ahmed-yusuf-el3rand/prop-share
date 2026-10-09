@@ -10,11 +10,10 @@ export const properties = [
     ownershipProgress: 75,
     description:
       "Stunning beachfront villa with panoramic ocean views, private pool, and direct beach access. Perfect for fractional ownership.",
-    image: "https://placehold.co/600x400/a0a0a0/ffffff?text=Beach+Villa",
+    image: "/property-1.webp",
     images: [
-      "https://placehold.co/600x400/a0a0a0/ffffff?text=Beach+Villa+1",
-      "https://placehold.co/600x400/909090/ffffff?text=Beach+Villa+2",
-      "https://placehold.co/600x400/808080/ffffff?text=Beach+Villa+3",
+      "/property-1.webp",
+      "/property-2.webp",
     ],
   },
   {
@@ -28,10 +27,10 @@ export const properties = [
     ownershipProgress: 30,
     description:
       "Modern condo in the heart of NYC, close to all major attractions and public transport. Great investment opportunity.",
-    image: "https://placehold.co/600x400/b0b0b0/ffffff?text=NYC+Condo",
+    image: "/property-3.webp",
     images: [
-      "https://placehold.co/600x400/b0b0b0/ffffff?text=NYC+Condo+1",
-      "https://placehold.co/600x400/c0c0c0/ffffff?text=NYC+Condo+2",
+      "/property-3.webp",
+      "/property-4.webp",
     ],
   },
   {
@@ -46,10 +45,10 @@ export const properties = [
     ownershipProgress: 0,
     description:
       "Prime commercial office space in a bustling business district. Ideal for a growing company or as a rental investment.",
-    image: "https://placehold.co/600x400/c0c0c0/ffffff?text=Office+Space",
+    image: "/property-5.webp",
     images: [
-      "https://placehold.co/600x400/c0c0c0/ffffff?text=Office+Space+1",
-      "https://placehold.co/600x400/d0d0d0/ffffff?text=Office+Space+2",
+      "/property-5.webp",
+      "/property-6.webp",
     ],
   },
   {
@@ -63,15 +62,14 @@ export const properties = [
     ownershipProgress: 90,
     description:
       "Spacious family home in a quiet suburban neighborhood with excellent schools and amenities.",
-    image: "https://placehold.co/600x400/d0d0d0/ffffff?text=Family+Home",
+    image: "/property-7.webp",
     images: [
-      "https://placehold.co/600x400/d0d0d0/ffffff?text=Family+Home+1",
-      "https://placehold.co/600x400/e0e0e0/ffffff?text=Family+Home+2",
-      "https://placehold.co/600x400/f0f0f0/ffffff?text=Family+Home+3",
+      "/property-7.webp",
+      "/property-8.webp",
     ],
   },
   {
-    id: "prop6",
+    id: "prop5",
     name: "Cozy Apartment for Rent",
     location: "Seattle, WA",
     price: 2500,
@@ -81,10 +79,10 @@ export const properties = [
     ownershipProgress: 100,
     description:
       "A cozy 1-bedroom apartment available for long-term rent in a vibrant Seattle neighborhood.",
-    image: "https://placehold.co/600x400/e6e6fa/000000?text=Rent+Apartment",
+    image: "/property-9.jpg",
     images: [
-      "https://placehold.co/600x400/e6e6fa/000000?text=Rent+Apartment+1",
-      "https://placehold.co/600x400/d8bfd8/000000?text=Rent+Apartment+2",
+      "/property-9.jpg",
+      "/property-10.jpg",
     ],
   },
 ];

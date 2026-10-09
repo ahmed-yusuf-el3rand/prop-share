@@ -1,16 +1,16 @@
 export const offeredProperties = [
   {
-    id: "prop3",
+    id: "prop1",
     name: "Commercial Office Space",
     offerValue: 2500000,
     offerPercentage: 0,
-    image: "https://placehold.co/64x64/c0c0c0/000000?text=Office",
+    image: "property-5.webp",
   },
   {
-    id: "prop4",
+    id: "prop2",
     name: "Suburban Family Home",
     offerValue: 600000,
     offerPercentage: 50,
-    image: "https://placehold.co/64x64/d0d0d0/000000?text=Home",
+    image: "property-7.webp",
   },
 ];
