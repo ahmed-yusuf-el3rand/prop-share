@@ -50,7 +50,7 @@ const ForgotPasswordPage = () => {
         </form>
         <p className="text-center text-gray-600 mt-6">
           Remember your password?{" "}
-          <Link to={"/login"} className="text-cyan-600 hover:underline">
+          <Link to={"/prop-share/login"} className="text-cyan-600 hover:underline">
             Back to Login
           </Link>
         </p>

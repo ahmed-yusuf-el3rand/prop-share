@@ -25,23 +25,23 @@ const App = () => {
       <ScrollToTop />
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/properties/:id" element={<PropertyPage />} />
-        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/prop-share" element={<HomePage />} />
+        <Route path="/prop-share/home" element={<HomePage />} />
+        <Route path="/prop-share/properties/:id" element={<PropertyPage />} />
+        <Route path="/prop-share/explore" element={<ExplorePage />} />
         <Route element={<AuthRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/prop-share/login" element={<LoginPage />} />
+          <Route path="/prop-share/signup" element={<SignupPage />} />
         </Route>
         {/* <Route element={<ProtectedRoute />}> */}
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/prop-share/dashboard" element={<DashboardPage />} />
         {/* </Route> */}
-        <Route path="/verify-email" element={<VerifyEmailPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/prop-share/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/prop-share/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/prop-share/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/prop-share/terms" element={<TermsPage />} />
+        <Route path="/prop-share/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/prop-share/about-us" element={<AboutUsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

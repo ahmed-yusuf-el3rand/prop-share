@@ -10,10 +10,10 @@ export const properties = [
     ownershipProgress: 75,
     description:
       "Stunning beachfront villa with panoramic ocean views, private pool, and direct beach access. Perfect for fractional ownership.",
-    image: "/property-1.webp",
+    image: "src/assets/property-1.webp",
     images: [
-      "/property-1.webp",
-      "/property-2.webp",
+      "src/assets/property-1.webp",
+      "src/assets/property-2.webp",
     ],
   },
   {
@@ -27,10 +27,10 @@ export const properties = [
     ownershipProgress: 30,
     description:
       "Modern condo in the heart of NYC, close to all major attractions and public transport. Great investment opportunity.",
-    image: "/property-3.webp",
+    image: "src/assets/property-3.webp",
     images: [
-      "/property-3.webp",
-      "/property-4.webp",
+      "src/assets/property-3.webp",
+      "src/assets/property-4.webp",
     ],
   },
   {
@@ -45,10 +45,10 @@ export const properties = [
     ownershipProgress: 0,
     description:
       "Prime commercial office space in a bustling business district. Ideal for a growing company or as a rental investment.",
-    image: "/property-5.webp",
+    image: "src/assets/property-5.webp",
     images: [
-      "/property-5.webp",
-      "/property-6.webp",
+      "src/assets/property-5.webp",
+      "src/assets/property-6.webp",
     ],
   },
   {
@@ -62,10 +62,10 @@ export const properties = [
     ownershipProgress: 90,
     description:
       "Spacious family home in a quiet suburban neighborhood with excellent schools and amenities.",
-    image: "/property-7.webp",
+    image: "src/assets/property-7.webp",
     images: [
-      "/property-7.webp",
-      "/property-8.webp",
+      "src/assets/property-7.webp",
+      "src/assets/property-8.webp",
     ],
   },
   {
@@ -79,10 +79,10 @@ export const properties = [
     ownershipProgress: 100,
     description:
       "A cozy 1-bedroom apartment available for long-term rent in a vibrant Seattle neighborhood.",
-    image: "/property-9.jpg",
+    image: "src/assets/property-9.jpg",
     images: [
-      "/property-9.jpg",
-      "/property-10.jpg",
+      "src/assets/property-9.jpg",
+      "src/assets/property-10.jpg",
     ],
   },
 ];

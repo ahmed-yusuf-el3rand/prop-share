@@ -31,7 +31,7 @@ const Footer = () => {
             <ul className="space-y-2 flex flex-col items-center md:items-start">
               <li>
                 <Link
-                  to={"/terms"}
+                  to={"/prop-share/terms"}
                   className="hover:text-cyan-800 transition-colors duration-200"
                 >
                   Terms
@@ -39,7 +39,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to={"/about-us"}
+                  to={"/prop-share/about-us"}
                   className="hover:text-cyan-800 transition-colors duration-200"
                 >
                   About Us
@@ -47,7 +47,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to={"/privacy-policy"}
+                  to={"/prop-share/privacy-policy"}
                   className="hover:text-cyan-800 transition-colors duration-200"
                 >
                   Privacy Policy

@@ -5,48 +5,48 @@ export const useNavigation = () => {
 
   const goToPropertyDetails = (id, openPurchase = false) => {
     navigate(
-      `/properties/${id}`,
+      `/prop-share/properties/${id}`,
       openPurchase ? { state: { isPurchaseModalOpen: true } } : undefined,
     );
   };
 
   const goToLogin = () => {
-    navigate("/login");
+    navigate("/prop-share/login");
   };
 
   const goToLoginReplace = () => {
-    navigate("/login", { replace: true });
+    navigate("/prop-share/login", { replace: true });
   };
 
   const goToHome = () => {
-    navigate("/");
+    navigate("/prop-share");
   };
 
   const goToExplore = (location) => {
-    navigate(`/explore?location=${encodeURIComponent(location.trim())}`);
+    navigate(`/prop-share/explore?location=${encodeURIComponent(location.trim())}`);
   };
 
   const goToProperty = (id, openPurchase = false) => {
     navigate(
-      `/properties/${id}`,
+      `/prop-share/properties/${id}`,
       openPurchase ? { state: { isPurchaseOpen: true } } : undefined,
     );
   };
 
   const goToSignup = () => {
-    navigate("/signup");
+    navigate("/prop-share/signup");
   };
 
   const goToSettingsTab = () => {
-    navigate("/dashboard", { state: { tab: "settings" } });
+    navigate("/prop-share/dashboard", { state: { tab: "settings" } });
   };
 
   const goToOwnedTab = () => {
-    navigate("/dashboard", { state: { tab: "owned" } });
+    navigate("/prop-share/dashboard", { state: { tab: "owned" } });
   };
 
   const goToDefaultExplore = () => {
-    navigate("/explore");
+    navigate("/prop-share/explore");
   };
 
   return {

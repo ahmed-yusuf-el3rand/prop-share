@@ -13,5 +13,5 @@ export default function AuthRoute() {
       </div>
     );
 
-  return isAuth ? <Navigate to="/dashboard" replace /> : <Outlet />;
+  return isAuth ? <Navigate to="/prop-share/dashboard" replace /> : <Outlet />;
 }

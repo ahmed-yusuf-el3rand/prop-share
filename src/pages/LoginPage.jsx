@@ -52,7 +52,7 @@ const LoginPage = () => {
           </Button>
           <p className="text-center text-sm mt-3">
             <Link
-              to={"/forgot-password"}
+              to={"/prop-share/forgot-password"}
               className="text-cyan-600 hover:underline"
             >
               Forgot Password?
@@ -80,7 +80,7 @@ const LoginPage = () => {
         )}
         <p className="text-gray-600 text-center mt-6">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-cyan-600 hover:underline">
+          <Link to="/prop-share/signup" className="text-cyan-600 hover:underline">
             Sign Up
           </Link>
         </p>

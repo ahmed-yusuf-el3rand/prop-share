@@ -13,5 +13,5 @@ export default function ProtectedRoute() {
       </div>
     );
 
-  return isAuth ? <Outlet /> : <Navigate to="/login" replace />;
+  return isAuth ? <Outlet /> : <Navigate to="/prop-share/login" replace />;
 }

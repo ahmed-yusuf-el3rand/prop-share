@@ -10,13 +10,13 @@ export const property = {
   description:
     "Stunning beachfront villa with panoramic ocean views, private pool, and direct beach access. Perfect for fractional ownership.",
   images: [
-    "/property-1.webp",
-    "/property-2.webp",
-    "/property-3.webp",
-    "/property-4.webp",
-    "/property-5.webp",
-    "/property-6.webp",
-    "/property-7.webp",
-    "/property-8.webp", 
+    "/prop-share/src/assets/property-1.webp",
+    "/prop-share/src/assets/property-2.webp",
+    "/prop-share/src/assets/property-3.webp",
+    "/prop-share/src/assets/property-4.webp",
+    "/prop-share/src/assets/property-5.webp",
+    "/prop-share/src/assets/property-6.webp",
+    "/prop-share/src/assets/property-7.webp",
+    "/prop-share/src/assets/property-8.webp", 
   ],
 };
