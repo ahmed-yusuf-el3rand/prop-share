@@ -1,3 +1,14 @@
+import property1 from "../assets/property-1.webp";
+import property2 from "../assets/property-2.webp";
+import property3 from "../assets/property-3.webp";
+import property4 from "../assets/property-4.webp";
+import property5 from "../assets/property-5.webp";
+import property6 from "../assets/property-6.webp";
+import property7 from "../assets/property-7.webp";
+import property8 from "../assets/property-8.webp";
+import property9 from "../assets/property-9.jpg";
+import property10 from "../assets/property-10.jpg";
+
 export const properties = [
   {
     id: "prop1",
@@ -10,11 +21,8 @@ export const properties = [
     ownershipProgress: 75,
     description:
       "Stunning beachfront villa with panoramic ocean views, private pool, and direct beach access. Perfect for fractional ownership.",
-    image: "src/assets/property-1.webp",
-    images: [
-      "src/assets/property-1.webp",
-      "src/assets/property-2.webp",
-    ],
+    image: property1,
+    images: [property1, property2],
   },
   {
     id: "prop2",
@@ -27,11 +35,8 @@ export const properties = [
     ownershipProgress: 30,
     description:
       "Modern condo in the heart of NYC, close to all major attractions and public transport. Great investment opportunity.",
-    image: "src/assets/property-3.webp",
-    images: [
-      "src/assets/property-3.webp",
-      "src/assets/property-4.webp",
-    ],
+    image: property3,
+    images: [property3, property4],
   },
   {
     id: "prop3",
@@ -45,10 +50,10 @@ export const properties = [
     ownershipProgress: 0,
     description:
       "Prime commercial office space in a bustling business district. Ideal for a growing company or as a rental investment.",
-    image: "src/assets/property-5.webp",
+    image: property5,
     images: [
-      "src/assets/property-5.webp",
-      "src/assets/property-6.webp",
+      property5,
+      property6,
     ],
   },
   {
@@ -62,10 +67,10 @@ export const properties = [
     ownershipProgress: 90,
     description:
       "Spacious family home in a quiet suburban neighborhood with excellent schools and amenities.",
-    image: "src/assets/property-7.webp",
+    image: property7,
     images: [
-      "src/assets/property-7.webp",
-      "src/assets/property-8.webp",
+      property7,
+      property8,
     ],
   },
   {
@@ -79,10 +84,10 @@ export const properties = [
     ownershipProgress: 100,
     description:
       "A cozy 1-bedroom apartment available for long-term rent in a vibrant Seattle neighborhood.",
-    image: "src/assets/property-9.jpg",
+    image: property9,
     images: [
-      "src/assets/property-9.jpg",
-      "src/assets/property-10.jpg",
+      property9,
+      property10,
     ],
   },
 ];
